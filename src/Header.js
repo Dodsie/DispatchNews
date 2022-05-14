@@ -37,10 +37,7 @@ import MailIcon from '@mui/icons-material/Mail';
 
 function Header() {
   const [value, setValue] = React.useState(0);
-  const [loading, setLoading] = React.useState(true);
-  function handleClick() {
-    setLoading(true);
-  }
+
 
   return (
     <header className="animate__animated animate__backInDown">
