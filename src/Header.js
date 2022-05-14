@@ -43,7 +43,7 @@ function Header() {
   }
 
   return (
-    <header class="animate__animated animate__backInDown">
+    <header className="animate__animated animate__backInDown">
       
       <Stack 
         direction="row" // assigns stack row position
@@ -52,8 +52,8 @@ function Header() {
         divider={<Divider orientation="vertical" flexItem />} // adds a divider between each item inside the stack
         spacing={2} // adds a spacing of 2 between each item
       >
-        <div class="logo-container">
-          <a href="/" class="flex-container-row">
+        <div className="logo-container">
+          <a href="/" className="flex-container-row">
             <Player
               autoplay
               id="logo"
@@ -80,7 +80,7 @@ function Header() {
           </BottomNavigation>
       </div>
 
-        <div id="search" class="flex-container-row">
+        <div id="search" className="flex-container-row">
           <Autocomplete
             disablePortal
             id="combo-box-demo"
@@ -105,7 +105,7 @@ function Header() {
           </Badge>
         </div>
 
-        <div class="flex-container-row">
+        <div className="flex-container-row">
           <StyledBadge
             overlap="circular"
             anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
