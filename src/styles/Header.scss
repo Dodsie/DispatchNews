@@ -1,0 +1,27 @@
+#logo {
+  padding: 0 1em 0 0;
+}
+
+#search{
+  
+}
+
+.flex-container-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo-container {
+  font-family: 'Roboto', sans-serif;
+
+  & > a{
+    color: black;
+    text-decoration: none;
+  }
+
+  & > h1{
+    font-size: 1.5em;
+  }
+}
