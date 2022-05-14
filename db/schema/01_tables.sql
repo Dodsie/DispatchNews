@@ -18,7 +18,7 @@ CREATE TABLE favorites (
 
 CREATE TABLE articles (
   id SERIAL PRIMARY KEY NOT NULL,
-  favorites_id INTEGER REFERENCES favorites(id) ON DELETE CASCADE,
+  favorite_id INTEGER REFERENCES favorites(id) ON DELETE CASCADE,
   title VARCHAR(255) NOT NULL,
   url VARCHAR(255) NOT NULL
 );
