@@ -1,7 +1,7 @@
 function Header() {
   return (
     <header>
-      <h1>Hello Is this working ALASTAIR I WILL PROVE TO YOU</h1>
+      <h1>Hello Is this working</h1>
     </header>
   );
 }
