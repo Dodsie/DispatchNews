@@ -43,10 +43,6 @@ function Header() {
   }
 
   return (
-<<<<<<< HEAD
-    <header>
-      <h1>Hello Is this working</h1>
-=======
     <header class="animate__animated animate__backInDown">
       
       <Stack 
@@ -119,7 +115,6 @@ function Header() {
           </StyledBadge>
         </div>
       </Stack>
->>>>>>> a5582aa93608a681a9a1e33fcc627797bc63f5e9
     </header>
   );
 }
