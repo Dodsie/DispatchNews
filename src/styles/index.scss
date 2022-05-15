@@ -27,3 +27,20 @@ html {
 article.articleContainer > img {
   max-width: 300px;
 }
+
+#latestNews {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  & > div {
+    max-width: 100vw;
+    overflow-x: auto;
+    margin: 2em;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

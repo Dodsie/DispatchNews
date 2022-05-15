@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect} from 'react';
 import Header from './Header';
-import Alan from './Alan';
 import Weather from './components/Weather';
 import "./styles/index.scss";
 import NewsCards from './components/NewsCards/NewsCards';
@@ -33,7 +32,7 @@ function App() {
     <main>
       <Header />
       <Weather />
-      <div className="flex-container-row">
+      <div id="latestNews">
         <div>
           <NewsCards articles={newsArticles}/>
         </div>
