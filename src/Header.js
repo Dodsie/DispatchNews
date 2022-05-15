@@ -155,7 +155,7 @@ export default Header
 const newsSources = [
   { label: 'Popular'},
   { label: 'Business'},
-  { label: 'Entertanment'},
+  { label: 'Entertainment'},
   { label: 'Health'},
   { label: 'Science'},
   { label: 'Sports'},

@@ -18,7 +18,7 @@ function App() {
   const [newsArticles, setNewsArticles] = useState([]);
 
   const search = (query) => {
-    let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?apiKey=${process.env.REACT_APP_NEWS_KEY}&category=${query}`
+    let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?apiKey=${process.env.REACT_APP_NEWS_KEY}&category=${query}&language=en`
     axios.get(NEWS_API_URL).then(res => {console.log('res.data',res.data)
       const articles = res.data
       console.log('articles',articles)
