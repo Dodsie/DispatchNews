@@ -83,7 +83,7 @@ function Header() {
             id="combo-box-demo"
             options={newsSources}
             sx={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="Search the latest News!" />}
+            renderInput={(params) => <TextField {...params} label="Search the latest News Categories" />}
           />
 
           <Button
@@ -97,7 +97,7 @@ function Header() {
         </div>
 
         <div>
-          <Badge color="primary" badgeContent={0} showZero>
+          <Badge color="primary" badgeContent={5} showZero>
             <MailIcon />
           </Badge>
         </div>
@@ -118,11 +118,15 @@ function Header() {
 export default Header
 
 const newsSources = [
-  { label: 'CNN'},
-  { label: 'Reddit'},
-  { label: 'Yahoo'},
-  { label: 'Google'}
+  { label: 'Popular'},
+  { label: 'Business'},
+  { label: 'Entertanment'},
+  { label: 'Health'},
+  { label: 'Science'},
+  { label: 'Sports'},
+  { label: 'Technology'}
 ];
+
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
