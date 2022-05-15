@@ -23,3 +23,7 @@ html {
   margin: 0 1em 0 0;
   border-radius: 5px;
 }
+
+article.articleContainer > img {
+  max-width: 300px;
+}
