@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Header from './Header';
 import Alan from './Alan';
 import "./styles/index.scss";
-
+import Weather from './Weather';
 import NewsCards from './components/NewsCards/NewsCards';
 const newsCards = [
   { article: 'CNN', index: 1},
@@ -20,7 +20,9 @@ function App() {
     <main>
       <Alan />
       <Header />
+      <Weather />
       <NewsCards articles={newsCards}/>
+      
     </main>
   );
 }
