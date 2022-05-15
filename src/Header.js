@@ -54,9 +54,10 @@ const theme = createTheme({
 });
 
 
-function Header() {
+function Header(props) {
   const [value, setValue] = React.useState(0);
-
+  const [category, setCategory] = React.useState('')
+  console.log('init category', category)
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="static" className="animate__animated animate__backInDown">
@@ -86,8 +87,8 @@ function Header() {
               value={value}
               color="secondary"
               id="navigation"
-              onChange={(event, newValue) => {
-                setValue(newValue);
+              onChange={(event, value) => {
+                setValue(value);
               }}
             >
               <BottomNavigationAction label="Latest" icon={<NewspaperIcon />} />
@@ -103,7 +104,12 @@ function Header() {
               id="combo-box-demo"
               options={newsSources}
               sx={{ width: 300 }}
+              onChange={(event, value) => {console.log(value)
+                setCategory(value.label.toLowerCase())}}
               renderInput={(params) => <TextField {...params} label="Search the latest News Categories" />}
+              onClick={(category) => { 
+                console.log(category)
+              }}
             />
             <Button
               id="searchBtn"
@@ -113,6 +119,10 @@ function Header() {
               variant="outlined" 
               aria-label="search" 
               color="primary"
+              onClick={() => {
+                console.log('aft submit',category)
+                props.search(category)
+              }}
             >Search</Button>
           </div>
 
