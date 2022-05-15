@@ -2,8 +2,35 @@
   padding: 0 1em 0 0;
 }
 
-#search{
+
+#navigation{
+  background: transparent;
+  height: 76px;
   
+    & > button {
+      color: #a3a3a3;
+      height: inherit;
+    }
+
+    & > .Mui-selected{
+      background: #eeeeee;
+      color: #0b3864;
+    }
+}
+
+#search {
+  
+  & label{
+    color: black;
+  }
+
+  & #searchBtn{
+    background: transparent;
+    border: 1px solid #b7b7b7;
+    color: black;
+    height: 56px;
+  }
+
 }
 
 .flex-container-row{
