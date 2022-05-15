@@ -2,14 +2,15 @@
 import React, { useState } from 'react';
 import Header from './Header';
 import Alan from './Alan';
+import Weather from './components/Weather';
 import "./styles/index.scss";
 import Weather from './Weather';
 import NewsCards from './components/NewsCards/NewsCards';
 const newsCards = [
-  { article: 'CNN', index: 1},
-  { article: 'Reddit', index: 2},
-  { article: 'Yahoo', index: 3},
-  { article: 'Google', index: 4},
+  { header: 'CNN', index: 1, description: "This is description 1"},
+  { header: 'Reddit', index: 2, description: "This is description 2"},
+  { header: 'Yahoo', index: 3, description: "This is description 3"},
+  { header: 'Google', index: 4, description: "This is description 4"},
 ];
 
 function App() {
@@ -20,9 +21,14 @@ function App() {
     <main>
       <Alan />
       <Header />
-      <Weather />
-      <NewsCards articles={newsCards}/>
-      
+      <div className="flex-container-row">
+        <div>
+          <NewsCards articles={newsCards}/>
+        </div>
+        <div>
+        <Weather />
+        </div>
+      </div>
     </main>
   );
 }

@@ -3,9 +3,9 @@ import NewsCard from '../NewsCard/NewsCard';
 
 const NewsCards = (props) => {
   return (
-    <div>
+    <div className='flex-container-row'>
       {props.articles.map((article) => (
-        <NewsCard key={article.index} index={article.index} article={article.article}/>
+        <NewsCard key={article.index} index={article.index} header={article.header} description={article.description}/>
       ))}
     </div>
   )
