@@ -65,13 +65,15 @@ function App() {
         <Grid container>
           <Grid
             item
+            id="latestNews"
             xs={12}
+            sm={12}
             md={10}
+            lg={10}
+            xl={10}
             display={{ xs: "block", md: { display: "flex" } }}
           >
-            <div id="latestNews">
-              <NewsCards articles={newsArticles} />
-            </div>
+            <NewsCards articles={newsArticles} />
           </Grid>
           <Grid
             item
