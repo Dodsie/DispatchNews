@@ -1,19 +1,16 @@
-import Grid from "@mui/material/Grid";
-import "../styles/Sidebar.scss";
-
 const Sidebar = () => {
   return (
-    <>
+    <div className="whosOnline">
       <div>
-        <h1>Friends Online</h1>
+        <h3>Friends Online</h3>
         List of Avatars
       </div>
 
       <div>
-        <h2>Saved News</h2>
+        <h3>Saved News</h3>
         List of Saved News
       </div>
-    </>
+    </div>
   );
 };
 

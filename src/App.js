@@ -3,6 +3,7 @@ import Header from "./Header";
 import Weather from "./components/Weather";
 import Sidebar from "./components/Sidebar";
 import "./styles/index.scss";
+import "./styles/Sidebar.scss";
 import Grid from "@mui/material/Grid";
 import NewsCards from "./components/NewsCards/NewsCards";
 import alanBtn from "@alan-ai/alan-sdk-web";

@@ -1,15 +1,22 @@
 .sidebar {
-  background: #eeeeee;
   height: 100vh;
   width: 100%;
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  flex-direction: column;
+  background: #eeeeee;
   border: 1px solid lightgray;
   animation: slideDown 1s forwards ease-out;
   animation-iteration-count: 1;
   animation-delay: 1s;
-  position: fixed;
-  top: 0;
-  right: 0;
   opacity: 0;
+
+  & > .whosOnline {
+    width: inherit;
+    margin: 1em;
+  }
 
   & > h1 {
   }

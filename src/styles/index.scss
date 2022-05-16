@@ -12,6 +12,7 @@ body {
 }
 
 * {
+  // border: 1px solid red; /* Used for error testing */
   box-sizing: border-box;
 }
 
@@ -20,6 +21,17 @@ html {
 
   // Add's scrollbar so content doesn't shift if response takes time to load
   overflow-y: scroll;
+}
+
+.header {
+  background: blue;
+
+  & .logo-container {
+    & > a {
+      display: flex;
+      flex-direction: row;
+    }
+  }
 }
 
 #latestNews {
@@ -44,6 +56,7 @@ html {
   border: 1px solid black;
   border-radius: $border-radius;
   margin: 0.4em 1.5em;
+  overflow-wrap: break-word;
 
   & .author {
     font-weight: bold;
@@ -84,7 +97,6 @@ html {
     padding: 0 1.5em 1.5em 1.5em;
 
     & > h2 {
-      margin: 0;
     }
   }
 }
