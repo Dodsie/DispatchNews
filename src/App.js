@@ -22,13 +22,11 @@ function App() {
 
     axios.get(NEWS_API_URL).then((res) => {
       console.log("res.data", res.data);
-      const articles = res.data;
-      console.log("articles", articles);
-      setNewsArticles(articles.articles);
+      const newsApi = res.data;
+
+      setNewsArticles(newsApi.articles);
     });
   };
-
-  console.log(newsArticles);
 
   useEffect(() => {
     alanBtn({

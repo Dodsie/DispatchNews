@@ -3,18 +3,32 @@ import React from "react";
 const NewsCard = (props) => {
   return (
     <article id={props.id} key={props.id} className="articleContainer">
-      <div class="articleImage">
-        <img
-          src={props.image}
-          alt={props.header}
-          title={props.header}
-          loading="lazy"
-        />
+      <div className="articleImageContainer">
+        <a href={props.url} target="_blank" rel="noreferrer">
+          <img
+            src={props.urlToImage}
+            alt={props.title}
+            title={props.title}
+            loading="lazy"
+            className="articleImage"
+          />
+        </a>
       </div>
-      <div>
-        <h1>{props.header}</h1>
-        <p>{props.description}</p>
-        <p>Article: {props.id}</p>
+      <div className="articleDetails">
+        <h1>{props.title}</h1>
+        <p>{props.content}</p>
+        <footer>
+          <p>
+            <span>
+              Published by: <span className="author">{props.author}</span>
+            </span>
+            <br />
+            <time className="publishedAt" dateTime={props.publishedAt}>
+              {"Posted on: " + Date(props.publishedAt).toString()}
+            </time>
+          </p>
+          <span className="articleID">[ {props.id} ]</span>
+        </footer>
       </div>
     </article>
   );

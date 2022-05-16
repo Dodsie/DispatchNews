@@ -1,52 +1,90 @@
+$border-radius: 2em;
+
 #root,
 html,
 body {
-	height: 100vh;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
 }
 body {
-	margin: 0;
-	background-color: default;
+  margin: 0;
+  background-color: default;
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-	scroll-behavior: smooth;
-	overflow-y: scroll;
+  scroll-behavior: smooth;
+
+  // Add's scrollbar so content doesn't shift if response takes time to load
+  overflow-y: scroll;
 }
 
 .articleContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
-	border: 1px solid black;
-	border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  border: 1px solid black;
+  border-radius: $border-radius;
+  margin: 0.4em 1.5em;
 }
 
 article {
-	& > articleImage > img {
-		max-height: 30vh;
-		border-radius: 2em;
-		border: 1px solid lightgrey;
-		box-shadow: 1px 1px 5px -1px;
-	}
-}
-article.articleContainer > img {
-	width: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: left;
+
+  & .author {
+    font-weight: bold;
+  }
+
+  & .articleID {
+    font-weight: bold;
+    font-size: 1.5em;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  & .publishedAt {
+    font-size: small;
+  }
+
+  & > .articleImageContainer {
+    & > a > .articleImage {
+      max-height: 30vh;
+      border-radius: $border-radius;
+      box-shadow: 1px 1px 5px 0;
+      min-width: 600px;
+      object-fit: cover;
+    }
+  }
+
+  & > .articleDetails {
+    padding: 0em 1.5em;
+    & > h1 {
+    }
+
+    & > p {
+    }
+  }
 }
 
 #latestNews {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
 
-	& > div {
-		max-width: 80vw;
-		border: 1px solid lightgray;
-		flex-direction: column;
-	}
+  & > div {
+    max-width: 80vw;
+    border: 1px solid lightgray;
+    flex-direction: column;
+    padding-top: 1em;
+  }
 }
