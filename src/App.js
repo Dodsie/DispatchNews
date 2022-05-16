@@ -41,7 +41,7 @@ function App() {
     });
 
     // Search first Query
-    searchQuery("popular");
+    // searchQuery("popular");
   }, []);
 
   // Theme Style
