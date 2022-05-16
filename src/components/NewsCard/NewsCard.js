@@ -1,14 +1,40 @@
-import React from 'react';
-//"https://dummyimage.com/250x150/000/fff"
+import React from "react";
+import Grid from "@mui/material/Grid";
+
 const NewsCard = (props) => {
+  const imageURL =
+    props.urlToImage === null || props.urlToImage.length === 4
+      ? `https://dummyimage.com/650x280/000/fff`
+      : `${props.urlToImage}`;
+
   return (
-    <article id={props.id} key={props.id} className="articleContainer">
-      <img src={props.image} alt={props.header} title={props.header} loading="lazy" />
-      <h1>{props.header}</h1>
-      <p>{props.description}</p>
-      <p>Article: {props.id}</p>
-    </article>
-  )
-}
+    <Grid className="article" id={props.id} key={props.id}>
+      <Grid item xs={12} md={12} className="articleImageContainer">
+        <a href={props.url} target="_blank" rel="noreferrer">
+          <img
+            src={imageURL}
+            alt={props.title}
+            title={props.title}
+            loading="lazy"
+            className="articleImage"
+          />
+        </a>
+      </Grid>
+      <Grid item xs={12} md={12} className="articleDetails">
+        <h2>{props.title}</h2>
+        <p>{props.content}</p>
+        <footer>
+          <span>
+            Published by: <span className="author">{props.author}</span>
+          </span>
+          <br />
+          <time className="publishedAt" dateTime={props.publishedAt}>
+            {"Posted on: " + Date(props.publishedAt).toString()}
+          </time>
+        </footer>
+      </Grid>
+    </Grid>
+  );
+};
 
 export default NewsCard;
