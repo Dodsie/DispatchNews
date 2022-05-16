@@ -10,15 +10,21 @@ CREATE TABLE users (
   password VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE articles (
+  id SERIAL PRIMARY KEY NOT NULL,
+  author VARCHAR(255),
+  content VARCHAR(255),
+  description VARCHAR(255),
+  publishedAt VARCHAR(255),
+  source VARCHAR(255),
+  title VARCHAR(255),
+  url VARCHAR(255),
+  urlToImage VARCHAR(255)
+);
+
 CREATE TABLE favorites (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   article_id INTEGER REFERENCES articles(id) ON DELETE CASCADE
 );
 
-CREATE TABLE articles (
-  id SERIAL PRIMARY KEY NOT NULL,
-  favorite_id INTEGER REFERENCES favorites(id) ON DELETE CASCADE,
-  title VARCHAR(255) NOT NULL,
-  url VARCHAR(255) NOT NULL
-);
