@@ -62,13 +62,24 @@ function App() {
         <Header search={searchQuery} />
         <Weather />
         <Grid container>
-          <Grid item xs={12} md={8}>
+          <Grid
+            item
+            xs={12}
+            md={10}
+            display={{ xs: "block", md: { display: "flex" } }}
+          >
             <div id="latestNews">
               <NewsCards articles={newsArticles} />
             </div>
           </Grid>
-
-          <Sidebar />
+          <Grid
+            item
+            md={2}
+            className="sidebar"
+            display={{ xs: "none", md: "flex" }}
+          >
+            <Sidebar />
+          </Grid>
         </Grid>
       </ThemeProvider>
     </main>

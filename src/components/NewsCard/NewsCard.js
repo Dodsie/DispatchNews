@@ -1,36 +1,39 @@
 import React from "react";
-//"https://dummyimage.com/250x150/000/fff"
+import Grid from "@mui/material/Grid";
+
 const NewsCard = (props) => {
+  const imageURL =
+    props.urlToImage === null || props.urlToImage.length === 4
+      ? `https://dummyimage.com/650x280/000/fff`
+      : `${props.urlToImage}`;
+
   return (
-    <article id={props.id} key={props.id} className="articleContainer">
-      <div className="articleImageContainer">
+    <Grid className="article" id={props.id} key={props.id}>
+      <Grid item xs={12} md={12} className="articleImageContainer">
         <a href={props.url} target="_blank" rel="noreferrer">
           <img
-            src={props.urlToImage}
+            src={imageURL}
             alt={props.title}
             title={props.title}
             loading="lazy"
             className="articleImage"
           />
         </a>
-      </div>
-      <div className="articleDetails">
-        <h1>{props.title}</h1>
+      </Grid>
+      <Grid item xs={12} md={12} className="articleDetails">
+        <h2>{props.title}</h2>
         <p>{props.content}</p>
         <footer>
-          <p>
-            <span>
-              Published by: <span className="author">{props.author}</span>
-            </span>
-            <br />
-            <time className="publishedAt" dateTime={props.publishedAt}>
-              {"Posted on: " + Date(props.publishedAt).toString()}
-            </time>
-          </p>
-          <span className="articleID">[ {props.id} ]</span>
+          <span>
+            Published by: <span className="author">{props.author}</span>
+          </span>
+          <br />
+          <time className="publishedAt" dateTime={props.publishedAt}>
+            {"Posted on: " + Date(props.publishedAt).toString()}
+          </time>
         </footer>
-      </div>
-    </article>
+      </Grid>
+    </Grid>
   );
 };
 

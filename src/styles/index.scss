@@ -22,21 +22,28 @@ html {
   overflow-y: scroll;
 }
 
-.articleContainer {
+#latestNews {
+  padding-top: 1em;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    align-items: center;
+    width: 20%;
+  }
+}
+
+.article {
+  justify-content: left;
   align-items: flex-start;
   border: 1px solid black;
   border-radius: $border-radius;
   margin: 0.4em 1.5em;
-}
-
-article {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: left;
 
   & .author {
     font-weight: bold;
@@ -56,35 +63,28 @@ article {
   }
 
   & > .articleImageContainer {
-    & > a > .articleImage {
-      max-height: 30vh;
-      border-radius: $border-radius;
-      box-shadow: 1px 1px 5px 0;
-      min-width: 600px;
-      object-fit: cover;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    & > a {
+      width: inherit;
+
+      & > .articleImage {
+        width: inherit;
+        max-height: 184px;
+        border-radius: $border-radius;
+        box-shadow: 1px 1px 5px 0 black;
+        object-fit: fill;
+      }
     }
   }
 
   & > .articleDetails {
-    padding: 0em 1.5em;
-    & > h1 {
+    padding: 0 1.5em 1.5em 1.5em;
+
+    & > h2 {
+      margin: 0;
     }
-
-    & > p {
-    }
-  }
-}
-
-#latestNews {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-start;
-
-  & > div {
-    max-width: 80vw;
-    border: 1px solid lightgray;
-    flex-direction: column;
-    padding-top: 1em;
   }
 }

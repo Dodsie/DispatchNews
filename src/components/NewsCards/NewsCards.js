@@ -16,11 +16,12 @@ const NewsCards = (props) => {
         title={article.title}
         url={article.url}
         urlToImage={article.urlToImage}
+        className="flex-container-row"
       />
     );
   });
 
-  return <div className="flex-container-row">{NewsCardsMap}</div>;
+  return <>{NewsCardsMap}</>;
 };
 
 export default NewsCards;
