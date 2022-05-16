@@ -1,0 +1,30 @@
+.sidebar {
+	background: #eeeeee;
+	height: 100vh;
+	width: 100%;
+	border: 1px solid lightgray;
+	animation: slideDown 1s forwards ease-out;
+	animation-iteration-count: 1;
+	animation-delay: 1s;
+	position: fixed;
+	top: 0;
+	right: 0;
+	opacity: 0;
+
+	& > h1 {
+		font-family: Roboto;
+	}
+}
+
+@keyframes slideDown {
+	0% {
+		opacity: 0;
+		z-index: -9000;
+	}
+
+	100% {
+		opacity: 1;
+		top: 60px;
+		z-index: 0;
+	}
+}
