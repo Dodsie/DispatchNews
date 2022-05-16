@@ -1,5 +1,10 @@
-#root, html, body {
+$border-radius: 2em;
+
+#root,
+html,
+body {
   height: 100vh;
+  font-family: "Roboto", sans-serif;
 }
 body {
   margin: 0;
@@ -7,40 +12,106 @@ body {
 }
 
 * {
+  // border: 1px solid red; /* Used for error testing */
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+
+  // Add's scrollbar so content doesn't shift if response takes time to load
+  overflow-y: scroll;
 }
 
-.articleContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  border: 1px solid black;
-  margin: 0 1em 0 0;
-  border-radius: 5px;
-}
+.header {
+  background: blue;
 
-article.articleContainer > img {
-  max-width: 300px;
+  & .logo-container {
+    & > a {
+      display: flex;
+      flex-direction: row;
+    }
+  }
 }
 
 #latestNews {
+  padding-top: 1em;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 
   & > div {
-    max-width: 100vw;
-    overflow-x: auto;
-    margin: 2em;
     border: 1px solid lightgray;
-    border-radius: 15px;
+    align-items: center;
+    width: 20%;
+
+    @media only screen and (max-width: 500px) {
+      width: 40%;
+    }
+
+    @media only screen and (max-width: 900px) {
+      width: 40%;
+    }
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+    // xs, extra-small: 0px
+    // sm, small: 600px
+    // md, medium: 900px
+    // lg, large: 1200px
+    // xl, extra-large: 1536px
+  }
+}
+
+.article {
+  justify-content: left;
+  align-items: flex-start;
+  border: 1px solid black;
+  border-radius: $border-radius;
+  margin: 0.4em 1.5em;
+  overflow-wrap: break-word;
+
+  & .author {
+    font-weight: bold;
+  }
+
+  & .articleID {
+    font-weight: bold;
+    font-size: 1.5em;
     display: flex;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  & .publishedAt {
+    font-size: small;
+  }
+
+  & > .articleImageContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    & > a {
+      width: inherit;
+
+      & > .articleImage {
+        width: inherit;
+        max-height: 184px;
+        border-radius: $border-radius;
+        box-shadow: 1px 1px 5px 0 black;
+        object-fit: fill;
+      }
+    }
+  }
+
+  & > .articleDetails {
+    padding: 0 1.5em 1.5em 1.5em;
+
+    & > h2 {
+    }
   }
 }
