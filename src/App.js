@@ -41,7 +41,7 @@ function App() {
     });
 
     // Search first Query
-    searchQuery("outbreak");
+    searchQuery("popular");
   }, []);
 
   // Theme Style
