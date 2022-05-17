@@ -16,8 +16,7 @@ function App() {
   const [newsArticles, setNewsArticles] = useState([]);
   const [mode, setMode] = useState(false);
   
-
-
+  //Helpers and querys
   const toggleWeather = () => {
     console.log(mode);
     if (!mode) {
@@ -33,22 +32,31 @@ function App() {
     let NEWS_API_URL = `https://newsapi.org/v2/everything?${searchQuery}${language}${apiKey}`;
 
     axios.get(NEWS_API_URL).then((res) => {
-      console.log("res.data", res.data);
+      // console.log("res.data", res.data);
       const newsApi = res.data;
 
       setNewsArticles(newsApi.articles);
     });
   };
 
-
   const getFavorite = async () => {
-    Promise.all([axios.get("http://localhost:3001/favorite/2/")])
+    Promise.all([axios.get("http://localhost:3001/favorite/1/")])
     .then((all) => {
-      console.log('grab articles',all[0].data)
+      console.log('grab articles',all)
     })
     
   }
 
+  const addFavorite = async () => {
+    newsArticles.map((x) => {
+    axios.post("http://localhost:3001//addfav/:id/", { author : x.author, content: x.content, description: x.description, publishedAt: x.publishedAt,  source: x.source, title: x.title, url: x.url, urlToImage: x.urlToImage, user_id: 1 })
+    .then((response) => {console.log('res',response)}
+    ).catch(function (error) {
+      console.log(error);
+    });
+  })
+    
+  }
 
   useEffect(() => {
     alanBtn({
@@ -61,6 +69,7 @@ function App() {
     });
     // Search first Query
     searchQuery("popular");
+    addFavorite()
     getFavorite()
   }, []);
 
@@ -77,7 +86,7 @@ function App() {
       tonalOffset: 0.2,
     },
   });
-  console.log('newsArt',newsArticles);
+  // console.log('newsArt',newsArticles);
   return (
     <main>
       <ThemeProvider theme={theme}>
