@@ -1,9 +1,9 @@
 const { Pool } = require("pg");
 const pool = new Pool({
-  user: "bailey_dispatch",
-  password: "labber",
-  host: "localhost",
-  database: "dispatch",
+  user: process.env.REACT_APP_DB_USER,
+  password: process.env.REACT_APP_DB_PASSWORD,
+  host: process.env.REACT_APP_DB_HOST,
+  database: process.env.REACT_APP_DATABASE,
   port: 5432,
 });
 
@@ -77,9 +77,9 @@ const getFavorite = (request, response) => {
   );
 };
 
-const postFavorite = (request, response) => {
-  //starting by getting state.
-};
+// const postFavorite = (request, response) => {
+//   //starting by getting state.
+// };
 // create a favorite needs to know the user_id and needs to push the article into the database.
 //need to push
 module.exports = { getUsers, getUserById, createUser, deleteUser, getFavorite };
