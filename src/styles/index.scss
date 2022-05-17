@@ -34,6 +34,10 @@ html {
   }
 }
 
+.weather-widget {
+  // display: none;
+}
+
 #latestNews {
   padding-top: 2em;
   display: flex;
@@ -57,11 +61,6 @@ html {
     @media only screen and (max-width: 600px) {
       width: 100%;
     }
-    // xs, extra-small: 0px
-    // sm, small: 600px
-    // md, medium: 900px
-    // lg, large: 1200px
-    // xl, extra-large: 1536px
   }
 }
 
