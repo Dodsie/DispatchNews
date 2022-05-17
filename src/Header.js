@@ -106,10 +106,7 @@ function Header(props) {
                 setCategory(value.label.toLowerCase());
               }}
               renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Search the latest News Categories"
-                />
+                <TextField {...params} label="Search the Latest News" />
               )}
               onClick={(category) => {
                 console.log(category);
@@ -168,6 +165,46 @@ const newsSources = [
   { label: "Science" },
   { label: "Sports" },
   { label: "Technology" },
+  { label: "Apple" },
+  { label: "Microsoft" },
+  { label: "Automotive" },
+  { label: "Movies" },
+  { label: "Weather" },
+  { label: "Kanye West" },
+  { label: "Kim Kardashian" },
+  { label: "Crypto" },
+  { label: "Gaming" },
+  { label: "Fortnite" },
+  { label: "Ferrari" },
+  { label: "Banking" },
+  { label: "Women" },
+  { label: "Mens Health" },
+  { label: "Feminism" },
+  { label: "Womens Health" },
+  { label: "Porsche" },
+  { label: "Ford" },
+  { label: "Mclaren" },
+  { label: "Comedy" },
+  { label: "Nike" },
+  { label: "Memes" },
+  { label: "Software" },
+  { label: "Hockey" },
+  { label: "Basketball" },
+  { label: "Baseball" },
+  { label: "Curling" },
+  { label: "Olympics" },
+  { label: "Climate Change" },
+  { label: "Playoffs" },
+  { label: "NHL" },
+  { label: "Fitness" },
+  { label: "NASA" },
+  { label: "Space" },
+  { label: "Food" },
+  { label: "Coronavirus" },
+  { label: "Ebola" },
+  { label: "World News" },
+  { label: "Coke" },
+  { label: "Drug" },
 ];
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
