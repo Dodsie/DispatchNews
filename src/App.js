@@ -15,6 +15,8 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 function App() {
   const [newsArticles, setNewsArticles] = useState([]);
   const [mode, setMode] = useState(false);
+  
+
 
   const toggleWeather = () => {
     console.log(mode);
@@ -24,7 +26,6 @@ function App() {
       setMode((prevMode) => !prevMode);
     }
   };
-
   const searchQuery = (query) => {
     const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
     const language = "&language=en";
@@ -39,19 +40,28 @@ function App() {
     });
   };
 
+
+  const getFavorite = async () => {
+    Promise.all([axios.get("http://localhost:3001/favorite/2/")])
+    .then((all) => {
+      console.log('grab articles',all[0].data)
+    })
+    
+  }
+
+
   useEffect(() => {
     alanBtn({
       key: process.env.REACT_APP_ALAN_KEY,
       onCommand: ({ command, articles }) => {
         if (command === "newsFromSource") {
           setNewsArticles(articles);
-          console.log(newsArticles);
         }
       },
     });
-
     // Search first Query
     searchQuery("popular");
+    getFavorite()
   }, []);
 
   // Theme Style
@@ -67,6 +77,7 @@ function App() {
       tonalOffset: 0.2,
     },
   });
+  console.log('newsArt',newsArticles);
   return (
     <main>
       <ThemeProvider theme={theme}>
