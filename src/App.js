@@ -9,7 +9,6 @@ import NewsCards from "./components/NewsCards/NewsCards";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import axios from "axios";
 
-
 // Theme
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -18,14 +17,13 @@ function App() {
   const [mode, setMode] = useState(false);
 
   const toggleWeather = () => {
-    console.log(mode)
-    if(!mode) {
+    console.log(mode);
+    if (!mode) {
       setMode(true);
     } else {
-      setMode(prevMode => !prevMode);
+      setMode((prevMode) => !prevMode);
     }
-  }
-
+  };
 
   const searchQuery = (query) => {
     const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
@@ -52,8 +50,8 @@ function App() {
       },
     });
 
-    // Search first Query
-    searchQuery("popular");
+    // // Search first Query
+    // searchQuery("popular");
   }, []);
 
   // Theme Style
@@ -73,7 +71,7 @@ function App() {
     <main>
       <ThemeProvider theme={theme}>
         <Header search={searchQuery} onToggle={toggleWeather} />
-        {mode && (<Weather />)}
+        {mode && <Weather />}
         <Grid container>
           <Grid
             item

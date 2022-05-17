@@ -6,6 +6,7 @@ const NewsCards = (props) => {
     let identifier = props.articles.indexOf(article);
     return (
       <NewsCard
+        values={props.article}
         key={identifier}
         id={identifier}
         author={article.author}

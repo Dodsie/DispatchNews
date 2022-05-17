@@ -9,6 +9,7 @@ body {
 body {
   margin: 0;
   background-color: default;
+  padding: 0 !important;
 }
 
 * {
@@ -20,7 +21,18 @@ html {
   scroll-behavior: smooth;
 
   // Add's scrollbar so content doesn't shift if response takes time to load
-  overflow-y: scroll;
+  overflow-y: scroll !important;
+}
+
+.MuiInputLabel-root.Mui-focused {
+  color: black !important;
+}
+
+.MuiInput-root > input {
+  background: #eeeeee;
+  border: solid 1px #c5c5c5;
+  text-align: center;
+  font-size: large;
 }
 
 .header {
@@ -63,7 +75,9 @@ html {
     }
   }
 }
-
+.weatherwidget-io {
+  width: 84%;
+}
 .article {
   justify-content: left;
   align-items: flex-start;
