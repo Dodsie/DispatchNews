@@ -40,8 +40,8 @@ function App() {
       },
     });
 
-    // Search first Query
-    searchQuery("popular");
+    // // Search first Query
+    // searchQuery("popular");
   }, []);
 
   // Theme Style
