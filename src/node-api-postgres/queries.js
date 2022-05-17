@@ -81,5 +81,5 @@ const postFavorite = (request, response) => {
   //starting by getting state.
 };
 // create a favorite needs to know the user_id and needs to push the article into the database.
-
+//need to push
 module.exports = { getUsers, getUserById, createUser, deleteUser, getFavorite };
