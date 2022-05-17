@@ -39,6 +39,7 @@ function App() {
     });
   };
 
+
   const getFavorite = async () => {
     Promise.all([axios.get("http://localhost:3001/favorite/1/")])
     .then((all) => {
@@ -48,13 +49,15 @@ function App() {
   }
 
   const addFavorite = async () => {
-    newsArticles.map((x) => {
-    axios.post("http://localhost:3001//addfav/:id/", { author : x.author, content: x.content, description: x.description, publishedAt: x.publishedAt,  source: x.source, title: x.title, url: x.url, urlToImage: x.urlToImage, user_id: 1 })
-    .then((response) => {console.log('res',response)}
+    console.log("newsArticles",newsArticles) 
+    const x = newsArticles.length > 0 && newsArticles[0]
+    console.log(x.content)
+    return axios.post("http://localhost:3001/addfav/2/", { author: x.author, content: x.content, description: x.description, publishedAt: x.publishedAt,  source: x.source.name, title: x.title, url: x.url, urlToImage: x.urlToImage})
+    .then((response) => {console.log('res',response.config.data)}
     ).catch(function (error) {
       console.log(error);
     });
-  })
+  
     
   }
 
@@ -68,9 +71,8 @@ function App() {
       },
     });
     // Search first Query
-    searchQuery("popular");
-    addFavorite()
-    getFavorite()
+    searchQuery("fortnite");
+    console.log("newsArticles in UE",newsArticles)
   }, []);
 
   // Theme Style
