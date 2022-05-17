@@ -1,6 +1,7 @@
 import React from "react";
 
 const Weather = () => {
+  
   const location = "vancouver";
   const url = `https://forecast7.com/en/49d28n123d12/vancouver`;
   const weatherJS = !(function (d, s, id) {
@@ -15,7 +16,7 @@ const Weather = () => {
   })(document, "script", "weatherwidget-io-js");
 
   return (
-    <div style={{}}>
+    <div style={{}} className="weather-widget">
       <a
         className="weatherwidget-io"
         href="https://forecast7.com/en/49d28n123d12/vancouver/"

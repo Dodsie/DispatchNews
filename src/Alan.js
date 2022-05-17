@@ -14,3 +14,11 @@
 //   }, []);
 //   return 
 // }
+
+
+// $(() => {
+//  $('.weatherBro').click(() => {
+//     $('.weatherwidget-io').slideToggle('slow');
+//     $('.weatherwidget-io').css('display', 'flex');
+//  })
+// });

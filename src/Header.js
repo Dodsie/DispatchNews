@@ -40,7 +40,6 @@ import MailIcon from "@mui/icons-material/Mail";
 function Header(props) {
   const [value, setValue] = React.useState(0);
   const [category, setCategory] = React.useState("");
-  console.log("init category", category);
   return (
     <AppBar
       position="sticky"
@@ -87,7 +86,7 @@ function Header(props) {
                 label="Nearby"
                 icon={<LocationOnIcon />}
               />
-              <BottomNavigationAction label="Weather" icon={<WeatherIcon />} />
+              <BottomNavigationAction label="Weather" icon={<WeatherIcon />} onClick={props.onToggle} />
             </BottomNavigation>
           </div>
         </Grid>
