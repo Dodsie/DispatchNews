@@ -27,6 +27,8 @@ app.get("/users/delete/:id", db.deleteUser);
 
 app.get("/favorite/:id", db.getFavorite);
 
+app.get("/addfav/:id", db.addFavorite);
+
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });
