@@ -12,12 +12,22 @@
   }
 
   & > .Mui-selected {
-    background: #eeeeee;
+    background: transparent;
     color: #0b3864;
   }
 }
 
+// Avatar
+.css-gjjtwf-MuiBadge-root > div {
+  cursor: pointer;
+}
+
 #search {
+  & .MuiFormControl-root {
+    border: solid 1px #d1d1d1;
+    border-radius: 0.5em 0.5em 0 0;
+  }
+
   & label {
     color: black;
   }
