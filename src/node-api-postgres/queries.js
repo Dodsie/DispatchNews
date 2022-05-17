@@ -53,4 +53,33 @@ const deleteUser = (request, response) => {
   });
 };
 
-module.exports = { getUsers, getUserById, createUser, deleteUser };
+const getFavorite = (request, response) => {
+  const id = parseInt(request.params.id);
+  const search = [
+    "author",
+    "content",
+    "description",
+    "publishedAt",
+    "source",
+    "title",
+    "url",
+    "urlToImage",
+  ];
+  pool.query(
+    `SELECT ${search} FROM articles JOIN favorites ON article_id = articles.id JOIN users ON user_id = users.id WHERE user_id = $1`,
+    [id],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    }
+  );
+};
+
+const postFavorite = (request, response) => {
+  //starting by getting state.
+};
+// create a favorite needs to know the user_id and needs to push the article into the database.
+//need to push
+module.exports = { getUsers, getUserById, createUser, deleteUser, getFavorite };

@@ -13,4 +13,28 @@ INSERT INTO articles(author, content, description, publishedAt, source, title, u
 'https://media.wired.com/photos/6261eae7536da34b19a67ad2/191:100/w_1280,c_limit/Autel-Evo-Lite+-Drone-Gear.jpg'
 );
 
+INSERT INTO articles(author, content, description, publishedAt, source, title, url, urlToImage) VALUES ('Number 2',
+'WORKING?',
+'A.',
+'A',
+'A',
+'?',
+'https://www.wired.com/review/autel-evo-lite-plus-drone/',
+'https://media.wired.com/photos/6261eae7536da34b19a67ad2/191:100/w_1280,c_limit/Autel-Evo-Lite+-Drone-Gear.jpg'
+);
+
+INSERT INTO articles(author, content, description, publishedAt, source, title, url, urlToImage) VALUES ('Number 3',
+'WORKINGB?',
+'B.',
+'B',
+'B',
+'?',
+'https://www.wired.com/review/autel-evo-lite-plus-drone/',
+'https://media.wired.com/photos/6261eae7536da34b19a67ad2/191:100/w_1280,c_limit/Autel-Evo-Lite+-Drone-Gear.jpg'
+);
+
 INSERT INTO favorites (user_id, article_id) VALUES (1, 1);
+INSERT INTO favorites (user_id, article_id) VALUES (2, 1);
+INSERT INTO favorites (user_id, article_id) VALUES (3, 1);
+INSERT INTO favorites (user_id, article_id) VALUES (1, 2);
+INSERT INTO favorites (user_id, article_id) VALUES (1, 3);
