@@ -70,9 +70,15 @@ function App() {
         }
       },
     });
+<<<<<<< HEAD
     // Search first Query
     searchQuery("fortnite");
     console.log("newsArticles in UE",newsArticles)
+=======
+
+    // // Search first Query
+    // searchQuery("popular");
+>>>>>>> 4d2624a13151680816888c6782a2d14a7effd079
   }, []);
 
   // Theme Style
@@ -93,7 +99,9 @@ function App() {
     <main>
       <ThemeProvider theme={theme}>
         <Header search={searchQuery} onToggle={toggleWeather} />
+
         {mode && <Weather />}
+
         <Grid container>
           <Grid
             item

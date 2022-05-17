@@ -1,7 +1,5 @@
 // Components
 import * as React from "react"; // for state control here (refactorable in future)
-
-import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
 
 // Navigation
@@ -13,6 +11,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import WeatherIcon from "@mui/icons-material/WbSunny";
 import Grid from "@mui/material/Grid";
+import Login from "./components/Login";
+import Badge from "@mui/material/Badge";
 
 // LottiePlayer
 import { Player } from "@lottiefiles/react-lottie-player";
@@ -29,17 +29,10 @@ import Autocomplete from "@mui/material/Autocomplete";
 import SearchIcon from "@mui/icons-material/TravelExplore";
 import Button from "@mui/material/Button";
 
-// Avatar
-import { styled } from "@mui/material/styles";
-import Badge from "@mui/material/Badge";
-import Avatar from "@mui/material/Avatar";
-
-// Notifications
-import MailIcon from "@mui/icons-material/Mail";
-
 function Header(props) {
   const [value, setValue] = React.useState(0);
   const [category, setCategory] = React.useState("");
+
   return (
     <AppBar
       position="sticky"
@@ -51,7 +44,7 @@ function Header(props) {
         justifyContent="space-around"
         alignItems="center"
       >
-        <Grid item md={2} className="logo-container">
+        <Grid item md={1.8} className="logo-container">
           <a href="/">
             <Player
               autoplay
@@ -63,41 +56,22 @@ function Header(props) {
             <h1>DispatchNews</h1>
           </a>
         </Grid>
-
-        <Divider orientation="vertical" flexItem />
-
-        <Grid item md={2}>
-          <div>
-            <BottomNavigation
-              showLabels
-              value={value}
-              color="secondary"
-              id="navigation"
-              onChange={(event, value) => {
-                setValue(value);
-              }}
-            >
-              <BottomNavigationAction label="Latest" icon={<NewspaperIcon />} />
-              <BottomNavigationAction
-                label="Favorite"
-                icon={<FavoriteIcon />}
-              />
-              <BottomNavigationAction
-                label="Nearby"
-                icon={<LocationOnIcon />}
-              />
-              <BottomNavigationAction label="Weather" icon={<WeatherIcon />} onClick={props.onToggle} />
-            </BottomNavigation>
-          </div>
+        <Grid item md={0.5}>
+          <Badge
+            color="error"
+            badgeContent={5}
+            showZero
+            className="mobileAvatar"
+          >
+            <Login />
+          </Badge>
         </Grid>
 
-        <Divider orientation="vertical" flexItem />
-
-        <Grid item md={5}>
+        <Grid item md={5} className="searchContainer">
           <div id="search" className="flex-container-row">
             <Autocomplete
               disablePortal
-              id="combo-box-demo"
+              id="searchField"
               options={newsSources}
               sx={{ width: "100%" }}
               onChange={(event, value) => {
@@ -105,7 +79,11 @@ function Header(props) {
                 setCategory(value.label.toLowerCase());
               }}
               renderInput={(params) => (
-                <TextField {...params} label="Search the Latest News" />
+                <TextField
+                  {...params}
+                  variant="filled"
+                  label="Search the Latest News"
+                />
               )}
               onClick={(category) => {
                 console.log(category);
@@ -129,26 +107,45 @@ function Header(props) {
           </div>
         </Grid>
 
-        <Divider orientation="vertical" flexItem />
-
-        <Grid item md={1}>
-          <Stack
-            direction="row"
-            justifyContent="space-around"
-            alignItems="center"
-          >
-            <Badge color="error" badgeContent={5} showZero>
-              <MailIcon />
-            </Badge>
-
-            <StyledBadge
-              overlap="circular"
-              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-              variant="dot"
+        <Grid item md={2} className="headerBtns">
+          <div>
+            <BottomNavigation
+              showLabels
+              value={value}
+              color="secondary"
+              id="navigation"
+              onChange={(event, value) => {
+                setValue(value);
+              }}
             >
-              <Avatar alt="Username" src="/static/images/avatar/1.jpg" />
-            </StyledBadge>
-          </Stack>
+              <BottomNavigationAction label="Latest" icon={<NewspaperIcon />} />
+              <BottomNavigationAction
+                label="Favorite"
+                icon={<FavoriteIcon />}
+              />
+              <BottomNavigationAction
+                label="Nearby"
+                icon={<LocationOnIcon />}
+              />
+              <BottomNavigationAction
+                label="Weather"
+                icon={<WeatherIcon />}
+                onClick={props.onToggle}
+              />
+            </BottomNavigation>
+          </div>
+        </Grid>
+
+        <Divider orientation="vertical" flexItem />
+        <Grid item md={0.5}>
+          <Badge
+            color="error"
+            badgeContent={5}
+            showZero
+            className="desktopAvatar"
+          >
+            <Login />
+          </Badge>
         </Grid>
       </Grid>
     </AppBar>
@@ -205,20 +202,3 @@ const newsSources = [
   { label: "Coke" },
   { label: "Drug" },
 ];
-
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    backgroundColor: "#44b700",
-    color: "#44b700",
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    "&::after": {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      borderRadius: "50%",
-      content: '""',
-    },
-  },
-}));
