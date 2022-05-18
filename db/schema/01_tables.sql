@@ -14,8 +14,8 @@ CREATE TABLE users (
 CREATE TABLE articles (
   id SERIAL PRIMARY KEY NOT NULL,
   author VARCHAR(255),
-  content VARCHAR(255),
-  description VARCHAR(255),
+  content TEXT,
+  description TEXT,
   publishedAt VARCHAR(255),
   source VARCHAR(255),
   title VARCHAR(255),
