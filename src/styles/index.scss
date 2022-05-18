@@ -5,6 +5,7 @@ html,
 body {
   height: 100vh;
   font-family: "Roboto", sans-serif;
+  zoom: normal;
 }
 body {
   margin: 0;
@@ -35,19 +36,21 @@ html {
   font-size: large;
 }
 
-.header {
-  background: blue;
-
-  & .logo-container {
-    & > a {
-      display: flex;
-      flex-direction: row;
-    }
-  }
+.weather-widget {
+  animation: weatherSlideDown 1s forwards ease-out;
 }
 
-.weather-widget {
-  // display: none;
+@keyframes weatherSlideDown {
+  0% {
+    opacity: 0;
+    top: 60px;
+  }
+
+  100% {
+    opacity: 1;
+    top: 60px;
+    z-index: 0;
+  }
 }
 
 #latestNews {
@@ -61,17 +64,20 @@ html {
     border: 1px solid lightgray;
     align-items: center;
     width: 20%;
-
-    @media only screen and (max-width: 500px) {
-      width: 40%;
-    }
-
-    @media only screen and (max-width: 900px) {
-      width: 40%;
-    }
-
-    @media only screen and (max-width: 600px) {
+    @media only screen and (min-width: 500px) {
       width: 100%;
+    }
+
+    @media only screen and (min-width: 600px) {
+      width: 40%;
+    }
+
+    @media only screen and (min-width: 900px) {
+      width: 30%;
+    }
+
+    @media only screen and (min-width: 900px) and (max-width: 1096px) {
+      width: 40%;
     }
   }
 }
@@ -83,8 +89,12 @@ html {
   align-items: flex-start;
   border: 1px solid black;
   border-radius: $border-radius;
-  margin: 0.4em 1.5em;
+  margin: 0.4em 2.8em 1.5em 2.9em;
   overflow-wrap: break-word;
+
+  @media only screen and (min-width: 600px) {
+    margin: 0.4em -1em;
+  }
 
   & .author {
     font-weight: bold;
@@ -116,7 +126,7 @@ html {
         max-height: 184px;
         border-radius: $border-radius;
         box-shadow: 1px 1px 5px 0 black;
-        object-fit: fill;
+        object-fit: cover;
       }
     }
   }

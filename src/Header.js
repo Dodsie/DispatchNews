@@ -32,6 +32,7 @@ import Button from "@mui/material/Button";
 function Header(props) {
   const [value, setValue] = React.useState(0);
   const [category, setCategory] = React.useState("");
+
   return (
     <AppBar
       position="sticky"
@@ -43,7 +44,7 @@ function Header(props) {
         justifyContent="space-around"
         alignItems="center"
       >
-        <Grid item md={2} className="logo-container">
+        <Grid item md={1.8} className="logo-container">
           <a href="/">
             <Player
               autoplay
@@ -55,33 +56,18 @@ function Header(props) {
             <h1>DispatchNews</h1>
           </a>
         </Grid>
-
-        <Grid item md={2} className="test">
-          <div>
-            <BottomNavigation
-              showLabels
-              value={value}
-              color="secondary"
-              id="navigation"
-              onChange={(event, value) => {
-                setValue(value);
-              }}
-            >
-              <BottomNavigationAction label="Latest" icon={<NewspaperIcon />} />
-              <BottomNavigationAction
-                label="Favorite"
-                icon={<FavoriteIcon />}
-              />
-              <BottomNavigationAction
-                label="Nearby"
-                icon={<LocationOnIcon />}
-              />
-              <BottomNavigationAction label="Weather" icon={<WeatherIcon />} onClick={props.onToggle} />
-            </BottomNavigation>
-          </div>
+        <Grid item md={0.5}>
+          <Badge
+            color="error"
+            badgeContent={5}
+            showZero
+            className="mobileAvatar"
+          >
+            <Login />
+          </Badge>
         </Grid>
 
-        <Grid item md={6.6}>
+        <Grid item md={5} className="searchContainer">
           <div id="search" className="flex-container-row">
             <Autocomplete
               disablePortal
@@ -121,9 +107,43 @@ function Header(props) {
           </div>
         </Grid>
 
+        <Grid item md={2} className="headerBtns">
+          <div>
+            <BottomNavigation
+              showLabels
+              value={value}
+              color="secondary"
+              id="navigation"
+              onChange={(event, value) => {
+                setValue(value);
+              }}
+            >
+              <BottomNavigationAction label="Latest" icon={<NewspaperIcon />} />
+              <BottomNavigationAction
+                label="Favorite"
+                icon={<FavoriteIcon />}
+              />
+              <BottomNavigationAction
+                label="Nearby"
+                icon={<LocationOnIcon />}
+              />
+              <BottomNavigationAction
+                label="Weather"
+                icon={<WeatherIcon />}
+                onClick={props.onToggle}
+              />
+            </BottomNavigation>
+          </div>
+        </Grid>
+
         <Divider orientation="vertical" flexItem />
-        <Grid item md={0.4}>
-          <Badge color="error" badgeContent={5} showZero>
+        <Grid item md={0.5}>
+          <Badge
+            color="error"
+            badgeContent={5}
+            showZero
+            className="desktopAvatar"
+          >
             <Login />
           </Badge>
         </Grid>

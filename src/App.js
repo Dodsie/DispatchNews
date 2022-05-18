@@ -95,7 +95,9 @@ function App() {
     <main>
       <ThemeProvider theme={theme}>
         <Header search={searchQuery} onToggle={toggleWeather} />
+
         {mode && <Weather />}
+
         <Grid container>
           <Grid
             item
