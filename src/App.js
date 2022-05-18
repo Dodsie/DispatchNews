@@ -41,18 +41,30 @@ function App() {
   };
 
 
-  const getFavorite = async () => {
+  const getFavorite = async (user_id) => {
     Promise.all([axios.get("http://localhost:3001/favorite/1/")])
     .then((all) => {
-      console.log('grab articles',all)
+      console.log('grab articles',all[0].data)
     })
     
+  }
+
+  const getPopular = () => {
+    console.log('pressed')
+    const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
+    const language = "&language=en";
+    let NEWS_API_URL = `https://newsapi.org/v2/top-headlines/sources?${language}${apiKey}`;
+
+    axios.get(NEWS_API_URL).then((res) => {
+      // console.log("res.data", res.data);
+      const newsApi = res.data;
+      setNewsArticles(newsApi.articles);
+    });
   }
 
   const addFavorite = async (article_id) => {
     console.log("newsArticles",newsArticles) 
     const x = newsArticles.length > 0 && newsArticles[article_id]
-    // console.log(x.content)
     return axios.post(`http://localhost:3001/addfav/${user_id}/`, { author: x.author, content: x.content, description: x.description, publishedAt: x.publishedAt,  source: x.source.name, title: x.title, url: x.url, urlToImage: x.urlToImage})
     .then((response) => {console.log('res',response.config.data)}
     ).catch(function (error) {
@@ -93,7 +105,7 @@ function App() {
   return (
     <main>
       <ThemeProvider theme={theme}>
-        <Header search={searchQuery} onToggle={toggleWeather} />
+        <Header search={searchQuery} onToggle={toggleWeather} getFavorites={getFavorite} getPopular={getPopular}/>
 
         {mode && <Weather />}
 
@@ -108,7 +120,7 @@ function App() {
             xl={10}
             display={{ xs: "block", md: { display: "flex" } }}
           >
-            <NewsCards articles={newsArticles} addFavorite={addFavorite} />
+            <NewsCards articles={newsArticles} addFavorite={addFavorite}/>
           </Grid>
           <Grid
             item
