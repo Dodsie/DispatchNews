@@ -9,6 +9,7 @@ import NewsCards from "./components/NewsCards/NewsCards";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import axios from "axios";
 
+
 // Theme
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -70,9 +71,9 @@ function App() {
         }
       },
     });
-
-    // // Search first Query
-    searchQuery("popular");
+    // Search first Query
+    searchQuery("fortnite");
+    console.log("newsArticles in UE",newsArticles)
   }, []);
 
   // Theme Style
