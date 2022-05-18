@@ -18,6 +18,7 @@ const NewsCards = (props) => {
         url={article.url}
         urlToImage={article.urlToImage}
         className="flex-container-row"
+        addFavorite={props.addFavorite}
       />
     );
   });
