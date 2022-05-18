@@ -118,10 +118,10 @@ function Header(props) {
                 setValue(value);
               }}
             >
-              <BottomNavigationAction label="Latest" icon={<NewspaperIcon />} />
+              <BottomNavigationAction label="Latest" onClick={props.getPopular} icon={<NewspaperIcon />} />
               <BottomNavigationAction
                 label="Favorite"
-                icon={<FavoriteIcon />}
+                icon={<FavoriteIcon onClick={props.getFavorites}/>}
               />
               <BottomNavigationAction
                 label="Nearby"
