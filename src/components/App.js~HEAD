@@ -1,23 +1,43 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD:src/components/App.js
 import Header from "./News/Header";
 import Weather from "./News/Weather";
 import Sidebar from "./News/Sidebar";
 import "../styles/index.scss";
 import "../styles/Sidebar.scss";
+=======
+import Header from "./Header";
+import Weather from "./components/Weather";
+import Sidebar from "./components/Sidebar";
+import theme from "./helpers/theme.js";
+import "./styles/index.scss";
+import "./styles/Sidebar.scss";
+>>>>>>> 38198421c834bd5697a2c038283fc887759f53e7:src/App.js
 import Grid from "@mui/material/Grid";
 import NewsCards from "./News/NewsCards";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import axios from "axios";
 import FavoriteNewsCards from "./News/FavoriteNewsCards";
-import theme from '../helpers/theme'
+
+<<<<<<< HEAD
+// Theme
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+=======
 import { ThemeProvider } from "@mui/material/styles";
+>>>>>>> 38198421c834bd5697a2c038283fc887759f53e7
+
 
 function App() {
   const [newsArticles, setNewsArticles] = useState([]);
 
   const [mode, setMode] = useState(false);
   const [user_id, setUser_id] = useState(1)
+<<<<<<< HEAD
+
+
+=======
   const [favorite, setFavorite] = useState(false)
+>>>>>>> 38198421c834bd5697a2c038283fc887759f53e7
   //Helpers and querys
   const toggleWeather = () => {
     console.log(mode);
@@ -79,7 +99,6 @@ function App() {
       console.log(error);
     });
   
-    
   }
 
   useEffect(() => {
@@ -100,7 +119,7 @@ function App() {
   return (
     <main>
       <ThemeProvider theme={theme}>
-        <Header search={searchQuery} onToggle={toggleWeather} getFavorite={getFavorite} />
+        <Header search={searchQuery} onToggle={toggleWeather} />
         {mode && <Weather />}
 
         <Grid container>
@@ -127,6 +146,7 @@ function App() {
           </Grid>
         </Grid>
       </ThemeProvider>
+
     </main>
   );
 }
