@@ -8,11 +8,11 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import WeatherIcon from "@mui/icons-material/WbSunny";
 import Grid from "@mui/material/Grid";
 import Login from "../../components/News/Login";
 import Badge from "@mui/material/Badge";
+import AccountMenu from "./components/AccountMenu";
 
 // LottiePlayer
 import { Player } from "@lottiefiles/react-lottie-player";
@@ -31,6 +31,7 @@ import Button from "@mui/material/Button";
 
 function Header(props) {
   const [value, setValue] = React.useState(0);
+  const [loggedIn, setloggedIn] = React.useState(true);
   const [category, setCategory] = React.useState("");
 
   return (
@@ -57,14 +58,17 @@ function Header(props) {
           </a>
         </Grid>
         <Grid item md={0.5}>
-          <Badge
-            color="error"
-            badgeContent={5}
-            showZero
-            className="mobileAvatar"
-          >
-            <Login />
-          </Badge>
+          {loggedIn && (
+            <Badge
+              color="error"
+              badgeContent={5}
+              showZero
+              className="mobileAvatar"
+            >
+              <AccountMenu />
+            </Badge>
+          )}
+          {!loggedIn && <Login />}
         </Grid>
 
         <Grid item md={5} className="searchContainer">
@@ -118,16 +122,22 @@ function Header(props) {
                 setValue(value);
               }}
             >
-              <BottomNavigationAction label="Latest" onClick={props.getPopular} icon={<NewspaperIcon />} />
               <BottomNavigationAction
+<<<<<<< HEAD:src/components/News/Header.js
                 onClick={props.getFavorite}
                 label="Favorite"
                 icon={<FavoriteIcon />}
+=======
+                label="Latest"
+                onClick={props.getPopular}
+                icon={<NewspaperIcon />}
+>>>>>>> 3b9c72207057402802883f23f9a2f24bbde090d7:src/Header.js
               />
               <BottomNavigationAction
-                label="Nearby"
-                icon={<LocationOnIcon />}
+                label="Favorite"
+                icon={<FavoriteIcon onClick={props.getFavorites} />}
               />
+
               <BottomNavigationAction
                 label="Weather"
                 icon={<WeatherIcon />}
@@ -139,14 +149,17 @@ function Header(props) {
 
         <Divider orientation="vertical" flexItem />
         <Grid item md={0.5}>
-          <Badge
-            color="error"
-            badgeContent={5}
-            showZero
-            className="desktopAvatar"
-          >
-            <Login />
-          </Badge>
+          {loggedIn && (
+            <Badge
+              color="error"
+              badgeContent={5}
+              showZero
+              className="desktopAvatar"
+            >
+              <AccountMenu />
+            </Badge>
+          )}
+          {!loggedIn && <Login />}
         </Grid>
       </Grid>
     </AppBar>

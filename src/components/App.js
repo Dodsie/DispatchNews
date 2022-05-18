@@ -16,16 +16,12 @@ function App() {
   const [newsArticles, setNewsArticles] = useState([]);
 
   const [mode, setMode] = useState(false);
-  const [user_id, setUser_id] = useState(1)
-  const [favorite, setFavorite] = useState(false)
+  const [user_id, setUser_id] = useState(1);
+  const [favorite, setFavorite] = useState(false);
   //Helpers and querys
   const toggleWeather = () => {
     console.log(mode);
-    if (!mode) {
-      setMode(true);
-    } else {
-      setMode((prevMode) => !prevMode);
-    }
+    setMode(!mode);
   };
 
   const searchQuery = (query) => {
@@ -39,11 +35,12 @@ function App() {
       const newsApi = res.data;
 
       setNewsArticles(newsApi.articles);
-      setFavorite(false)
+      setFavorite(false);
     });
   };
 
   const getFavorite = async (user_id) => {
+<<<<<<< HEAD:src/components/App.js
     axios.get("http://localhost:3001/favorite/1/")
     .then((all) => {
       console.log('grab articles',all.data)
@@ -53,34 +50,55 @@ function App() {
     })
     
   }
+=======
+    Promise.all([axios.get("http://localhost:3001/favorite/1/")]).then(
+      (all) => {
+        console.log("grab articles", all[0].data);
+        setNewsArticles(all[0].data);
+        setFavorite(true);
+        console.log("state", favorite);
+      }
+    );
+  };
+>>>>>>> 3b9c72207057402802883f23f9a2f24bbde090d7:src/App.js
 
   const getPopular = () => {
-    console.log('pressed')
+    console.log("pressed");
     const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
     const language = "&language=en";
     let searchQuery = `q=popular`;
-    let date = `&from=${Date}`
+    let date = `&from=${Date}`;
     let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=ca${apiKey}`;
 
     axios.get(NEWS_API_URL).then((res) => {
       // console.log("res.data", res.data);
       const newsApi = res.data;
-      setFavorite(false)
+      setFavorite(false);
       setNewsArticles(newsApi.articles);
     });
-  }
+  };
 
   const addFavorite = async (article_id) => {
-    console.log("newsArticles",newsArticles) 
-    const x = newsArticles.length > 0 && newsArticles[article_id]
-    return axios.post(`http://localhost:3001/addfav/${user_id}/`, { author: x.author, content: x.content, description: x.description, publishedAt: x.publishedAt,  source: x.source.name, title: x.title, url: x.url, urlToImage: x.urlToImage})
-    .then((response) => {console.log('res',response.config.data)}
-    ).catch(function (error) {
-      console.log(error);
-    });
-  
-    
-  }
+    console.log("newsArticles", newsArticles);
+    const x = newsArticles.length > 0 && newsArticles[article_id];
+    return axios
+      .post(`http://localhost:3001/addfav/${user_id}/`, {
+        author: x.author,
+        content: x.content,
+        description: x.description,
+        publishedAt: x.publishedAt,
+        source: x.source.name,
+        title: x.title,
+        url: x.url,
+        urlToImage: x.urlToImage,
+      })
+      .then((response) => {
+        console.log("res", response.config.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     alanBtn({
@@ -88,20 +106,26 @@ function App() {
       onCommand: ({ command, articles }) => {
         if (command === "newsFromSource") {
           setNewsArticles(articles);
-          setFavorite(false)
+          setFavorite(false);
         }
       },
     });
     // Search first Query
     searchQuery("fortnite");
-    console.log("newsArticles in UE",newsArticles)
+    console.log("newsArticles in UE", newsArticles);
   }, []);
 
   return (
     <main>
       <ThemeProvider theme={theme}>
+<<<<<<< HEAD:src/components/App.js
         <Header search={searchQuery} onToggle={toggleWeather} getFavorite={getFavorite} />
         {mode && <Weather />}
+=======
+        <Header search={searchQuery} onToggle={toggleWeather} />
+        {console.log({ mode })}
+        {mode && <Weather applyClassName={mode} />}
+>>>>>>> 3b9c72207057402802883f23f9a2f24bbde090d7:src/App.js
 
         <Grid container>
           <Grid
@@ -114,8 +138,15 @@ function App() {
             xl={10}
             display={{ xs: "block", md: { display: "flex" } }}
           >
-            {!favorite &&<NewsCards articles={newsArticles} addFavorite={addFavorite}/>}
-            {favorite && <FavoriteNewsCards articles={newsArticles} addFavorite={addFavorite}/>}
+            {!favorite && (
+              <NewsCards articles={newsArticles} addFavorite={addFavorite} />
+            )}
+            {favorite && (
+              <FavoriteNewsCards
+                articles={newsArticles}
+                addFavorite={addFavorite}
+              />
+            )}
           </Grid>
           <Grid
             item
