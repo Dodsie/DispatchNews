@@ -1,29 +1,29 @@
 import React, { useState } from "react";
-import NewsCard from "../NewsCard/NewsCard";
+import FavoriteNewsCard from "./FavoriteNewsCard";
 
-const NewsCards = (props) => {
-  const NewsCardsMap = props.articles.map((article) => {
+const FavoriteNewsCards = (props) => {
+  const FavoriteNewsCardsMap = props.articles.map((article) => {
     let identifier = props.articles.indexOf(article);
     return (
-      <NewsCard
+      <FavoriteNewsCard
         values={props.article}
         key={identifier}
         id={identifier}
         author={article.author}
         content={article.content}
         description={article.description}
-        publishedAt={article.publishedAt}
+        publishedat={article.publishedat}
         source={article.source.name}
         title={article.title}
         url={article.url}
-        urlToImage={article.urlToImage}
+        urltoimage={article.urltoimage}
         className="flex-container-row"
         addFavorite={props.addFavorite}
       />
     );
   });
 
-  return <>{NewsCardsMap}</>;
+  return <>{FavoriteNewsCardsMap}</>;
 };
 
-export default NewsCards;
+export default FavoriteNewsCards;

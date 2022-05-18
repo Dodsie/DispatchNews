@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
-import Weather from "./components/Weather";
-import Sidebar from "./components/Sidebar";
-import "./styles/index.scss";
-import "./styles/Sidebar.scss";
+import Header from "./News/Header";
+import Weather from "./News/Weather";
+import Sidebar from "./News/Sidebar";
+import "../styles/index.scss";
+import "../styles/Sidebar.scss";
 import Grid from "@mui/material/Grid";
-import NewsCards from "./components/NewsCards/NewsCards";
+import NewsCards from "./News/NewsCards";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import axios from "axios";
-import FavoriteNewsCards from "./components/FavoriteNewsCards/FavoriteNewsCards";
+import FavoriteNewsCards from "./News/FavoriteNewsCards";
 
 // Theme
 import { ThemeProvider, createTheme } from "@mui/material/styles";

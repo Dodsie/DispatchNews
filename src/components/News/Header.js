@@ -11,14 +11,14 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import WeatherIcon from "@mui/icons-material/WbSunny";
 import Grid from "@mui/material/Grid";
-import Login from "./components/Login";
+import Login from "../../components/News/Login";
 import Badge from "@mui/material/Badge";
 
 // LottiePlayer
 import { Player } from "@lottiefiles/react-lottie-player";
 
 // CSS
-import "./styles/Header.scss";
+import "../../styles/Header.scss";
 
 // Animate.css
 import "animate.css";
