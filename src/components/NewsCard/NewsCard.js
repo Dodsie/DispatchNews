@@ -1,6 +1,5 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-// import db from "../../node-api-postgres/queries";
 
 const NewsCard = (props) => {
   const imageURL =
@@ -22,6 +21,9 @@ const NewsCard = (props) => {
         </a>
       </Grid>
       <Grid item xs={12} md={12} className="articleDetails">
+      <time className="publishedAt" dateTime={props.publishedAt}>
+            {"Date Posted: " + props.publishedAt.slice(0,-10)}
+          </time>
         <h2>{props.title}</h2>
         <p>{props.content}</p>
         <footer>
@@ -29,14 +31,15 @@ const NewsCard = (props) => {
             Published by: <span className="author">{props.author}</span>
           </span>
           <br />
-          <time className="publishedAt" dateTime={props.publishedAt}>
-            {"Posted on: " + Date(props.publishedAt).toString()}
-          </time>
-          {/* <button
+          {/* <time className="publishedAt" dateTime={props.publishedAt}>
+            {"Date Posted: " + props.publishedAt.slice(0,-10)}
+          </time> */}
+          <p>{props.id}</p>
+          <button
             onClick={() => {
-              db.addFavorite(props.values, );
+              props.addFavorite(props.id);
             }}
-          ></button> */}
+          >Favorite</button>
         </footer>
       </Grid>
     </Grid>

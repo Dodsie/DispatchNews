@@ -16,8 +16,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 function App() {
   const [newsArticles, setNewsArticles] = useState([]);
   const [mode, setMode] = useState(false);
-
-  
+  const [user_id, setUser_id] = useState(1)
   //Helpers and querys
   const toggleWeather = () => {
     console.log(mode);
@@ -50,11 +49,11 @@ function App() {
     
   }
 
-  const addFavorite = async () => {
+  const addFavorite = async (article_id) => {
     console.log("newsArticles",newsArticles) 
-    const x = newsArticles.length > 0 && newsArticles[0]
-    console.log(x.content)
-    return axios.post("http://localhost:3001/addfav/2/", { author: x.author, content: x.content, description: x.description, publishedAt: x.publishedAt,  source: x.source.name, title: x.title, url: x.url, urlToImage: x.urlToImage})
+    const x = newsArticles.length > 0 && newsArticles[article_id]
+    // console.log(x.content)
+    return axios.post(`http://localhost:3001/addfav/${user_id}/`, { author: x.author, content: x.content, description: x.description, publishedAt: x.publishedAt,  source: x.source.name, title: x.title, url: x.url, urlToImage: x.urlToImage})
     .then((response) => {console.log('res',response.config.data)}
     ).catch(function (error) {
       console.log(error);
@@ -109,7 +108,7 @@ function App() {
             xl={10}
             display={{ xs: "block", md: { display: "flex" } }}
           >
-            <NewsCards articles={newsArticles} />
+            <NewsCards articles={newsArticles} addFavorite={addFavorite} />
           </Grid>
           <Grid
             item
