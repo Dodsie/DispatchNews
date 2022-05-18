@@ -17,4 +17,8 @@ const theme = createTheme({
   },
 });
 
+<<<<<<< HEAD
 export default theme;
+=======
+export default theme;
+>>>>>>> 38198421c834bd5697a2c038283fc887759f53e7

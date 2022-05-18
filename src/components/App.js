@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD:src/components/App.js
 import Header from "./News/Header";
 import Weather from "./News/Weather";
 import Sidebar from "./News/Sidebar";
 import "../styles/index.scss";
 import "../styles/Sidebar.scss";
+=======
+import Header from "./Header";
+import Weather from "./components/Weather";
+import Sidebar from "./components/Sidebar";
+import theme from "./helpers/theme.js";
+import "./styles/index.scss";
+import "./styles/Sidebar.scss";
+>>>>>>> 38198421c834bd5697a2c038283fc887759f53e7:src/App.js
 import Grid from "@mui/material/Grid";
 import NewsCards from "./News/NewsCards";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import axios from "axios";
 import FavoriteNewsCards from "./News/FavoriteNewsCards";
 
-// Theme
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 
 function App() {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -98,6 +106,12 @@ function App() {
     console.log("newsArticles in UE",newsArticles)
   }, []);
 
+<<<<<<< HEAD
+  return (
+    <main>
+      <ThemeProvider theme={theme}>
+        <Header search={searchQuery} onToggle={toggleWeather} />
+=======
   // Theme Style
   const theme = createTheme({
     palette: {
@@ -117,6 +131,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Header search={searchQuery} onToggle={toggleWeather} getFavorites={getFavorite} getPopular={getPopular}/>
 
+>>>>>>> 23a44f17076b50fc16b14439cb80a350e96cb3dd
         {mode && <Weather />}
 
         <Grid container>
