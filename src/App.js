@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Weather from "./components/Weather";
 import Sidebar from "./components/Sidebar";
+import theme from "./helpers/theme.js";
 import "./styles/index.scss";
 import "./styles/Sidebar.scss";
 import Grid from "@mui/material/Grid";
@@ -9,8 +10,7 @@ import NewsCards from "./components/NewsCards/NewsCards";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import axios from "axios";
 
-// Theme
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 
 function App() {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -54,24 +54,10 @@ function App() {
     // searchQuery("popular");
   }, []);
 
-  // Theme Style
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#eeeeee",
-      },
-      secondary: {
-        main: "#0044ff",
-      },
-      contrastThreshold: 3,
-      tonalOffset: 0.2,
-    },
-  });
   return (
     <main>
       <ThemeProvider theme={theme}>
         <Header search={searchQuery} onToggle={toggleWeather} />
-
         {mode && <Weather />}
 
         <Grid container>

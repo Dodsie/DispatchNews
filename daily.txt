@@ -2,7 +2,7 @@ Day 1 - Introductions, Planning, Project Description, User Stories, ERD, Wirefra
 Day 2 - Set up React App, Set up GitHub, Setup & Integrated Api's, Database Setup, migration & seeds, ENV discussion, discussed workflow.
 Day 3 - Setup Components (NewsCards, NewsCard), Refactored Code Errors, Added CSS to News Cards, Alan AI fetching from NewsAPI.
 Day 4 - Team meeting with Lead mentor (Bradley), discussed new feautures, goals for the upcoming week.
-Day 5 -
+Day 5 - Revised Master Branch, Revised SASS, Favorite Database Functionality, Seperated API, Q/A Tested Components.
 Day 6 -
 Day 7 -
 Day 8 -

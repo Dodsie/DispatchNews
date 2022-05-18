@@ -9,7 +9,7 @@ const Sidebar = () => {
   return (
     <div className="whosOnline">
       <div>
-        <h3>Friends Online</h3>
+        <h3>Members Online</h3>
 
         <AvatarGroup total={23}>
           <Avatar
