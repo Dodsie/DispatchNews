@@ -45,10 +45,10 @@ function App() {
   };
 
   const getFavorite = async (user_id) => {
-    Promise.all([axios.get("http://localhost:3001/favorite/1/")])
+    axios.get("http://localhost:3001/favorite/1/")
     .then((all) => {
-      console.log('grab articles',all[0].data)
-      setNewsArticles(all[0].data)
+      console.log('grab articles',all.data)
+      setNewsArticles(all.data)
       setFavorite(true)
       console.log('state',favorite)
     })
