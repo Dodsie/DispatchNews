@@ -9,14 +9,16 @@ import NewsCards from "./components/NewsCards/NewsCards";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import axios from "axios";
 
-
 // Theme
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+
 
 function App() {
   const [newsArticles, setNewsArticles] = useState([]);
   const [mode, setMode] = useState(false);
   const [user_id, setUser_id] = useState(1)
+
+
   //Helpers and querys
   const toggleWeather = () => {
     console.log(mode);
@@ -59,7 +61,6 @@ function App() {
       console.log(error);
     });
   
-    
   }
 
   useEffect(() => {
@@ -120,6 +121,7 @@ function App() {
           </Grid>
         </Grid>
       </ThemeProvider>
+
     </main>
   );
 }

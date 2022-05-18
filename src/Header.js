@@ -14,6 +14,7 @@ import Grid from "@mui/material/Grid";
 import Login from "./components/Login";
 import Badge from "@mui/material/Badge";
 
+
 // LottiePlayer
 import { Player } from "@lottiefiles/react-lottie-player";
 
@@ -50,7 +51,7 @@ function Header(props) {
               autoplay
               loop
               id="logo"
-              src="https://assets2.lottiefiles.com/private_files/lf30_iqdiamlq.json" // https://lottiefiles.com/58907-happy-earth-day
+              src= "https://assets2.lottiefiles.com/private_files/lf30_iqdiamlq.json" // https://lottiefiles.com/58907-happy-earth-day
               style={{ height: "70px", width: "70px" }}
             ></Player>
             <h1>DispatchNews</h1>
