@@ -5,8 +5,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { styled } from "@mui/material/styles";
-import Badge from "@mui/material/Badge";
+
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
@@ -19,23 +18,6 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    backgroundColor: "#44b700",
-    color: "#44b700",
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    "&::after": {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      borderRadius: "50%",
-      content: '""',
-    },
-  },
-}));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -66,17 +48,11 @@ const LoginForm = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <StyledBadge
-            overlap="circular"
-            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-            variant="dot"
-          >
-            <Avatar
-              onClick={handleClickOpen}
-              alt="Username"
-              src="/static/images/avatar/1.jpg"
-            />
-          </StyledBadge>
+          <Avatar
+            onClick={handleClickOpen}
+            alt="Username"
+            src="/static/images/avatar/1.jpg"
+          />
 
           <Dialog
             open={open}
@@ -131,38 +107,49 @@ const LoginForm = () => {
                     }}
                   />
                 </DialogContent>
-                <Grid
-                  container
-                  spacing={2}
-                  justifyContent="space-around"
-                  alignItems="center"
-                >
+                <DialogActions>
                   <Grid
-                    item
-                    md={5}
-                    style={{ width: "88px", margin: "0 0 0 1em" }}
+                    container
+                    spacing={2}
+                    justifyContent="space-between"
+                    alignItems="center"
                   >
-                    Forgot Password?
-                  </Grid>
-                  <Grid item xs={7} md={5}>
-                    <Button
-                      color="error"
-                      variant="contained"
-                      onClick={handleClose}
-                    >
-                      Cancel
-                    </Button>
-                    <Button
-                      color="success"
-                      variant="contained"
-                      onClick={handleClose}
+                    <Grid
+                      item
+                      xs={5}
                       style={{ width: "88px", margin: "0 0 0 0.5em" }}
                     >
-                      Login
-                    </Button>
+                      <a
+                        href="#forgot-password"
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
+                        Forgot Password?
+                      </a>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={6}
+                      justifyContent="flex-end"
+                      className="loginBtns"
+                    >
+                      <Button
+                        color="error"
+                        variant="contained"
+                        onClick={handleClose}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        color="success"
+                        variant="contained"
+                        onClick={handleClose}
+                        style={{ width: "88px", margin: "0 0 0 0.5em" }}
+                      >
+                        Login
+                      </Button>
+                    </Grid>
                   </Grid>
-                </Grid>
-                <DialogActions></DialogActions>
+                </DialogActions>
               </TabPanel>
 
               <TabPanel value="2">
@@ -202,21 +189,47 @@ const LoginForm = () => {
                 </DialogContent>
 
                 <DialogActions>
-                  <Button
-                    variant="contained"
-                    color="error"
-                    onClick={handleClose}
+                  <Grid
+                    container
+                    spacing={2}
+                    justifyContent="space-between"
+                    alignItems="center"
                   >
-                    Cancel
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="success"
-                    onClick={handleClose}
-                    style={{ width: "88px" }}
-                  >
-                    Sign Up
-                  </Button>
+                    <Grid
+                      item
+                      xs={5}
+                      style={{ width: "88px", margin: "0 0 0 0.5em" }}
+                    >
+                      <a
+                        href="#forgot-password"
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
+                        Forgot Password?
+                      </a>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={6}
+                      justifyContent="flex-end"
+                      className="loginBtns"
+                    >
+                      <Button
+                        color="error"
+                        variant="contained"
+                        onClick={handleClose}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        color="success"
+                        variant="contained"
+                        onClick={handleClose}
+                        style={{ width: "88px", margin: "0 0 0 0.5em" }}
+                      >
+                        Register
+                      </Button>
+                    </Grid>
+                  </Grid>
                 </DialogActions>
               </TabPanel>
             </TabContext>
