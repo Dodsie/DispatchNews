@@ -131,24 +131,38 @@ const LoginForm = () => {
                     }}
                   />
                 </DialogContent>
-
-                <DialogActions>
-                  <Button
-                    color="error"
-                    variant="contained"
-                    onClick={handleClose}
+                <Grid
+                  container
+                  spacing={2}
+                  justifyContent="space-around"
+                  alignItems="center"
+                >
+                  <Grid
+                    item
+                    md={5}
+                    style={{ width: "88px", margin: "0 0 0 1em" }}
                   >
-                    Cancel
-                  </Button>
-                  <Button
-                    color="success"
-                    variant="contained"
-                    onClick={handleClose}
-                    style={{ width: "88px" }}
-                  >
-                    Login
-                  </Button>
-                </DialogActions>
+                    Forgot Password?
+                  </Grid>
+                  <Grid item xs={7} md={5}>
+                    <Button
+                      color="error"
+                      variant="contained"
+                      onClick={handleClose}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      color="success"
+                      variant="contained"
+                      onClick={handleClose}
+                      style={{ width: "88px", margin: "0 0 0 0.5em" }}
+                    >
+                      Login
+                    </Button>
+                  </Grid>
+                </Grid>
+                <DialogActions></DialogActions>
               </TabPanel>
 
               <TabPanel value="2">
