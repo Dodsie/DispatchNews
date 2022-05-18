@@ -9,12 +9,17 @@ import NewsCards from "./components/NewsCards/NewsCards";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import axios from "axios";
 
+
 // Theme
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 function App() {
   const [newsArticles, setNewsArticles] = useState([]);
   const [mode, setMode] = useState(false);
+
+ 
+
+
 
   const toggleWeather = () => {
     console.log(mode);
@@ -50,8 +55,8 @@ function App() {
       },
     });
 
-    // // Search first Query
-    // searchQuery("popular");
+    // Search first Query
+    searchQuery("popular");
   }, []);
 
   // Theme Style

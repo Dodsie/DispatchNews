@@ -105,8 +105,7 @@ const addFavorite = (request, response) => {
 };
 
 // };
-
-module.exports = {
+const queries = {
   getUsers,
   getUserById,
   createUser,
@@ -114,3 +113,5 @@ module.exports = {
   getFavorite,
   addFavorite,
 };
+
+module.exports = queries
