@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 // import db from "../../node-api-postgres/queries";
+
 const NewsCard = (props) => {
   const imageURL =
     props.urlToImage === null || props.urlToImage.length === 4

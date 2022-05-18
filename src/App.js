@@ -9,6 +9,7 @@ import NewsCards from "./components/NewsCards/NewsCards";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import axios from "axios";
 
+
 // Theme
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -16,6 +17,8 @@ function App() {
   const [newsArticles, setNewsArticles] = useState([]);
   const [mode, setMode] = useState(false);
 
+  
+  //Helpers and querys
   const toggleWeather = () => {
     console.log(mode);
     if (!mode) {
@@ -24,7 +27,6 @@ function App() {
       setMode((prevMode) => !prevMode);
     }
   };
-
   const searchQuery = (query) => {
     const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
     const language = "&language=en";
@@ -32,12 +34,34 @@ function App() {
     let NEWS_API_URL = `https://newsapi.org/v2/everything?${searchQuery}${language}${apiKey}`;
 
     axios.get(NEWS_API_URL).then((res) => {
-      console.log("res.data", res.data);
+      // console.log("res.data", res.data);
       const newsApi = res.data;
 
       setNewsArticles(newsApi.articles);
     });
   };
+
+
+  const getFavorite = async () => {
+    Promise.all([axios.get("http://localhost:3001/favorite/1/")])
+    .then((all) => {
+      console.log('grab articles',all)
+    })
+    
+  }
+
+  const addFavorite = async () => {
+    console.log("newsArticles",newsArticles) 
+    const x = newsArticles.length > 0 && newsArticles[0]
+    console.log(x.content)
+    return axios.post("http://localhost:3001/addfav/2/", { author: x.author, content: x.content, description: x.description, publishedAt: x.publishedAt,  source: x.source.name, title: x.title, url: x.url, urlToImage: x.urlToImage})
+    .then((response) => {console.log('res',response.config.data)}
+    ).catch(function (error) {
+      console.log(error);
+    });
+  
+    
+  }
 
   useEffect(() => {
     alanBtn({
@@ -45,13 +69,12 @@ function App() {
       onCommand: ({ command, articles }) => {
         if (command === "newsFromSource") {
           setNewsArticles(articles);
-          console.log(newsArticles);
         }
       },
     });
-
-    // // Search first Query
-    // searchQuery("popular");
+    // Search first Query
+    searchQuery("fortnite");
+    console.log("newsArticles in UE",newsArticles)
   }, []);
 
   // Theme Style
@@ -67,6 +90,7 @@ function App() {
       tonalOffset: 0.2,
     },
   });
+  // console.log('newsArt',newsArticles);
   return (
     <main>
       <ThemeProvider theme={theme}>
