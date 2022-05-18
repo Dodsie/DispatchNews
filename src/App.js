@@ -8,15 +8,17 @@ import Grid from "@mui/material/Grid";
 import NewsCards from "./components/NewsCards/NewsCards";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import axios from "axios";
-
+import FavoriteNewsCards from "./components/FavoriteNewsCards/FavoriteNewsCards";
 
 // Theme
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 function App() {
   const [newsArticles, setNewsArticles] = useState([]);
+
   const [mode, setMode] = useState(false);
   const [user_id, setUser_id] = useState(1)
+  const [favorite, setFavorite] = useState(false)
   //Helpers and querys
   const toggleWeather = () => {
     console.log(mode);
@@ -26,6 +28,7 @@ function App() {
       setMode((prevMode) => !prevMode);
     }
   };
+
   const searchQuery = (query) => {
     const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
     const language = "&language=en";
@@ -37,14 +40,17 @@ function App() {
       const newsApi = res.data;
 
       setNewsArticles(newsApi.articles);
+      setFavorite(false)
     });
   };
-
 
   const getFavorite = async (user_id) => {
     Promise.all([axios.get("http://localhost:3001/favorite/1/")])
     .then((all) => {
       console.log('grab articles',all[0].data)
+      setNewsArticles(all[0].data)
+      setFavorite(true)
+      console.log('state',favorite)
     })
     
   }
@@ -53,11 +59,14 @@ function App() {
     console.log('pressed')
     const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
     const language = "&language=en";
-    let NEWS_API_URL = `https://newsapi.org/v2/top-headlines/sources?${language}${apiKey}`;
+    let searchQuery = `q=popular`;
+    let date = `&from=${Date}`
+    let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=ca${apiKey}`;
 
     axios.get(NEWS_API_URL).then((res) => {
       // console.log("res.data", res.data);
       const newsApi = res.data;
+      setFavorite(false)
       setNewsArticles(newsApi.articles);
     });
   }
@@ -80,6 +89,7 @@ function App() {
       onCommand: ({ command, articles }) => {
         if (command === "newsFromSource") {
           setNewsArticles(articles);
+          setFavorite(false)
         }
       },
     });
@@ -101,7 +111,7 @@ function App() {
       tonalOffset: 0.2,
     },
   });
-  // console.log('newsArt',newsArticles);
+  console.log('newsArt',newsArticles);
   return (
     <main>
       <ThemeProvider theme={theme}>
@@ -120,7 +130,8 @@ function App() {
             xl={10}
             display={{ xs: "block", md: { display: "flex" } }}
           >
-            <NewsCards articles={newsArticles} addFavorite={addFavorite}/>
+            {!favorite &&<NewsCards articles={newsArticles} addFavorite={addFavorite}/>}
+            {favorite && <FavoriteNewsCards articles={newsArticles} addFavorite={addFavorite}/>}
           </Grid>
           <Grid
             item
