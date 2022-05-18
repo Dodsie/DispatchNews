@@ -106,32 +106,10 @@ function App() {
     console.log("newsArticles in UE",newsArticles)
   }, []);
 
-<<<<<<< HEAD
   return (
     <main>
       <ThemeProvider theme={theme}>
         <Header search={searchQuery} onToggle={toggleWeather} />
-=======
-  // Theme Style
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#eeeeee",
-      },
-      secondary: {
-        main: "#0044ff",
-      },
-      contrastThreshold: 3,
-      tonalOffset: 0.2,
-    },
-  });
-  console.log('newsArt',newsArticles);
-  return (
-    <main>
-      <ThemeProvider theme={theme}>
-        <Header search={searchQuery} onToggle={toggleWeather} getFavorites={getFavorite} getPopular={getPopular}/>
-
->>>>>>> 23a44f17076b50fc16b14439cb80a350e96cb3dd
         {mode && <Weather />}
 
         <Grid container>
