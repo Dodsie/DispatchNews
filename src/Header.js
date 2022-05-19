@@ -37,7 +37,7 @@ function Header(props) {
   return (
     <AppBar
       position="sticky"
-      className="animate__animated animate__backInDown header"
+      className="animate__animated animate__fadeInDown header"
     >
       <Grid
         container
@@ -45,7 +45,8 @@ function Header(props) {
         justifyContent="space-around"
         alignItems="center"
       >
-        <Grid item md={1.8} className="logo-container">
+        {/* Logo */}
+        <Grid item sm={5} md={5} lg={6} xl={3} className="logo-container">
           <a href="/">
             <Player
               autoplay
@@ -57,7 +58,7 @@ function Header(props) {
             <h1>DispatchNews</h1>
           </a>
         </Grid>
-        <Grid item md={0.5}>
+        <Grid item md={0.5} id="mobileAvatarContainer">
           {loggedIn && (
             <Badge
               color="error"
@@ -71,7 +72,8 @@ function Header(props) {
           {!loggedIn && <Login />}
         </Grid>
 
-        <Grid item md={5} className="searchContainer">
+        {/* Search */}
+        <Grid item sm={12} md={4} lg={5.5} xl={6} className="searchContainer">
           <div id="search" className="flex-container-row">
             <Autocomplete
               disablePortal
@@ -111,7 +113,17 @@ function Header(props) {
           </div>
         </Grid>
 
-        <Grid item md={2} className="headerBtns">
+        {/* Buttons */}
+        <Grid
+          item
+          xs={2}
+          sm={2}
+          md={3}
+          lg={2.5}
+          xl={2.5}
+          display={{ sm: "flex", md: "block" }}
+          className="headerBtns"
+        >
           <div>
             <BottomNavigation
               showLabels
@@ -141,13 +153,16 @@ function Header(props) {
           </div>
         </Grid>
 
-        <Divider orientation="vertical" flexItem />
-        <Grid item md={0.5}>
+        <Divider orientation="vertical" flexItem className="divider" />
+
+        {/* User */}
+        <Grid item xs={4} sm={1} md={1} lg={0.7} xl={0.7}>
           {loggedIn && (
             <Badge
               color="error"
               badgeContent={5}
               showZero
+              display={{ xs: "none", md: "none", lg: "block" }}
               className="desktopAvatar"
             >
               <AccountMenu />

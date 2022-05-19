@@ -117,9 +117,9 @@ function App() {
             id="latestNews"
             xs={12}
             sm={12}
-            md={10}
-            lg={10}
-            xl={10}
+            md={8.5}
+            lg={9.5}
+            xl={9.5}
             display={{ xs: "block", md: { display: "flex" } }}
           >
             {!favorite && (
@@ -134,7 +134,10 @@ function App() {
           </Grid>
           <Grid
             item
-            md={2}
+            sm={0}
+            md={3.5}
+            lg={2.5}
+            xl={2.5}
             className="sidebar"
             display={{ xs: "none", md: "flex" }}
           >
