@@ -34,7 +34,7 @@ const FavoriteNewsCard = (props) => {
           <p>{props.id}</p>
           <button
             onClick={() => {
-              props.deleteFavorite(props.id);
+              props.deleteFavorite(props.publishedat);
             }}
           >Delete</button>
         </footer>
