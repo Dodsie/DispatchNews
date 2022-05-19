@@ -8,17 +8,17 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import WeatherIcon from "@mui/icons-material/WbSunny";
 import Grid from "@mui/material/Grid";
-import Login from "./components/Login";
+import Login from "../../components/News/Login";
 import Badge from "@mui/material/Badge";
+import AccountMenu from "../AccountMenu"
 
 // LottiePlayer
 import { Player } from "@lottiefiles/react-lottie-player";
 
 // CSS
-import "./styles/Header.scss";
+import "../../styles/Header.scss";
 
 // Animate.css
 import "animate.css";
@@ -31,6 +31,7 @@ import Button from "@mui/material/Button";
 
 function Header(props) {
   const [value, setValue] = React.useState(0);
+  const [loggedIn, setloggedIn] = React.useState(true);
   const [category, setCategory] = React.useState("");
 
   return (
@@ -57,14 +58,17 @@ function Header(props) {
           </a>
         </Grid>
         <Grid item md={0.5}>
-          <Badge
-            color="error"
-            badgeContent={5}
-            showZero
-            className="mobileAvatar"
-          >
-            <Login />
-          </Badge>
+          {loggedIn && (
+            <Badge
+              color="error"
+              badgeContent={5}
+              showZero
+              className="mobileAvatar"
+            >
+              <AccountMenu />
+            </Badge>
+          )}
+          {!loggedIn && <Login />}
         </Grid>
 
         <Grid item md={5} className="searchContainer">
@@ -119,14 +123,13 @@ function Header(props) {
               }}
             >
               <BottomNavigationAction label="Latest" onClick={props.getPopular} icon={<NewspaperIcon />} />
+
               <BottomNavigationAction
+                onClick={props.getFavorite}
                 label="Favorite"
-                icon={<FavoriteIcon onClick={props.getFavorites}/>}
+                icon={<FavoriteIcon />}
               />
-              <BottomNavigationAction
-                label="Nearby"
-                icon={<LocationOnIcon />}
-              />
+
               <BottomNavigationAction
                 label="Weather"
                 icon={<WeatherIcon />}
@@ -138,14 +141,17 @@ function Header(props) {
 
         <Divider orientation="vertical" flexItem />
         <Grid item md={0.5}>
-          <Badge
-            color="error"
-            badgeContent={5}
-            showZero
-            className="desktopAvatar"
-          >
-            <Login />
-          </Badge>
+          {loggedIn && (
+            <Badge
+              color="error"
+              badgeContent={5}
+              showZero
+              className="desktopAvatar"
+            >
+              <AccountMenu />
+            </Badge>
+          )}
+          {!loggedIn && <Login />}
         </Grid>
       </Grid>
     </AppBar>
@@ -200,5 +206,26 @@ const newsSources = [
   { label: "Ebola" },
   { label: "World News" },
   { label: "Coke" },
-  { label: "Drug" },
+  { label: "Hello Kitty" },
+  { label: "DragonBall Z" },
+  { label: "Andy Lindsay" },
+  { label: "Lighthouse Labs" },
+  { label: "Quantum Physics" },
+  { label: "007" },
+  { label: "Numerology" },
+  { label: "Cancer" },
+  { label: "Astrology" },
+  { label: "Chef" },
+  { label: "Fibonachi" },
+  { label: "Calgary" },
+  { label: "Vancouver" },
+  { label: "Hire me" },
+  { label: "Womens Rights" },
+  { label: "Mens Rights" },
+  { label: "Calgary Flames" },
+  { label: "Dallas Stars" },
+  { label: "Edmontom" },
+  { label: "Edmontom Oilers" },
+  { label: "Battle of Alberta" },
+
 ];

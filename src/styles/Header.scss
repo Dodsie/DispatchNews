@@ -74,9 +74,20 @@ header {
   }
 }
 
+/* Modal */
+.loginBtns {
+  display: flex;
+  justify-content: flex-end;
+}
+
 // Avatar
-.css-gjjtwf-MuiBadge-root > div {
+header > div > div:nth-child(6) > div > div > div {
   cursor: pointer;
+  margin: 0 0 0 0.5em;
+}
+
+header > div > div:nth-child(6) {
+  margin: 0 2.5em 0 0;
 }
 
 .css-1gewtc2-MuiPaper-root-MuiAppBar-root {

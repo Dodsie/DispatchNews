@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FavoriteNewsCard from "../FavoriteNewsCard/FavoriteNewsCard";
+import FavoriteNewsCard from "./FavoriteNewsCard";
 
 const FavoriteNewsCards = (props) => {
   const FavoriteNewsCardsMap = props.articles.map((article) => {
@@ -18,7 +18,7 @@ const FavoriteNewsCards = (props) => {
         url={article.url}
         urltoimage={article.urltoimage}
         className="flex-container-row"
-        addFavorite={props.addFavorite}
+        deleteFavorite={props.deleteFavorite}
       />
     );
   });

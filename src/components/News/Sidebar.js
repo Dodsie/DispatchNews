@@ -1,11 +1,43 @@
-import * as React from "react";
+// import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 
+// Chat
+
+import "../../styles/Chat.scss";
+import io from "socket.io-client";
+import Chat from "../../Chat";
+
+const socket = io.connect("http://localhost:3001");
+
+//Chat end
+
+
+
+
+
 const Sidebar = () => {
+
+
+  // Chat function
+  const [username, setUsername] = useState("");
+  const [room, setRoom] = useState("");
+  const [showChat, setShowChat] = useState(false);
+
+  const joinRoom = () => {
+    if (username !== "" && room !== "") {
+      socket.emit("join_room", room);
+      setShowChat(true);
+    }
+  };
+  // Chat function end
+
+  
+
   return (
     <div className="whosOnline">
       <div>
@@ -39,7 +71,7 @@ const Sidebar = () => {
         </AvatarGroup>
       </div>
 
-      <div>
+      {/* <div>
         <h3>Saved News</h3>
         <ImageList
           sx={{
@@ -62,8 +94,37 @@ const Sidebar = () => {
             </ImageListItem>
           ))}
         </ImageList>
-      </div>
+      </div> */}
+
+
+
+    <div className="Chat">
+      {!showChat ? (
+        <div className="joinChatContainer">
+          <h3>Chat</h3>
+          <input
+            type="text"
+            placeholder="Name"
+            onChange={(event) => {
+              setUsername(event.target.value);
+            }}
+          />
+          <input
+            type="text"
+            placeholder="Room ID"
+            onChange={(event) => {
+              setRoom(event.target.value);
+            }}
+          />
+          <button onClick={joinRoom}>Join A Room</button>
+        </div>
+      ) : (
+        <Chat socket={socket} username={username} room={room} />
+      )}
     </div>
+  </div>
+
+
   );
 };
 

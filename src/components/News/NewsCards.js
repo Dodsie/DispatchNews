@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NewsCard from "../NewsCard/NewsCard";
+import NewsCard from "./NewsCard";
 
 const NewsCards = (props) => {
   const NewsCardsMap = props.articles.map((article) => {

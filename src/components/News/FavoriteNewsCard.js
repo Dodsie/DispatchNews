@@ -31,15 +31,12 @@ const FavoriteNewsCard = (props) => {
             Published by: <span className="author">{props.author}</span>
           </span>
           <br />
-          {/* <time className="publishedAt" dateTime={props.publishedAt}>
-            {"Date Posted: " + props.publishedAt.slice(0,-10)}
-          </time> */}
           <p>{props.id}</p>
           <button
             onClick={() => {
-              props.addFavorite(props.id);
+              props.deleteFavorite(props.id);
             }}
-          >Favorite</button>
+          >Delete</button>
         </footer>
       </Grid>
     </Grid>
