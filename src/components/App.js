@@ -24,6 +24,7 @@ function App() {
     setMode(!mode);
   };
 
+
   const searchQuery = (query) => {
     const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
     const language = "&language=en";
@@ -31,47 +32,28 @@ function App() {
     let NEWS_API_URL = `https://newsapi.org/v2/everything?${searchQuery}${language}${apiKey}`;
 
     axios.get(NEWS_API_URL).then((res) => {
-      // console.log("res.data", res.data);
       const newsApi = res.data;
-
       setNewsArticles(newsApi.articles);
       setFavorite(false);
     });
   };
 
   const getFavorite = async (user_id) => {
-<<<<<<< HEAD:src/components/App.js
     axios.get("http://localhost:3001/favorite/1/")
     .then((all) => {
-      console.log('grab articles',all.data)
       setNewsArticles(all.data)
       setFavorite(true)
       console.log('state',favorite)
     })
     
   }
-=======
-    Promise.all([axios.get("http://localhost:3001/favorite/1/")]).then(
-      (all) => {
-        console.log("grab articles", all[0].data);
-        setNewsArticles(all[0].data);
-        setFavorite(true);
-        console.log("state", favorite);
-      }
-    );
-  };
->>>>>>> 3b9c72207057402802883f23f9a2f24bbde090d7:src/App.js
 
   const getPopular = () => {
     console.log("pressed");
     const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
-    const language = "&language=en";
-    let searchQuery = `q=popular`;
-    let date = `&from=${Date}`;
     let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=ca${apiKey}`;
 
     axios.get(NEWS_API_URL).then((res) => {
-      // console.log("res.data", res.data);
       const newsApi = res.data;
       setFavorite(false);
       setNewsArticles(newsApi.articles);
@@ -100,6 +82,18 @@ function App() {
       });
   };
 
+  const deleteFavorite = (article_id) => {
+    const x = newsArticles[article_id];
+    return axios
+    .delete(`http://localhost:3001/delete/${user_id}/${x}/`)
+    .then((response) => {
+      console.log("res", response+"deleted");
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   useEffect(() => {
     alanBtn({
       key: process.env.REACT_APP_ALAN_KEY,
@@ -111,21 +105,15 @@ function App() {
       },
     });
     // Search first Query
-    searchQuery("fortnite");
+    getPopular();
     console.log("newsArticles in UE", newsArticles);
   }, []);
 
   return (
     <main>
       <ThemeProvider theme={theme}>
-<<<<<<< HEAD:src/components/App.js
-        <Header search={searchQuery} onToggle={toggleWeather} getFavorite={getFavorite} />
+        <Header search={searchQuery} onToggle={toggleWeather} getFavorite={getFavorite} getPopular={getPopular} />
         {mode && <Weather />}
-=======
-        <Header search={searchQuery} onToggle={toggleWeather} />
-        {console.log({ mode })}
-        {mode && <Weather applyClassName={mode} />}
->>>>>>> 3b9c72207057402802883f23f9a2f24bbde090d7:src/App.js
 
         <Grid container>
           <Grid
@@ -144,7 +132,7 @@ function App() {
             {favorite && (
               <FavoriteNewsCards
                 articles={newsArticles}
-                addFavorite={addFavorite}
+                deleteFavorite={deleteFavorite}
               />
             )}
           </Grid>

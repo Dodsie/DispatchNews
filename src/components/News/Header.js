@@ -12,7 +12,7 @@ import WeatherIcon from "@mui/icons-material/WbSunny";
 import Grid from "@mui/material/Grid";
 import Login from "../../components/News/Login";
 import Badge from "@mui/material/Badge";
-import AccountMenu from "./components/AccountMenu";
+import AccountMenu from "../AccountMenu"
 
 // LottiePlayer
 import { Player } from "@lottiefiles/react-lottie-player";
@@ -122,20 +122,12 @@ function Header(props) {
                 setValue(value);
               }}
             >
+              <BottomNavigationAction label="Latest" onClick={props.getPopular} icon={<NewspaperIcon />} />
+
               <BottomNavigationAction
-<<<<<<< HEAD:src/components/News/Header.js
                 onClick={props.getFavorite}
                 label="Favorite"
                 icon={<FavoriteIcon />}
-=======
-                label="Latest"
-                onClick={props.getPopular}
-                icon={<NewspaperIcon />}
->>>>>>> 3b9c72207057402802883f23f9a2f24bbde090d7:src/Header.js
-              />
-              <BottomNavigationAction
-                label="Favorite"
-                icon={<FavoriteIcon onClick={props.getFavorites} />}
               />
 
               <BottomNavigationAction
@@ -214,5 +206,26 @@ const newsSources = [
   { label: "Ebola" },
   { label: "World News" },
   { label: "Coke" },
-  { label: "Drug" },
+  { label: "Hello Kitty" },
+  { label: "DragonBall Z" },
+  { label: "Andy Lindsay" },
+  { label: "Lighthouse Labs" },
+  { label: "Quantum Physics" },
+  { label: "007" },
+  { label: "Numerology" },
+  { label: "Cancer" },
+  { label: "Astrology" },
+  { label: "Chef" },
+  { label: "Fibonachi" },
+  { label: "Calgary" },
+  { label: "Vancouver" },
+  { label: "Hire me" },
+  { label: "Womens Rights" },
+  { label: "Mens Rights" },
+  { label: "Calgary Flames" },
+  { label: "Dallas Stars" },
+  { label: "Edmontom" },
+  { label: "Edmontom Oilers" },
+  { label: "Battle of Alberta" },
+
 ];

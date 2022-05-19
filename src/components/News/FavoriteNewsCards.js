@@ -18,7 +18,7 @@ const FavoriteNewsCards = (props) => {
         url={article.url}
         urltoimage={article.urltoimage}
         className="flex-container-row"
-        addFavorite={props.addFavorite}
+        deleteFavorite={props.deleteFavorite}
       />
     );
   });

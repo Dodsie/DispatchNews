@@ -1,6 +1,5 @@
 // import * as React from "react";
 import React, { useState, useEffect } from "react";
-
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 
@@ -9,9 +8,9 @@ import ImageListItem from "@mui/material/ImageListItem";
 
 // Chat
 
-import "../styles/Chat.scss";
+import "../../styles/Chat.scss";
 import io from "socket.io-client";
-import Chat from "../Chat";
+import Chat from "../../Chat";
 
 const socket = io.connect("http://localhost:3001");
 
