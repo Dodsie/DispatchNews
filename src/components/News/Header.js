@@ -11,13 +11,8 @@ import WeatherIcon from "@mui/icons-material/WbSunny";
 import Grid from "@mui/material/Grid";
 import Login from "../../components/News/Login";
 import Badge from "@mui/material/Badge";
-<<<<<<< HEAD:src/components/News/Header.js
-import AccountMenu from "../AccountMenu"
-import { Link } from "react-router-dom"
-=======
 import AccountMenu from "../AccountMenu";
 
->>>>>>> dcf2d39b0f8d49c84cbff470b2662c8499eb2886:src/Header.js
 // LottiePlayer
 import { Player } from "@lottiefiles/react-lottie-player";
 
