@@ -4,12 +4,10 @@ import Sidebar from "./Sidebar";
 import theme from "../../helpers/theme";
 import Header from "./Header";
 import Weather from "./Weather";
-import useApplicationData from "../../hooks/useApplicationData";
 import { ThemeProvider } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 
 const NewsCards = (props) => {
- const {newsArticles, mode, user_id, toggleWeather, searchQuery, getFavorite, getPopular, addFavorite, deleteFavorite} = useApplicationData()
 
 
 
@@ -30,16 +28,17 @@ const NewsCards = (props) => {
         url={article.url}
         urltoimage={article.urltoimage}
         className="flex-container-row"
-        addFavorite={addFavorite}
+        addFavorite={props.addFav}
+        deleteFavorite={props.deleteFav}
       />
   )});
 
   return (
   <main>
     <ThemeProvider theme={theme}>
-    <Header search={props.query} onToggle={props.toggleUpdate} getFavorite={props.fav} getPopular={getPopular} />
+    <Header search={props.query} onToggle={props.toggleUpdate} getFavorite={props.fav} />
     
-    {mode && <Weather />}
+    {/* {mode && <Weather />} */}
 
     <Grid container>
       <Grid
