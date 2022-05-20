@@ -1,11 +1,11 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 
-const FavoriteNewsCard = (props) => {
+const NewsCard = (props) => {
   const imageURL =
-    props.urltoimage === null || props.urltoimage.length === 4
+    props.urlToImage === null || props.urlToImage.length === 4
       ? `https://dummyimage.com/650x280/000/fff`
-      : `${props.urltoimage}`;
+      : `${props.urlToImage}`;
 
   return (
     <Grid className="article" id={props.id} key={props.id}>
@@ -21,9 +21,9 @@ const FavoriteNewsCard = (props) => {
         </a>
       </Grid>
       <Grid item xs={12} md={12} className="articleDetails">
-      <time className="publishedAt" dateTime={props.publishedat}>
-            {"Date Posted: " + props.publishedat.slice(0,-10)}
-          </time>
+        <time className="publishedAt" dateTime={props.publishedAt}>
+          {"Date Posted: " + props.publishedAt.slice(0, -10)}
+        </time>
         <h2>{props.title}</h2>
         <p>{props.content}</p>
         <footer>
@@ -39,11 +39,13 @@ const FavoriteNewsCard = (props) => {
             onClick={() => {
               props.addFavorite(props.id);
             }}
-          >Favorite</button>
+          >
+            Favorite
+          </button>
         </footer>
       </Grid>
     </Grid>
   );
 };
 
-export default FavoriteNewsCard;
+export default NewsCard;

@@ -8,17 +8,18 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import WeatherIcon from "@mui/icons-material/WbSunny";
 import Grid from "@mui/material/Grid";
-import Login from "./components/Login";
+import Login from "../../components/News/Login";
 import Badge from "@mui/material/Badge";
-import AccountMenu from "./components/AccountMenu";
+
 
 // LottiePlayer
 import { Player } from "@lottiefiles/react-lottie-player";
 
 // CSS
-import "./styles/Header.scss";
+import "../../styles/Header.scss";
 
 // Animate.css
 import "animate.css";
@@ -31,13 +32,12 @@ import Button from "@mui/material/Button";
 
 function Header(props) {
   const [value, setValue] = React.useState(0);
-  const [loggedIn, setloggedIn] = React.useState(true);
   const [category, setCategory] = React.useState("");
 
   return (
     <AppBar
       position="sticky"
-      className="animate__animated animate__fadeInDown header"
+      className="animate__animated animate__backInDown header"
     >
       <Grid
         container
@@ -45,35 +45,30 @@ function Header(props) {
         justifyContent="space-around"
         alignItems="center"
       >
-        {/* Logo */}
-        <Grid item sm={5} md={5} lg={6} xl={3} className="logo-container">
+        <Grid item md={1.8} className="logo-container">
           <a href="/">
             <Player
               autoplay
               loop
               id="logo"
-              src="https://assets2.lottiefiles.com/private_files/lf30_iqdiamlq.json" // https://lottiefiles.com/58907-happy-earth-day
+              src= "https://assets2.lottiefiles.com/private_files/lf30_iqdiamlq.json" // https://lottiefiles.com/58907-happy-earth-day
               style={{ height: "70px", width: "70px" }}
             ></Player>
             <h1>DispatchNews</h1>
           </a>
         </Grid>
-        <Grid item md={0.5} id="mobileAvatarContainer">
-          {loggedIn && (
-            <Badge
-              color="error"
-              badgeContent={5}
-              showZero
-              className="mobileAvatar"
-            >
-              <AccountMenu />
-            </Badge>
-          )}
-          {!loggedIn && <Login />}
+        <Grid item md={0.5}>
+          <Badge
+            color="error"
+            badgeContent={5}
+            showZero
+            className="mobileAvatar"
+          >
+            <Login />
+          </Badge>
         </Grid>
 
-        {/* Search */}
-        <Grid item sm={12} md={4} lg={5.5} xl={6} className="searchContainer">
+        <Grid item md={5} className="searchContainer">
           <div id="search" className="flex-container-row">
             <Autocomplete
               disablePortal
@@ -113,17 +108,7 @@ function Header(props) {
           </div>
         </Grid>
 
-        {/* Buttons */}
-        <Grid
-          item
-          xs={2}
-          sm={2}
-          md={3}
-          lg={2.5}
-          xl={2.5}
-          display={{ sm: "flex", md: "block" }}
-          className="headerBtns"
-        >
+        <Grid item md={2} className="headerBtns">
           <div>
             <BottomNavigation
               showLabels
@@ -134,16 +119,15 @@ function Header(props) {
                 setValue(value);
               }}
             >
-              <BottomNavigationAction
-                label="Latest"
-                onClick={props.getPopular}
-                icon={<NewspaperIcon />}
-              />
+              <BottomNavigationAction label="Latest" onClick={props.getPopular} icon={<NewspaperIcon />} />
               <BottomNavigationAction
                 label="Favorite"
-                icon={<FavoriteIcon onClick={props.getFavorites} />}
+                icon={<FavoriteIcon onClick={props.getFavorites}/>}
               />
-
+              <BottomNavigationAction
+                label="Nearby"
+                icon={<LocationOnIcon />}
+              />
               <BottomNavigationAction
                 label="Weather"
                 icon={<WeatherIcon />}
@@ -153,22 +137,16 @@ function Header(props) {
           </div>
         </Grid>
 
-        <Divider orientation="vertical" flexItem className="divider" />
-
-        {/* User */}
-        <Grid item xs={4} sm={1} md={1} lg={0.7} xl={0.7}>
-          {loggedIn && (
-            <Badge
-              color="error"
-              badgeContent={5}
-              showZero
-              display={{ xs: "none", md: "none", lg: "block" }}
-              className="desktopAvatar"
-            >
-              <AccountMenu />
-            </Badge>
-          )}
-          {!loggedIn && <Login />}
+        <Divider orientation="vertical" flexItem />
+        <Grid item md={0.5}>
+          <Badge
+            color="error"
+            badgeContent={5}
+            showZero
+            className="desktopAvatar"
+          >
+            <Login />
+          </Badge>
         </Grid>
       </Grid>
     </AppBar>

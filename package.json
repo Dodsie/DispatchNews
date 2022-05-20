@@ -20,9 +20,13 @@
     "react": "^18.1.0",
     "react-app-polyfill": "^3.0.0",
     "react-dom": "^18.1.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-scroll-to-bottom": "^4.2.0",
     "react-split": "^2.0.14",
-    "web-vitals": "^2.1.4"
+    "socket.io-client": "^4.5.1",
+    "web-vitals": "^2.1.4",
+    "words-to-numbers": "^1.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
