@@ -1,7 +1,6 @@
 // Components
 import * as React from "react"; // for state control here (refactorable in future)
 import Divider from "@mui/material/Divider";
-
 // Navigation
 import AppBar from "@mui/material/AppBar";
 import BottomNavigation from "@mui/material/BottomNavigation";
@@ -33,7 +32,7 @@ function Header(props) {
   const [value, setValue] = React.useState(0);
   const [loggedIn, setloggedIn] = React.useState(true);
   const [category, setCategory] = React.useState("");
-
+  
   return (
     <AppBar
       position="sticky"
