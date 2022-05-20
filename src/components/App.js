@@ -134,9 +134,9 @@ function App() {
       addFavorite(articleId)
     }
 
-    if (mode === REMOVED) {
-      favSearch()
-    }
+    // if (mode === REMOVED) {
+    //   favSearch()
+    // }
 
     return () => {
      didCancel = true
@@ -173,14 +173,6 @@ function App() {
     setMode(ADDFAV)
     setUpdate((prevState) => !prevState)
   }
-
-//   const removeArticle = (articleId) => {
-//     setRemovedState({id: news.filter(function(x) { 
-//         return x !== articleId.target.value 
-//     })});
-// }
-  
-
 
   return (
     <BrowserRouter>
