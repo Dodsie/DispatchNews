@@ -1,5 +1,17 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import { purple } from "@mui/material/colors";
+
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: "#ffffff",
+  backgroundColor: "#2c692f",
+  "&:hover": {
+    backgroundColor: "#123815",
+  },
+}));
 
 const NewsCard = (props) => {
   const imageURL =
@@ -35,13 +47,22 @@ const NewsCard = (props) => {
             {"Date Posted: " + props.publishedAt.slice(0,-10)}
           </time> */}
           <p>{props.id}</p>
-          <button
+          <ColorButton
+            variant="contained"
+            startIcon={<FavoriteIcon />}
             onClick={() => {
               props.addFavorite(props.id);
             }}
           >
             Favorite
-          </button>
+          </ColorButton>
+          {/* <button
+            onClick={() => {
+              props.addFavorite(props.id);
+            }}
+          >
+            Favorite
+          </button> */}
         </footer>
       </Grid>
     </Grid>

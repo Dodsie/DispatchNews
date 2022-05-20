@@ -11,7 +11,7 @@ import WeatherIcon from "@mui/icons-material/WbSunny";
 import Grid from "@mui/material/Grid";
 import Login from "../../components/News/Login";
 import Badge from "@mui/material/Badge";
-import AccountMenu from "../AccountMenu"
+import AccountMenu from "../AccountMenu";
 
 // LottiePlayer
 import { Player } from "@lottiefiles/react-lottie-player";
@@ -32,7 +32,7 @@ function Header(props) {
   const [value, setValue] = React.useState(0);
   const [loggedIn, setloggedIn] = React.useState(true);
   const [category, setCategory] = React.useState("");
-  
+
   return (
     <AppBar
       position="sticky"
@@ -133,7 +133,11 @@ function Header(props) {
                 setValue(value);
               }}
             >
-              <BottomNavigationAction label="Latest" onClick={props.getPopular} icon={<NewspaperIcon />} />
+              <BottomNavigationAction
+                label="Latest"
+                onClick={props.getPopular}
+                icon={<NewspaperIcon />}
+              />
 
               <BottomNavigationAction
                 onClick={props.getFavorite}
@@ -241,5 +245,4 @@ const newsSources = [
   { label: "Edmontom" },
   { label: "Edmontom Oilers" },
   { label: "Battle of Alberta" },
-
 ];
