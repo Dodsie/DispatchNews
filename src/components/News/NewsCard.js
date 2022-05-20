@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect, useState, createRef } from "react";
 import Grid from "@mui/material/Grid";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import { purple } from "@mui/material/colors";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: "#ffffff",
@@ -14,13 +13,42 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 const NewsCard = (props) => {
+  const [elRefs, setElRefs] = useState([]);
+  const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 150);
+
+  useEffect(() => {
+    window.scroll(0, 0);
+
+    setElRefs((refs) =>
+      Array(20)
+        .fill()
+        .map((_, j) => refs[j] || createRef())
+    );
+  }, []);
+
+  useEffect(() => {
+    if (props.i === props.activeArticle && elRefs[props.activeArticle]) {
+      scrollToRef(elRefs[props.activeArticle]);
+    }
+    console.log("called", props.activeArticle, props.i);
+  }, [props.i, props.activeArticle, elRefs]);
+
   const imageURL =
     props.urlToImage === null || props.urlToImage.length === 4
       ? `https://dummyimage.com/650x280/000/fff`
       : `${props.urlToImage}`;
 
   return (
-    <Grid className="article" id={props.id} key={props.id}>
+    <Grid
+      id={props.id}
+      key={props.id}
+      ref={elRefs[props.i]}
+      className={
+        props.activeArticle === props.i
+          ? "article active"
+          : "article not-active"
+      }
+    >
       <Grid item xs={12} md={12} className="articleImageContainer">
         <a href={props.url} target="_blank" rel="noreferrer">
           <img

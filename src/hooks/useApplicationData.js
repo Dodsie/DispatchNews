@@ -12,6 +12,7 @@ export default function useApplicationData() {
   const [mode, setMode] = useState(false);
   const [user_id, setUser_id] = useState(1);
   const navigate = useNavigate();
+
   const getPopular = async () => {
     // const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
     // let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=ca${apiKey}`;

@@ -22,7 +22,7 @@ const NewsCards = (props) => {
     deleteFavorite,
   } = useApplicationData();
 
-  const NewsCardsMap = newsArticles.map((article) => {
+  const NewsCardsMap = newsArticles.map((article, i) => {
     let identifier = newsArticles.indexOf(article);
 
     return (
@@ -42,6 +42,7 @@ const NewsCards = (props) => {
         addFavorite={addFavorite}
         articles={newsArticles}
         activeArticle={activeArticle}
+        i={i}
       />
     );
   });
