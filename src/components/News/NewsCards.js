@@ -4,6 +4,10 @@ import Sidebar from "./Sidebar";
 import theme from "../../helpers/theme";
 import Header from "./Header";
 import Weather from "./Weather";
+<<<<<<< HEAD
+=======
+import useApplicationData from "../../hooks/useApplicationData";
+>>>>>>> dcf2d39b0f8d49c84cbff470b2662c8499eb2886
 import { ThemeProvider } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 
