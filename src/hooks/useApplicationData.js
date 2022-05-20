@@ -9,20 +9,11 @@ const [newsArticles, setNewsArticles] = useState([]);
 const [favArticles, setFavArticles] = useState([]);
 const [mode, setMode] = useState(false);
 const [user_id, setUser_id] = useState(1);
-const navigate = useNavigate();
+
 const getPopular = async () => {
-  // const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
-  // let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=ca${apiKey}`;
-  // axios.get(NEWS_API_URL).then((res) => {
-  //   const newsApi = res.data;
-  //   setNewsArticles(newsApi.articles);
-  // });
   window.location.href="/"
 };
-const onLinkClick = (e) => {
-  e.preventDefault();
-  // further processing happens here.
-  }
+
 useEffect(() => {
   const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
   let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=ca${apiKey}`;
@@ -67,13 +58,8 @@ const searchQuery = (query) => {
   });
 };
 
-const getFavorite = (event) => {
-  // axios.get("http://localhost:3001/favorite/1/")
-  // .then((all) => {
-  //   setFavArticles(all.data)
-  //   console.log(favArticles)
-  // })
-  onLinkClick( window.location.href="/favorites")
+const getFavorite = () => {
+  window.location.href="/favorites"
   
   
 }
