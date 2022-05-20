@@ -1,6 +1,7 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import axios from "axios";
 import alanBtn from "@alan-ai/alan-sdk-web";
+
 
 export default function useApplicationData() {
 
@@ -9,36 +10,75 @@ const [favArticles, setFavArticles] = useState([]);
 const [mode, setMode] = useState(false);
 const [user_id, setUser_id] = useState(1);
 
-const getPopular = async () => {
-  window.location.href="/"
-};
+// const getPopular = async () => {
+//   window.location.href="/"
+// };
 
+
+//  const useAlan = (callback) => {
+    
+
+    
+//     useEffect(()=>{
+//      if (!alanBtnInstance.current) {
+//        alanBtnInstance.current = alanBtn({
+//        key: process.env.REACT_APP_ALAN_KEY,
+//        onCommand:async(data)=>{
+//        console.log(data)
+//       },
+//      })
+//      }
+//     },[])
+    
+//   return null;
+// }
+
+
+const alanBtnInstance = useRef(null);
 useEffect(() => {
   const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
   let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=ca${apiKey}`;
-  alanBtn({
+  console.log('alanButton',alanBtnInstance.current)
+  if (!alanBtnInstance.current) {
+    alanBtnInstance.current = alanBtn({
     key: process.env.REACT_APP_ALAN_KEY,
-    onCommand: ({ command, articles }) => {
-      console.log(articles)
-      if (command === "newsFromSource") {
-        setNewsArticles(articles);
-        console.log(newsArticles)
-      }
-    },
-  });
-  Promise.all([
-    axios.get(NEWS_API_URL),
-    axios.get("http://localhost:3001/favorite/1/"),
-  ]).then((all) => {
-    setNewsArticles(all[0].data.articles);
-    setFavArticles(all[1].data);
-    console.log(newsArticles);
-    console.log('fav',favArticles);
+    onCommand:async({ command, articles })=>{
+        console.log(articles)
+        if (command === "newsFromSource") {
+          setNewsArticles(articles);
+          console.log(newsArticles)
+   }}
   })
-  .catch((error) => {
-    console.log(error.response.status)
-  });
+}
 }, []);
+  // alanBtn({
+  //   key: process.env.REACT_APP_ALAN_KEY,
+    // onCommand: ({ command, articles }) => {
+    //   console.log(articles)
+    //   if (command === "newsFromSource") {
+    //     setNewsArticles(articles);
+    //     console.log(newsArticles)
+  //     }
+  //   },
+  // });
+//   Promise.all([
+//     axios.get(NEWS_API_URL),
+//     axios.get("http://localhost:3001/favorite/1/"),
+//   ]).then((all) => {
+//     setNewsArticles(all[0].data.articles);
+//     setFavArticles(all[1].data);
+//     console.log(newsArticles);
+//     console.log('fav',favArticles);
+//   })
+//   .catch((error) => {
+//     console.log(error.response.status)
+//   });
+// }, []);
+
+
+
+
+
 
 //Helpers and querys
 const toggleWeather = () => {
@@ -47,23 +87,22 @@ const toggleWeather = () => {
 };
 
 
-const searchQuery = (query) => {
-  const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
-  const language = "&language=en";
-  let searchQuery = `q=${query}`;
-  let NEWS_API_URL = `https://newsapi.org/v2/everything?${searchQuery}${language}${apiKey}`;
+// const searchQuery = (query) => {
+//   const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
+//   const language = "&language=en";
+//   let searchQuery = `q=${query}`;
+//   let NEWS_API_URL = `https://newsapi.org/v2/everything?${searchQuery}${language}${apiKey}`;
 
-  axios.get(NEWS_API_URL).then((res) => {
-    const newsApi = res.data;
-    setNewsArticles(newsApi.articles);
-  });
-};
+//   axios.get(NEWS_API_URL).then((res) => {
+//     const newsApi = res.data;
+//     setNewsArticles(newsApi.articles);
+//   });
+// };
 
-const getFavorite = () => {
-  window.location.href="/favorites"
-  
-  
-}
+// const getFavorite = (event) => {
+//   event.preventDefault()
+//   window.location.href="/favorites"
+// }
 
 
 
@@ -99,12 +138,11 @@ const deleteFavorite = async (publishedat) => {
   .catch(function (error) {
     console.log(error);
   });
-  getFavorite()
 }
 
 
 
-return {favArticles, newsArticles, mode, user_id, toggleWeather, searchQuery, getFavorite, getPopular, addFavorite, deleteFavorite}
+return {favArticles, newsArticles, mode, user_id, toggleWeather, addFavorite, deleteFavorite}
 
 
 }

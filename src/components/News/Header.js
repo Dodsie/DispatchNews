@@ -12,7 +12,7 @@ import Grid from "@mui/material/Grid";
 import Login from "../../components/News/Login";
 import Badge from "@mui/material/Badge";
 import AccountMenu from "../AccountMenu"
-
+import { Link } from "react-router-dom"
 // LottiePlayer
 import { Player } from "@lottiefiles/react-lottie-player";
 
@@ -134,13 +134,16 @@ function Header(props) {
                 setValue(value);
               }}
             >
-              <BottomNavigationAction label="Latest" onClick={props.getPopular} icon={<NewspaperIcon />} />
-
+              <BottomNavigationAction label="Latest" onClick={props.onToggle} icon={<NewspaperIcon />} />
+              
+             
               <BottomNavigationAction
                 onClick={props.getFavorite}
                 label="Favorite"
                 icon={<FavoriteIcon />}
               />
+              
+            
 
               <BottomNavigationAction
                 label="Weather"

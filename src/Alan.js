@@ -1,24 +1,30 @@
 
-// import alanBtn from "@alan-ai/alan-sdk-web";
-// import { useEffect } from "react";
+// import {useEffect, useRef} from 'react';
+// import alanBtn from '@alan-ai/alan-sdk-web';
 
-// export default function Alan() {
-//     useEffect(() => {
-//     alanBtn({
-//       key:process.env.REACT_APP_ALAN_KEY,
-//       onCommand: (commandData) => {
-//         if (command === 'newHeadlines') {
-//           setNewsArticles(articles);
-//       }
-//     });
-//   }, []);
-//   return 
+// export default function useAlan(callback) {
+    
+//     const alanBtnInstance = useRef(null);
+    
+//     useEffect(()=>{
+//      if (!alanBtnInstance.current) {
+//        alanBtnInstance.current = alanBtn({
+//        key: process.env.REACT_APP_ALAN_KEY,
+//        onCommand:async(data)=>{
+//        console.log(data)
+//       },
+//      })
+//      }
+//     },[])
+    
+//   return null;
 // }
 
 
-// $(() => {
-//  $('.weatherBro').click(() => {
-//     $('.weatherwidget-io').slideToggle('slow');
-//     $('.weatherwidget-io').css('display', 'flex');
-//  })
-// });
+// onCommand: ({ command, articles }) => {
+//   console.log(articles)
+//   if (command === "newsFromSource") {
+//     setNewsArticles(articles);
+//     console.log(newsArticles)
+//   }
+// },

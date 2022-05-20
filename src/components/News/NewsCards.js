@@ -13,22 +13,22 @@ const NewsCards = (props) => {
 
 
 
-  const NewsCardsMap = newsArticles.map((article) => {
-    let identifier = newsArticles.indexOf(article);
+  const NewsCardsMap = props.news.map((article) => {
+    let identifier = props.news.indexOf(article);
     return (
       
       <NewsCard
-        values={props.article}
+        values={article}
         key={identifier}
         id={identifier}
         author={article.author}
         content={article.content}
         description={article.description}
-        publishedAt={article.publishedAt}
+        publishedat={article.publishedat}
         source={article.source.name}
         title={article.title}
         url={article.url}
-        urlToImage={article.urlToImage}
+        urltoimage={article.urltoimage}
         className="flex-container-row"
         addFavorite={addFavorite}
       />
@@ -37,7 +37,7 @@ const NewsCards = (props) => {
   return (
   <main>
     <ThemeProvider theme={theme}>
-    <Header search={searchQuery} onToggle={toggleWeather} getFavorite={getFavorite} getPopular={getPopular} />
+    <Header search={props.query} onToggle={props.toggleUpdate} getFavorite={props.fav} getPopular={getPopular} />
     
     {mode && <Weather />}
 
