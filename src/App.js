@@ -92,6 +92,9 @@ function App() {
   useEffect(() => {
     alanBtn({
       key: process.env.REACT_APP_ALAN_KEY,
+      onEvent: function (e) {
+        console.info("onEvent", e);
+      },
       onCommand: ({ command, articles }) => {
         if (command === "newsFromSource") {
           setNewsArticles(articles);
