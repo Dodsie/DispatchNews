@@ -36,7 +36,8 @@ function Header(props) {
   return (
     <AppBar
       position="sticky"
-      className="animate__animated animate__fadeInDown header"
+      className="header"
+      // className="animate__animated animate__fadeInDown header"
     >
       <Grid
         container

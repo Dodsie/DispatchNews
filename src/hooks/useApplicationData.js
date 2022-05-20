@@ -1,8 +1,7 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 import alanBtn from "@alan-ai/alan-sdk-web";
-import { Link } from 'react-router-dom'
-import { useNavigate } from "react-router-dom";
+
 export default function useApplicationData() {
 
 const [newsArticles, setNewsArticles] = useState([]);
@@ -20,8 +19,10 @@ useEffect(() => {
   alanBtn({
     key: process.env.REACT_APP_ALAN_KEY,
     onCommand: ({ command, articles }) => {
+      console.log(articles)
       if (command === "newsFromSource") {
         setNewsArticles(articles);
+        console.log(newsArticles)
       }
     },
   });
