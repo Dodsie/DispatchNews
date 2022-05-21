@@ -36,7 +36,8 @@ function Header(props) {
   return (
     <AppBar
       position="sticky"
-      className="animate__animated animate__fadeInDown header"
+      className="header"
+      // className="animate__animated animate__fadeInDown header"
     >
       <Grid
         container
@@ -135,7 +136,7 @@ function Header(props) {
             >
               <BottomNavigationAction
                 label="Latest"
-                onClick={props.getPopular}
+                onClick={props.onToggle}
                 icon={<NewspaperIcon />}
               />
 

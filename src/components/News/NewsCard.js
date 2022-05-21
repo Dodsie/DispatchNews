@@ -13,6 +13,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 const NewsCard = (props) => {
+  console.log("returned,props", props);
   const [elRefs, setElRefs] = useState([]);
   const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 150);
 
@@ -34,9 +35,14 @@ const NewsCard = (props) => {
   }, [props.i, props.activeArticle, elRefs]);
 
   const imageURL =
-    props.urlToImage === null || props.urlToImage.length === 4
+    props.urltoimage === undefined ||
+    props.urltoimage === null ||
+    props.urltoimage.length === 4
       ? `https://dummyimage.com/650x280/000/fff`
-      : `${props.urlToImage}`;
+      : `${props.urltoimage}`;
+
+  /* Example Source: [+1063 chars], this regex selects everything between '[' and ']'*/
+  const removeTurncatedText = /[[][^[]*[\]$]/g;
 
   return (
     <Grid
@@ -61,19 +67,16 @@ const NewsCard = (props) => {
         </a>
       </Grid>
       <Grid item xs={12} md={12} className="articleDetails">
-        <time className="publishedAt" dateTime={props.publishedAt}>
-          {"Date Posted: " + props.publishedAt.slice(0, -10)}
+        <time className="publishedAt" dateTime={props.publishedat}>
+          {"Date Posted: " + props.publishedat.slice(0, -10)}
         </time>
         <h2>{props.title}</h2>
-        <p>{props.content}</p>
+        <p>{props.content.replace(removeTurncatedText, "")}</p>
         <footer>
           <span>
             Published by: <span className="author">{props.author}</span>
           </span>
           <br />
-          {/* <time className="publishedAt" dateTime={props.publishedAt}>
-            {"Date Posted: " + props.publishedAt.slice(0,-10)}
-          </time> */}
           <p>{props.id}</p>
           <ColorButton
             variant="contained"

@@ -4,45 +4,28 @@ import Sidebar from "./Sidebar";
 import theme from "../../helpers/theme";
 import Header from "./Header";
 import Weather from "./Weather";
-import useApplicationData from "../../hooks/useApplicationData";
 import { ThemeProvider } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 
 const NewsCards = (props) => {
-  const {
-    newsArticles,
-    activeArticle,
-    mode,
-    user_id,
-    toggleWeather,
-    searchQuery,
-    getFavorite,
-    getPopular,
-    addFavorite,
-    deleteFavorite,
-  } = useApplicationData();
-
-  const NewsCardsMap = newsArticles.map((article, i) => {
-    let identifier = newsArticles.indexOf(article);
-
+  const NewsCardsMap = props.news.map((article) => {
+    let identifier = props.news.indexOf(article);
     return (
       <NewsCard
-        values={props.article}
+        values={article}
         key={identifier}
         id={identifier}
         author={article.author}
         content={article.content}
         description={article.description}
-        publishedAt={article.publishedAt}
+        publishedat={article.publishedat}
         source={article.source.name}
         title={article.title}
         url={article.url}
-        urlToImage={article.urlToImage}
+        urltoimage={article.urltoimage}
         className="flex-container-row"
-        addFavorite={addFavorite}
-        articles={newsArticles}
-        activeArticle={activeArticle}
-        i={i}
+        addFavorite={props.addFav}
+        deleteFavorite={props.deleteFav}
       />
     );
   });
@@ -51,13 +34,12 @@ const NewsCards = (props) => {
     <main>
       <ThemeProvider theme={theme}>
         <Header
-          search={searchQuery}
-          onToggle={toggleWeather}
-          getFavorite={getFavorite}
-          getPopular={getPopular}
+          search={props.query}
+          onToggle={props.toggleUpdate}
+          getFavorite={props.fav}
         />
 
-        {mode && <Weather />}
+        {/* {mode && <Weather />} */}
 
         <Grid container>
           <Grid
