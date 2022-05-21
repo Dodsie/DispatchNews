@@ -3,6 +3,10 @@ import alanBtn from "@alan-ai/alan-sdk-web";
 import wordsToNumbers from "words-to-numbers";
 import { useNavigate } from "react-router-dom";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c38c97ea6e3a7839f7a41a5b364899eab88e31ba
 export default function useApplicationData() {
   const [activeArticle, setActiveArticle] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +22,7 @@ export default function useApplicationData() {
     alanBtn({
       key: process.env.REACT_APP_ALAN_KEY,
       onCommand: ({ command, articles, number }) => {
+<<<<<<< HEAD
         /* Switch Cleaned up */
         switch (command) {
           case "newsFromSource":
@@ -55,6 +60,35 @@ export default function useApplicationData() {
             break;
         }
         /* Switch Cleaned up */
+=======
+        if (command === "newsFromSource") {
+          setNewsArticles(articles);
+        }
+
+        if (command === "newHeadlines") {
+          setNewsArticles(articles);
+          setActiveArticle(-1);
+        } else if (command === "instructions") {
+          setIsOpen(true);
+        } else if (command === "highlight") {
+          setActiveArticle((prevActiveArticle) => prevActiveArticle + 1);
+        } else if (command === "open") {
+          const parsedNumber =
+            number.length > 2
+              ? wordsToNumbers(number, { fuzzy: true })
+              : number;
+          const article = articles[parsedNumber - 1];
+
+          if (parsedNumber > articles.length) {
+            alanBtn().playText("Please try that again...");
+          } else if (article) {
+            window.open(article.url, "_blank");
+            alanBtn().playText("Opening...");
+          } else {
+            alanBtn().playText("Please try that again...");
+          }
+        }
+>>>>>>> c38c97ea6e3a7839f7a41a5b364899eab88e31ba
       },
     });
   }, []);

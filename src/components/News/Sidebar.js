@@ -15,6 +15,7 @@ const socket = io.connect("http://localhost:3002");
 //Chat end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const Sidebar = () => {
 =======
 
@@ -25,14 +26,20 @@ const Sidebar = () => {
 
 
 >>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
+=======
+const Sidebar = () => {
+>>>>>>> c38c97ea6e3a7839f7a41a5b364899eab88e31ba
   // Chat function
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [showChat, setShowChat] = useState(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   
 >>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
+=======
+>>>>>>> c38c97ea6e3a7839f7a41a5b364899eab88e31ba
 
   const joinRoom = () => {
     if (username !== "" && room !== "") {
@@ -42,6 +49,7 @@ const Sidebar = () => {
   };
   // Chat function end
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   return (
     <div className="whosOnline">
@@ -73,94 +81,42 @@ const Sidebar = () => {
 =======
   
 
+=======
+>>>>>>> c38c97ea6e3a7839f7a41a5b364899eab88e31ba
   return (
     <div className="whosOnline">
-      <div>
-        <h3>Members Online</h3>
-
-        <AvatarGroup total={23}>
-          <Avatar
-            sx={{ bgcolor: "blue" }}
-            alt="Alastair Gardiner"
-            title="Alastair Gardiner"
-            // src="https://dummyimage.com/128x128/000/fff"
-          >
-            A
-          </Avatar>
-          <Avatar
-            sx={{ bgcolor: "orange" }}
-            alt="Bailey Dods"
-            title="Bailey Dods"
-            // src="https://dummyimage.com/128x128/000/fff"
-          >
-            B
-          </Avatar>
-          <Avatar
-            sx={{ bgcolor: "green" }}
-            alt="Matt Seligman"
-            title="Matt Seligman"
-            src="https://miro.medium.com/max/3150/1*viXH3NRitgU2w5qBzh0BpA.jpeg"
-          >
-            M
-          </Avatar>
-        </AvatarGroup>
+      <div className="Chat">
+        {!showChat ? (
+          <div className="joinChatContainer">
+            <h3>Chat</h3>
+            <input
+              type="text"
+              placeholder="Name"
+              onChange={(event) => {
+                setUsername(event.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Room ID"
+              onChange={(event) => {
+                setRoom(event.target.value);
+              }}
+            />
+            <button onClick={joinRoom}>Join A Room</button>
+          </div>
+        ) : (
+          <Chat key="" socket={socket} username={username} room={room} />
+        )}
       </div>
-
-      {/* <div>
-        <h3>Saved News</h3>
-        <ImageList
-          sx={{
-            width: "auto",
-            height: "50vh",
-            borderRadius: "1em",
-            border: "1px solid lightgray",
-          }}
-          cols={2}
-          rowHeight={164}
-        >
-          {savedNews.map((item) => (
-            <ImageListItem key={item.img}>
-              <img
-                src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                alt={item.title}
-                loading="lazy"
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
-      </div> */}
-
-
-
-    <div className="Chat">
-      {!showChat ? (
-        <div className="joinChatContainer">
-          <h3>Chat</h3>
-          <input
-            type="text"
-            placeholder="Name"
-            onChange={(event) => {
-              setUsername(event.target.value);
-            }}
-          />
-          <input
-            type="text"
-            placeholder="Room ID"
-            onChange={(event) => {
-              setRoom(event.target.value);
-            }}
-          />
-          <button onClick={joinRoom}>Join A Room</button>
-        </div>
-      ) : (
-        <Chat key='' socket={socket} username={username} room={room} />
-      )}
     </div>
+<<<<<<< HEAD
   </div>
 
 
 >>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
+=======
+>>>>>>> c38c97ea6e3a7839f7a41a5b364899eab88e31ba
   );
 };
 
