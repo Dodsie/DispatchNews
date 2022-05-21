@@ -43,6 +43,29 @@ const NewsCard = (props) => {
 
   /* Example Source: [+1063 chars], this regex selects everything between '[' and ']'*/
   const removeTurncatedText = /[[][^[]*[\]$]/g;
+  const removeUnwantedHTML = /(<([^>]+)>)/gi;
+
+  const articleContent = props.content
+    ? props.content
+        .replace(removeTurncatedText, "")
+        .replace(removeUnwantedHTML, "")
+    : "";
+
+  const articleSource = props.source ? (
+    <span>
+      Source: <span className="author">{props.source}</span>
+    </span>
+  ) : (
+    ""
+  );
+
+  const articleAuthor = props.author ? (
+    <span>
+      Author: <span className="author">{props.author}</span>
+    </span>
+  ) : (
+    ""
+  );
 
   return (
     <Grid
@@ -71,11 +94,12 @@ const NewsCard = (props) => {
           {"Date Posted: " + props.publishedat.slice(0, -10)}
         </time>
         <h2>{props.title}</h2>
-        <p>{props.content.replace(removeTurncatedText, "")}</p>
+        <p>{articleContent}</p>
         <footer>
-          <span>
-            Published by: <span className="author">{props.author}</span>
-          </span>
+          {articleSource}
+
+          <br />
+          {articleAuthor}
           <br />
           <p>{props.id}</p>
           <ColorButton

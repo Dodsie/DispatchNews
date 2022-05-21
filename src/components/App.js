@@ -3,7 +3,6 @@ import "../styles/index.scss";
 import "../styles/Sidebar.scss";
 import NewsCards from "./News/NewsCards";
 import FavoriteNewsCards from "./News/FavoriteNewsCards";
-<<<<<<< HEAD
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 
@@ -14,24 +13,6 @@ function App() {
   const SEARCH = "SEARCH";
   const ONDELETE = "ONDELETE";
   const REMOVED = "REMOVED";
-=======
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
-import axios from "axios";
-
-
-function App() {
-  
-  const ADDFAV = "ADDFAV"
-  const INITIAL = "INITIAL";
-  const FAV = "FAV";
-  const SEARCH = "SEARCH"
-  const ONDELETE = "ONDELETE"
-  const REMOVED = "REMOVED"
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
 
   const [update, setUpdate] = React.useState(false);
   const [news, setNews] = React.useState([]);
@@ -39,18 +20,14 @@ function App() {
   const [mode, setMode] = React.useState(INITIAL);
   const [user, setUser] = React.useState(1);
   const [articleId, setArticleId] = React.useState("");
-<<<<<<< HEAD
   const [publishDate, setPublishDate] = React.useState("");
-=======
-  const [publishDate, setPublishDate] = React.useState("")
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
   // const [weather, setWeather] = React.useState(false)
   const [removedState, setRemovedState] = React.useState([]);
+  const [activeArticle, setActiveArticle] = React.useState(0);
 
   function ConvertKeysToLowerCase(obj) {
     var output = {};
     for (let i in obj) {
-<<<<<<< HEAD
       if (Object.prototype.toString.apply(obj[i]) === "[object Object]") {
         output[i.toLowerCase()] = ConvertKeysToLowerCase(obj[i]);
       } else if (Object.prototype.toString.apply(obj[i]) === "[object Array]") {
@@ -65,24 +42,6 @@ function App() {
 
   React.useEffect(() => {
     console.log("I re-rendered!");
-=======
-        if (Object.prototype.toString.apply(obj[i]) === '[object Object]') {
-           output[i.toLowerCase()] = ConvertKeysToLowerCase(obj[i]);
-        }else if(Object.prototype.toString.apply(obj[i]) === '[object Array]'){
-            output[i.toLowerCase()]=[];
-             output[i.toLowerCase()].push(ConvertKeysToLowerCase(obj[i][0]));
-        } else {
-            output[i.toLowerCase()] = obj[i];
-        }
-
-    }
-    return output;
-};
-
-
-  React.useEffect(() => {
-    console.log('I re-rendered!')
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
   }, [update]);
 
   React.useEffect(() => {
@@ -93,17 +52,11 @@ function App() {
       let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=ca${apiKey}`;
       if (!didCancel) {
         let response = await axios.get(NEWS_API_URL);
-<<<<<<< HEAD
         let data = await Object.values(
           ConvertKeysToLowerCase(response.data.articles)
         );
         console.log("data", data);
         setNews(data);
-=======
-        let data = await Object.values(ConvertKeysToLowerCase(response.data.articles))
-        console.log('data', data)
-        setNews(data)
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
       }
     }
 
@@ -113,19 +66,12 @@ function App() {
       let NEWS_API_URL = `https://newsapi.org/v2/everything?${searchQuery}${language}${apiKey}`;
       if (!didCancel) {
         let response = await axios.get(NEWS_API_URL);
-<<<<<<< HEAD
         let data = await Object.values(
           ConvertKeysToLowerCase(response.data.articles)
         );
         console.log("afterfunction", data);
         setNews(data);
         setSearch("");
-=======
-        let data = await Object.values(ConvertKeysToLowerCase(response.data.articles))
-        console.log('afterfunction',data)
-        setNews(data)
-        setSearch("")
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
       }
     }
 
@@ -133,20 +79,13 @@ function App() {
       let NEWS_API_URL = `http://localhost:3001/favorite/1/`;
       if (!didCancel) {
         let response = await axios.get(NEWS_API_URL);
-<<<<<<< HEAD
         let data = await response.data;
         setNews(data);
         console.log("data", data);
-=======
-        let data = await response.data
-        setNews(data)
-        console.log('data',data)
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
       }
     }
 
     async function deleteFav(userId, publishDate) {
-<<<<<<< HEAD
       console.log("before", news);
       let NEWS_API_URL = `http://localhost:3001/delete/${userId}/${publishDate}/`;
 
@@ -162,24 +101,6 @@ function App() {
       const x = news.length > 0 && news[id];
       console.log(news[id]);
       let res = axios.post(`http://localhost:3001/addfav/1`, {
-=======
-      console.log('before',news)
-      let NEWS_API_URL = `http://localhost:3001/delete/${userId}/${publishDate}/`;
-      
-      let res = await axios.delete(NEWS_API_URL);
-      favSearch()
-      if (res.data.status === 200) {
-        console.log('Delete Succesful')
-    }
-    }
-
-    async function addFavorite(id) {
-      console.log(id)
-      const x = news.length > 0 && news[id];
-      console.log(news[id])
-      let res = axios.post(`http://localhost:3001/addfav/1`,
-       {
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
         author: x.author,
         content: x.content,
         description: x.description,
@@ -188,7 +109,6 @@ function App() {
         title: x.title,
         url: x.url,
         urlToImage: x.urltoimage,
-<<<<<<< HEAD
       });
       console.log(res.data);
     }
@@ -208,27 +128,6 @@ function App() {
 
     if (mode === ADDFAV) {
       addFavorite(articleId);
-=======
-      })
-        console.log(res.data)
-    }
-
-    if (mode === INITIAL) {
-      fetchNews() 
-  }
-    if (mode === SEARCH) {
-      fetchSearch(search)
-    }
-    if (mode === FAV) {
-      favSearch()
-    }
-    if (mode === ONDELETE){
-      deleteFav(user, publishDate)
-    }
-
-    if (mode === ADDFAV){
-      addFavorite(articleId)
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
     }
 
     // if (mode === REMOVED) {
@@ -236,7 +135,6 @@ function App() {
     // }
 
     return () => {
-<<<<<<< HEAD
       didCancel = true;
     };
   }, [update]);
@@ -283,59 +181,13 @@ function App() {
               query={searchBar}
               addFav={addFav}
               fav={favoriteToggle}
+              activeArticle={activeArticle}
             />
           }
         />
         <Route path="/favorites" element={<FavoriteNewsCards />} />
       </Routes>
     </BrowserRouter>
-=======
-     didCancel = true
-    }
-  }, [update])
-
-
-  const popularNews = () => {
-    setMode(INITIAL)
-    setUpdate((prevState) => !prevState)
-    
-  };
-
-  const searchBar = (query) => {
-    setSearch(query)
-    setMode(SEARCH)
-    setUpdate((prevState) => !prevState)
-  }
-
-  const favoriteToggle = () => {
-    setMode(FAV)
-    setUpdate((prevState) => !prevState)
-  }
-
-  const deleteFavorite = (published, article_id ) => {
-  setPublishDate(published)
-  setArticleId(article_id)
-   setMode(ONDELETE)
-   setUpdate((prevState) => !prevState)
-  }
-
-  const addFav = (article_id) => {
-    setArticleId(article_id)
-    setMode(ADDFAV)
-    setUpdate((prevState) => !prevState)
-  }
-
-  return (
-    <BrowserRouter>
-    <Routes>
-            
-            <Route path="/" element={<NewsCards deleteFav={deleteFavorite} news={news} toggleUpdate={popularNews} query={searchBar} addFav={addFav} fav={favoriteToggle}/>}/>
-            <Route path="/favorites" element={<FavoriteNewsCards />}/>
-            
-    </Routes>
-    </BrowserRouter>
-    
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
   );
 }
 

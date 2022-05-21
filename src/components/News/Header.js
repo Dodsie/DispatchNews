@@ -11,18 +11,8 @@ import WeatherIcon from "@mui/icons-material/WbSunny";
 import Grid from "@mui/material/Grid";
 import Login from "../../components/News/Login";
 import Badge from "@mui/material/Badge";
-<<<<<<< HEAD
-<<<<<<< HEAD:src/components/News/Header.js
 import AccountMenu from "../AccountMenu";
 
-=======
-import AccountMenu from "../AccountMenu"
-import { Link } from "react-router-dom"
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c:src/components/News/Header.js
-=======
-import AccountMenu from "../AccountMenu";
-
->>>>>>> c38c97ea6e3a7839f7a41a5b364899eab88e31ba
 // LottiePlayer
 import { Player } from "@lottiefiles/react-lottie-player";
 
@@ -42,7 +32,7 @@ function Header(props) {
   const [value, setValue] = React.useState(0);
   const [loggedIn, setloggedIn] = React.useState(true);
   const [category, setCategory] = React.useState("");
-  
+
   return (
     <AppBar
       position="sticky"
@@ -144,25 +134,17 @@ function Header(props) {
                 setValue(value);
               }}
             >
-              <BottomNavigationAction label="Latest" onClick={props.onToggle} icon={<NewspaperIcon />} />
-              
-             
               <BottomNavigationAction
-<<<<<<< HEAD:src/components/News/Header.js
                 label="Latest"
                 onClick={props.onToggle}
                 icon={<NewspaperIcon />}
               />
 
               <BottomNavigationAction
-=======
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c:src/components/News/Header.js
                 onClick={props.getFavorite}
                 label="Favorite"
                 icon={<FavoriteIcon />}
               />
-              
-            
 
               <BottomNavigationAction
                 label="Weather"
@@ -264,11 +246,4 @@ const newsSources = [
   { label: "Edmontom" },
   { label: "Edmontom Oilers" },
   { label: "Battle of Alberta" },
-<<<<<<< HEAD
-<<<<<<< HEAD:src/components/News/Header.js
-=======
-
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c:src/components/News/Header.js
-=======
->>>>>>> c38c97ea6e3a7839f7a41a5b364899eab88e31ba
 ];

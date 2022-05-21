@@ -25,17 +25,8 @@
     "react-scroll-to-bottom": "^4.2.0",
     "react-split": "^2.0.14",
     "socket.io-client": "^4.5.1",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "web-vitals": "^2.1.4",
     "words-to-numbers": "^1.5.1"
-=======
-    "web-vitals": "^2.1.4"
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
-=======
-    "web-vitals": "^2.1.4",
-    "words-to-numbers": "^1.5.1"
->>>>>>> c38c97ea6e3a7839f7a41a5b364899eab88e31ba
   },
   "scripts": {
     "start": "react-scripts start",

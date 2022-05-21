@@ -9,7 +9,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 
 const FavoriteNewsCards = () => {
-<<<<<<< HEAD
   const {
     favArticles,
     mode,
@@ -25,14 +24,6 @@ const FavoriteNewsCards = () => {
   const FavoriteNewsCardsMap = favArticles.map((article) => {
     let identifier = favArticles.indexOf(article);
     return (
-=======
-  const {favArticles, mode, user_id, toggleWeather, searchQuery, getFavorite, getPopular, addFavorite, deleteFavorite} = useApplicationData()
-  
-  const FavoriteNewsCardsMap = favArticles.map((article) => {
-    let identifier = favArticles.indexOf(article);
-    return (
-
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
       <FavoriteNewsCard
         values={article}
         key={identifier}
@@ -51,7 +42,6 @@ const FavoriteNewsCards = () => {
     );
   });
 
-<<<<<<< HEAD
   return (
     <ThemeProvider theme={theme}>
       <Header
@@ -87,39 +77,6 @@ const FavoriteNewsCards = () => {
       </Grid>
     </ThemeProvider>
   );
-=======
-  return ( 
-    <ThemeProvider theme={theme}>
-    <Header search={searchQuery} onToggle={toggleWeather} getFavorite={getFavorite} getPopular={getPopular} />
-    
-    {mode && <Weather />}
-
-    <Grid container>
-      <Grid
-        item
-        id="latestNews"
-        xs={12}
-        sm={12}
-        md={10}
-        lg={10}
-        xl={10}
-        display={{ xs: "block", md: { display: "flex" } }}
-      >
-  <>{FavoriteNewsCardsMap}</> 
-    
-  </Grid>
-          <Grid
-            item
-            md={2}
-            className="sidebar"
-            display={{ xs: "none", md: "flex" }}
-          >
-            <Sidebar />
-          </Grid>
-        </Grid>
-      </ThemeProvider>
-  )
->>>>>>> c3fee01d8962d6530f7288200f4cd9cfec87264c
 };
 
 export default FavoriteNewsCards;
