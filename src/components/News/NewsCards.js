@@ -50,8 +50,8 @@ const NewsCards = (props) => {
             id="latestNews"
             xs={12}
             sm={12}
-            md={10}
-            lg={10}
+            md={9}
+            lg={9.5}
             xl={10}
             display={{ xs: "block", md: { display: "flex" } }}
           >
@@ -59,7 +59,11 @@ const NewsCards = (props) => {
           </Grid>
           <Grid
             item
-            md={2}
+            xs={0}
+            sm={0}
+            md={3}
+            lg={2.5}
+            xl={2}
             className="sidebar"
             display={{ xs: "none", md: "flex" }}
           >

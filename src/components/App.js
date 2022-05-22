@@ -21,7 +21,7 @@ function App() {
   const [user, setUser] = React.useState(1);
   const [articleId, setArticleId] = React.useState("");
   const [publishDate, setPublishDate] = React.useState("");
-  // const [weather, setWeather] = React.useState(false)
+  const [weather, setWeather] = React.useState(false);
   const [removedState, setRemovedState] = React.useState([]);
   const [activeArticle, setActiveArticle] = React.useState(0);
 
@@ -63,7 +63,11 @@ function App() {
     async function fetchSearch(x) {
       const language = "&language=en";
       let searchQuery = `q=${x}`;
-      let NEWS_API_URL = `https://newsapi.org/v2/everything?${searchQuery}${language}${apiKey}`;
+      const today = new Date();
+      const relevancy = `&sortBy=relevancy`;
+      const fromDate = `&from=${today}`;
+
+      let NEWS_API_URL = `https://newsapi.org/v2/everything?${searchQuery}${language}${apiKey}${relevancy}${fromDate}`;
       if (!didCancel) {
         let response = await axios.get(NEWS_API_URL);
         let data = await Object.values(

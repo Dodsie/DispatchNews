@@ -1,11 +1,10 @@
-
 // import {useEffect, useRef} from 'react';
 // import alanBtn from '@alan-ai/alan-sdk-web';
 
 // export default function useAlan(callback) {
-    
+
 //     const alanBtnInstance = useRef(null);
-    
+
 //     useEffect(()=>{
 //      if (!alanBtnInstance.current) {
 //        alanBtnInstance.current = alanBtn({
@@ -16,10 +15,9 @@
 //      })
 //      }
 //     },[])
-    
+
 //   return null;
 // }
-
 
 // onCommand: ({ command, articles }) => {
 //   console.log(articles)

@@ -78,6 +78,11 @@ function Header(props) {
             <Autocomplete
               disablePortal
               id="searchField"
+              onKeyDown={(e) =>
+                e.key === "Enter" &&
+                props.search(category) &&
+                setCategory(category.toLowerCase())
+              }
               options={newsSources}
               sx={{ width: "100%" }}
               onChange={(event, value) => {
