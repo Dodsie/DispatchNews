@@ -4,61 +4,66 @@ import Sidebar from "./Sidebar";
 import theme from "../../helpers/theme";
 import Header from "./Header";
 import Weather from "./Weather";
-import useApplicationData from "../../hooks/useApplicationData";
 import { ThemeProvider } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 
 const NewsCards = (props) => {
- const {newsArticles, mode, user_id, toggleWeather, searchQuery, getFavorite, getPopular, addFavorite, deleteFavorite} = useApplicationData()
-
-
-
-  const NewsCardsMap = newsArticles.map((article) => {
-    let identifier = newsArticles.indexOf(article);
+  console.log("props", props);
+  const NewsCardsMap = props.news.map((article, i) => {
+    let identifier = props.news.indexOf(article);
     return (
-      
       <NewsCard
-        values={props.article}
+        values={article}
         key={identifier}
         id={identifier}
         author={article.author}
         content={article.content}
         description={article.description}
-        publishedAt={article.publishedAt}
+        publishedat={article.publishedat}
         source={article.source.name}
         title={article.title}
         url={article.url}
-        urlToImage={article.urlToImage}
+        urltoimage={article.urltoimage}
         className="flex-container-row"
-        addFavorite={addFavorite}
+        addFavorite={props.addFav}
+        deleteFavorite={props.deleteFav}
+        activeArticle={props.activeArticle}
+        i={i}
       />
-  )});
+    );
+  });
 
   return (
-  <main>
-    <ThemeProvider theme={theme}>
-    <Header search={searchQuery} onToggle={toggleWeather} getFavorite={getFavorite} getPopular={getPopular} />
-    
-    {mode && <Weather />}
+    <main>
+      <ThemeProvider theme={theme}>
+        <Header
+          search={props.query}
+          onToggle={props.toggleUpdate}
+          getFavorite={props.fav}
+        />
 
-    <Grid container>
-      <Grid
-        item
-        id="latestNews"
-        xs={12}
-        sm={12}
-        md={10}
-        lg={10}
-        xl={10}
-        display={{ xs: "block", md: { display: "flex" } }}
-      >
+        {/* {mode && <Weather />} */}
 
-        <>{NewsCardsMap}</>
-
-        </Grid>
+        <Grid container>
           <Grid
             item
-            md={2}
+            id="latestNews"
+            xs={12}
+            sm={12}
+            md={9}
+            lg={9.5}
+            xl={10}
+            display={{ xs: "block", md: { display: "flex" } }}
+          >
+            <>{NewsCardsMap}</>
+          </Grid>
+          <Grid
+            item
+            xs={0}
+            sm={0}
+            md={3}
+            lg={2.5}
+            xl={2}
             className="sidebar"
             display={{ xs: "none", md: "flex" }}
           >
@@ -66,8 +71,8 @@ const NewsCards = (props) => {
           </Grid>
         </Grid>
       </ThemeProvider>
-      </main>
-  )
+    </main>
+  );
 };
 
 export default NewsCards;

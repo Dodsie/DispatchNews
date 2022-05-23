@@ -21,9 +21,9 @@ const FavoriteNewsCard = (props) => {
         </a>
       </Grid>
       <Grid item xs={12} md={12} className="articleDetails">
-      <time className="publishedAt" dateTime={props.publishedat}>
-            {"Date Posted: " + props.publishedat.slice(0,-10)}
-          </time>
+        <time className="publishedAt" dateTime={props.publishedat}>
+          {"Date Posted: " + props.publishedat.slice(0, -10)}
+        </time>
         <h2>{props.title}</h2>
         <p>{props.content}</p>
         <footer>
