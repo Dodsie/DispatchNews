@@ -73,13 +73,13 @@ const NewsCard = (props) => {
     ""
   );
 
-  const articleAuthor = props.author ? (
-    <span>
-      Author: <span className="author">{props.author}</span>
-    </span>
-  ) : (
-    ""
-  );
+  // const articleAuthor = props.author ? (
+  //   <span>
+  //     Author: <span className="author">{props.author}</span>
+  //   </span>
+  // ) : (
+  //   ""
+  // );
   const articleTitle = props.title.substring(0, 89);
   return (
     <Grid
@@ -96,6 +96,7 @@ const NewsCard = (props) => {
             title={articleTitle}
             loading="lazy"
             className="articleImage"
+            async
           />
         </a>
       </Grid>
@@ -124,11 +125,19 @@ const NewsCard = (props) => {
           </div>
           <div>
             {articleSource}
-            <span>
-              <time className="publishedAt" dateTime={props.publishedat}>
-                {"Date Posted: " + props.publishedat.slice(0, -10)}
-              </time>
-            </span>
+            {props.publishedat === undefined ? (
+              <span>
+                <time className="publishedAt" dateTime={props.publishedat}>
+                  {"Date Posted: " + props.values.publishedAt.slice(0, -10)}
+                </time>
+              </span>
+            ) : (
+              <span>
+                <time className="publishedAt" dateTime={props.publishedat}>
+                  {"Date Posted: " + props.publishedat.slice(0, -10)}
+                </time>
+              </span>
+            )}
           </div>
 
           <div

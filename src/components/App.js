@@ -2,7 +2,9 @@ import React from "react";
 import "../styles/index.scss";
 import "../styles/Sidebar.scss";
 import NewsCards from "./News/NewsCards";
+import alanBtn from "@alan-ai/alan-sdk-web";
 import FavoriteNewsCards from "./News/FavoriteNewsCards";
+import wordsToNumbers from "words-to-numbers";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 
@@ -21,9 +23,60 @@ function App() {
   const [user, setUser] = React.useState(1);
   const [articleId, setArticleId] = React.useState("");
   const [publishDate, setPublishDate] = React.useState("");
+  const [articleOpen, setArticleOpen] = React.useState(false);
   const [weather, setWeather] = React.useState(false);
   const [removedState, setRemovedState] = React.useState([]);
-  const [activeArticle, setActiveArticle] = React.useState(0);
+  const [activeArticle, setActiveArticle] = React.useState(-1);
+
+  const alanBtnInstance = React.useRef(null);
+
+  React.useEffect(() => {
+    if (!alanBtnInstance.current) {
+      alanBtnInstance.current = alanBtn({
+        key: process.env.REACT_APP_ALAN_KEY,
+        onCommand: ({ command, articles, number }) => {
+          switch (command) {
+            case "newsFromSource":
+              setNews(articles);
+              break;
+
+            case "newHeadlines":
+              setNews(articles);
+              setActiveArticle(-1);
+              break;
+
+            case "instructions":
+              setArticleOpen(true);
+              break;
+
+            case "highlight":
+              setActiveArticle((prevActiveArticle) => prevActiveArticle + 1);
+              break;
+
+            case "open":
+              const parsedNumber =
+                number.length > 2
+                  ? wordsToNumbers(number, { fuzzy: true })
+                  : number;
+              const article = articles[parsedNumber - 1];
+
+              if (parsedNumber > articles.length) {
+                alanBtn().playText("Please try that again...");
+              } else if (article) {
+                window.open(article.url, "_blank");
+                alanBtn().playText("Opening...");
+              } else {
+                alanBtn().playText("Please try that again...");
+              }
+              break;
+
+            default:
+              break;
+          }
+        },
+      });
+    }
+  }, []);
 
   function ConvertKeysToLowerCase(obj) {
     var output = {};
