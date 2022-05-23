@@ -8,13 +8,10 @@ import { ThemeProvider } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 
 const NewsCards = (props) => {
-
-
-
-  const NewsCardsMap = props.news.map((article) => {
+  console.log("props", props);
+  const NewsCardsMap = props.news.map((article, i) => {
     let identifier = props.news.indexOf(article);
     return (
-      
       <NewsCard
         values={article}
         key={identifier}
@@ -30,34 +27,43 @@ const NewsCards = (props) => {
         className="flex-container-row"
         addFavorite={props.addFav}
         deleteFavorite={props.deleteFav}
+        activeArticle={props.activeArticle}
+        i={i}
       />
-  )});
+    );
+  });
 
   return (
-  <main>
-    <ThemeProvider theme={theme}>
-    <Header search={props.query} onToggle={props.toggleUpdate} getFavorite={props.fav} />
-    
-    {/* {mode && <Weather />} */}
+    <main>
+      <ThemeProvider theme={theme}>
+        <Header
+          search={props.query}
+          onToggle={props.toggleUpdate}
+          getFavorite={props.fav}
+        />
 
-    <Grid container>
-      <Grid
-        item
-        id="latestNews"
-        xs={12}
-        sm={12}
-        md={10}
-        lg={10}
-        xl={10}
-        display={{ xs: "block", md: { display: "flex" } }}
-      >
+        {/* {mode && <Weather />} */}
 
-        <>{NewsCardsMap}</>
-
-        </Grid>
+        <Grid container>
           <Grid
             item
-            md={2}
+            id="latestNews"
+            xs={12}
+            sm={12}
+            md={9}
+            lg={9.5}
+            xl={10}
+            display={{ xs: "block", md: { display: "flex" } }}
+          >
+            <>{NewsCardsMap}</>
+          </Grid>
+          <Grid
+            item
+            xs={0}
+            sm={0}
+            md={3}
+            lg={2.5}
+            xl={2}
             className="sidebar"
             display={{ xs: "none", md: "flex" }}
           >
@@ -65,8 +71,8 @@ const NewsCards = (props) => {
           </Grid>
         </Grid>
       </ThemeProvider>
-      </main>
-  )
+    </main>
+  );
 };
 
 export default NewsCards;

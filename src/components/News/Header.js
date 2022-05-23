@@ -30,9 +30,11 @@ import Button from "@mui/material/Button";
 
 function Header(props) {
   const [value, setValue] = React.useState(0);
-  const [loggedIn, setloggedIn] = React.useState(true);
+  const [loggedIn, setloggedIn] = React.useState(false);
+  const [getEmail, setEmail] = React.useState("");
+  const [badgeValue, setBadgeValue] = React.useState(null);
   const [category, setCategory] = React.useState("");
-  
+
   return (
     <AppBar
       position="sticky"
@@ -66,10 +68,10 @@ function Header(props) {
               showZero
               className="mobileAvatar"
             >
-              <AccountMenu />
+              <AccountMenu getEmail={getEmail} setloggedIn={setloggedIn} />
             </Badge>
           )}
-          {!loggedIn && <Login />}
+          {!loggedIn && <Login setEmail={setEmail} setloggedIn={setloggedIn} />}
         </Grid>
 
         {/* Search */}
@@ -78,6 +80,11 @@ function Header(props) {
             <Autocomplete
               disablePortal
               id="searchField"
+              onKeyDown={(e) =>
+                e.key === "Enter" &&
+                props.search(category) &&
+                setCategory(category.toLowerCase())
+              }
               options={newsSources}
               sx={{ width: "100%" }}
               onChange={(event, value) => {
@@ -134,16 +141,17 @@ function Header(props) {
                 setValue(value);
               }}
             >
-              <BottomNavigationAction label="Latest" onClick={props.onToggle} icon={<NewspaperIcon />} />
-              
-             
+              <BottomNavigationAction
+                label="Latest"
+                onClick={props.onToggle}
+                icon={<NewspaperIcon />}
+              />
+
               <BottomNavigationAction
                 onClick={props.getFavorite}
                 label="Favorite"
                 icon={<FavoriteIcon />}
               />
-              
-            
 
               <BottomNavigationAction
                 label="Weather"
@@ -161,15 +169,14 @@ function Header(props) {
           {loggedIn && (
             <Badge
               color="error"
-              badgeContent={5}
-              showZero
+              badgeContent={badgeValue}
               display={{ xs: "none", md: "none", lg: "block" }}
               className="desktopAvatar"
             >
-              <AccountMenu />
+              <AccountMenu getEmail={getEmail} setloggedIn={setloggedIn} />
             </Badge>
           )}
-          {!loggedIn && <Login />}
+          {!loggedIn && <Login setEmail={setEmail} setloggedIn={setloggedIn} />}
         </Grid>
       </Grid>
     </AppBar>
