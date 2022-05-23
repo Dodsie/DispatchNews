@@ -29,6 +29,7 @@ const NewsCards = (props) => {
         deleteFavorite={props.deleteFav}
         activeArticle={props.activeArticle}
         i={i}
+        isFavoriteView={props.isFavoriteView}
       />
     );
   });
@@ -40,9 +41,10 @@ const NewsCards = (props) => {
           search={props.query}
           onToggle={props.toggleUpdate}
           getFavorite={props.fav}
+          isWeather={props.setWeather}
         />
 
-        {/* {mode && <Weather />} */}
+        {props.isWeather && <Weather />}
 
         <Grid container>
           <Grid

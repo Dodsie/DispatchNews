@@ -103,7 +103,7 @@ const NewsCard = (props) => {
         <footer>
           <div>
             <span className="favoriteBtn">
-              <ColorButton
+              {!props.isFavoriteView && <ColorButton
                 variant="contained"
                 startIcon={<FavoriteIcon />}
                 onClick={(e) => {
@@ -112,7 +112,18 @@ const NewsCard = (props) => {
                 }}
               >
                 Favorite
-              </ColorButton>
+              </ColorButton>}
+
+              {props.isFavoriteView && <ColorButton
+                variant="contained"
+                startIcon={<FavoriteIcon />}
+                onClick={(e) => {
+                  props.deleteFavorite(props.publishedat, props.id);
+                  confettiClick(e);
+                }}
+              >
+                Delete
+              </ColorButton>}
             </span>
             <span>
               <ShareOnFacebook url={props.url} title={articleTitle} />

@@ -25,8 +25,8 @@ function App() {
   const [publishDate, setPublishDate] = React.useState("");
   const [articleOpen, setArticleOpen] = React.useState(false);
   const [weather, setWeather] = React.useState(false);
-  const [removedState, setRemovedState] = React.useState([]);
   const [activeArticle, setActiveArticle] = React.useState(-1);
+  const [favoriteView, setFavoriteView] = React.useState(false)
 
   const alanBtnInstance = React.useRef(null);
 
@@ -176,12 +176,15 @@ function App() {
 
     if (mode === INITIAL) {
       fetchNews();
+      setFavoriteView(false)
     }
     if (mode === SEARCH) {
       fetchSearch(search);
+      setFavoriteView(false)
     }
     if (mode === FAV) {
       favSearch();
+      setFavoriteView(true)
     }
     if (mode === ONDELETE) {
       deleteFav(user, publishDate);
@@ -229,6 +232,10 @@ function App() {
     setUpdate((prevState) => !prevState);
   };
 
+  const weatherToggle = () => {
+    setWeather(prev => !prev)
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -243,6 +250,9 @@ function App() {
               addFav={addFav}
               fav={favoriteToggle}
               activeArticle={activeArticle}
+              isFavoriteView={favoriteView}
+              isWeather={weather}
+              setWeather={weatherToggle}
             />
           }
         />
