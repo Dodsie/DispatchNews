@@ -18,7 +18,7 @@ function App() {
   const FAV = "FAV";
   const SEARCH = "SEARCH"
   const ONDELETE = "ONDELETE"
-  const REMOVED = "REMOVED"
+
 
   const [update, setUpdate] = React.useState(false);
   const [news, setNews] = React.useState([]);
