@@ -38,6 +38,22 @@ html {
 
 .weather-widget {
   animation: weatherSlideDown 1s forwards ease-out;
+  width: 79vw;
+
+  & > .weatherwidget-io {
+    width: 96.5vw;
+
+    @media only screen and (min-width: 500px) {
+      width: 98vw;
+    }
+    @media only screen and (min-width: 900px) {
+      width: 70vw;
+    }
+
+    @media only screen and (min-width: 1200px) {
+      width: 78.5vw;
+    }
+  }
 }
 
 @keyframes weatherSlideDown {
@@ -54,7 +70,7 @@ html {
 }
 
 #latestNews {
-  padding-top: 2em;
+  padding: 2em 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -64,7 +80,8 @@ html {
     border: 1px solid lightgray;
     align-items: center;
     width: 20%;
-    @media only screen and (min-width: 500px) {
+
+    @media only screen and (max-width: 600px) {
       width: 100%;
     }
 
@@ -81,9 +98,7 @@ html {
     }
   }
 }
-.weatherwidget-io {
-  width: 84%;
-}
+
 .article {
   justify-content: left;
   align-items: flex-start;
@@ -123,7 +138,7 @@ html {
 
       & > .articleImage {
         width: inherit;
-        max-height: 184px;
+        max-height: 165px;
         border-radius: $border-radius;
         box-shadow: 1px 1px 5px 0 black;
         object-fit: cover;

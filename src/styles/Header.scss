@@ -1,8 +1,38 @@
-#logo {
-  padding: 0 1em 0 0;
-}
-
 header {
+  .lf-player-container {
+    height: fit-content;
+  }
+
+  #mobileAvatarContainer {
+    & > .mobileAvatar {
+      margin: 0.5em 2em 0 0;
+      display: flex;
+    }
+
+    @media only screen and (min-width: 899px) {
+      display: none;
+    }
+  }
+
+  & #searchField {
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+
+  .searchContainer {
+    width: 100%;
+    padding: 0 0 0 0.5em;
+
+    @media only screen and (max-width: 899px) {
+      padding: 0 2.1em 0 2.8em;
+    }
+  }
+
+  & .MuiDivider-root {
+    display: flex;
+  }
+
   & .desktopAvatar {
     display: flex;
     width: fit-content;
@@ -11,57 +41,22 @@ header {
       display: none;
     }
   }
-
-  & .MuiDivider-root {
-    display: flex;
-
-    @media only screen and (max-width: 551px) {
-      display: none;
-    }
-  }
-
-  .searchContainer {
-    width: 100%;
-    padding: 0 0 0 1em;
-
-    @media only screen and (max-width: 899px) {
-      padding: 0 2.1em 0 2.8em;
-    }
-  }
-
-  & .mobileAvatar {
-    display: none;
-
-    @media only screen and (max-width: 899px) {
-      margin: 0.5em 3em 0 0;
-      display: flex;
-    }
-  }
-
-  & .MuiBottomNavigation-root {
-    display: flex;
-
-    @media only screen and (max-width: 900px) {
-      display: none;
-    }
-  }
-
-  & #searchField {
-    @media only screen and (max-width: 551px) {
-      width: 100%;
-    }
-  }
-
-  & .headerBtns {
-    @media only screen and (max-width: 551px) {
-      display: none;
-    }
-  }
 }
 
 #navigation {
   background: transparent;
   height: 76px;
+
+  @media only screen and (max-width: 900px) {
+    height: 76px;
+    position: absolute;
+    top: 91vh;
+    z-index: 9999;
+    left: 0px;
+    width: 100%;
+    border-top: solid 1px #a3a0a0;
+    background: #eeeeee;
+  }
 
   & > button {
     color: #a3a3a3;
@@ -84,10 +79,6 @@ header {
 header > div > div:nth-child(6) > div > div > div {
   cursor: pointer;
   margin: 0 0 0 0.5em;
-}
-
-header > div > div:nth-child(6) {
-  margin: 0 2.5em 0 0;
 }
 
 .css-1gewtc2-MuiPaper-root-MuiAppBar-root {
@@ -127,20 +118,27 @@ header > div > div:nth-child(6) {
     justify-content: space-between;
   }
   & .logo-container {
-    margin: 0 0 0 3em;
+    margin: 0 0 0 2.5em;
+
+    @media only screen and (min-width: 899px) {
+      max-width: fit-content;
+    }
+
     & > a {
       display: flex;
       flex-direction: row;
       color: black;
       text-decoration: none;
+      width: fit-content;
+
+      & > h1 {
+        padding: 0 0 0 0.5em;
+        font-size: 1.5em;
+      }
     }
 
     & > h1 {
       font-size: 1.5em;
-    }
-
-    @media only screen and (max-width: 551px) {
-      height: 65px;
     }
   }
 }

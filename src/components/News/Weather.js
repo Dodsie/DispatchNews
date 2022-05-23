@@ -1,8 +1,6 @@
 import React from "react";
 
 const Weather = () => {
-  const location = "vancouver";
-  const url = `https://forecast7.com/en/49d28n123d12/vancouver`;
   const weatherJS = !(function (d, s, id) {
     var js,
       fjs = d.getElementsByTagName(s)[0];
@@ -27,7 +25,9 @@ const Weather = () => {
         data-font="Roboto"
         data-icons="Climacons Animated"
         data-theme="weather_one"
-      ></a>
+      >
+        Weather
+      </a>
       {weatherJS}
     </div>
   );
