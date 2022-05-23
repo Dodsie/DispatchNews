@@ -30,7 +30,8 @@ import Button from "@mui/material/Button";
 
 function Header(props) {
   const [value, setValue] = React.useState(0);
-  const [loggedIn, setloggedIn] = React.useState(true);
+  const [loggedIn, setloggedIn] = React.useState(false);
+  const [badgeValue, setBadgeValue] = React.useState(null);
   const [category, setCategory] = React.useState("");
 
   return (
@@ -66,10 +67,10 @@ function Header(props) {
               showZero
               className="mobileAvatar"
             >
-              <AccountMenu />
+              <AccountMenu setloggedIn={setloggedIn} />
             </Badge>
           )}
-          {!loggedIn && <Login />}
+          {!loggedIn && <Login setloggedIn={setloggedIn} />}
         </Grid>
 
         {/* Search */}
@@ -167,15 +168,14 @@ function Header(props) {
           {loggedIn && (
             <Badge
               color="error"
-              badgeContent={5}
-              showZero
+              badgeContent={badgeValue}
               display={{ xs: "none", md: "none", lg: "block" }}
               className="desktopAvatar"
             >
-              <AccountMenu />
+              <AccountMenu setloggedIn={setloggedIn} />
             </Badge>
           )}
-          {!loggedIn && <Login />}
+          {!loggedIn && <Login setloggedIn={setloggedIn} />}
         </Grid>
       </Grid>
     </AppBar>

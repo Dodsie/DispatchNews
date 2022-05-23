@@ -13,7 +13,8 @@ import Logout from "@mui/icons-material/Logout";
 import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
 
-const AccountMenu = () => {
+const AccountMenu = (props) => {
+  const { setloggedIn } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -21,6 +22,10 @@ const AccountMenu = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const signOut = () => {
+    setloggedIn(false);
   };
 
   const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -108,7 +113,7 @@ const AccountMenu = () => {
           </ListItemIcon>
           Switch to Dark Mode
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={signOut}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

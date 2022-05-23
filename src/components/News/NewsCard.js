@@ -43,7 +43,6 @@ const NewsCard = (props) => {
     if (props.i === props.activeArticle && elRefs[props.activeArticle]) {
       scrollToRef(elRefs[props.activeArticle]);
     }
-    console.log("called", props.activeArticle, props.i);
   }, [props.i, props.activeArticle, elRefs]);
 
   const imageURL =

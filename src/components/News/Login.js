@@ -23,7 +23,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+  const { setloggedIn } = props;
+
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("1"); // Tabs
 
@@ -32,6 +34,7 @@ const LoginForm = () => {
   };
 
   const handleClose = () => {
+    setloggedIn(true);
     setOpen(false);
   };
 
@@ -48,11 +51,7 @@ const LoginForm = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Avatar
-            onClick={handleClickOpen}
-            alt="Username"
-            src="/static/images/avatar/1.jpg"
-          />
+          <Avatar onClick={handleClickOpen} alt="Username" />
 
           <Dialog
             open={open}
