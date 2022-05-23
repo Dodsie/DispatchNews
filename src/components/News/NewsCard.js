@@ -27,6 +27,7 @@ const confettiClick = (e) => {
 const NewsCard = (props) => {
   // console.log("returned,props", props);
   const [elRefs, setElRefs] = useState([]);
+  const [favorited, setFavorited] = useState(false);
   const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 150);
 
   useEffect(() => {
@@ -77,7 +78,9 @@ const NewsCard = (props) => {
   // ) : (
   //   ""
   // );
+
   const articleTitle = props.title.substring(0, 89);
+
   return (
     <Grid
       id={props.id}
@@ -102,11 +105,14 @@ const NewsCard = (props) => {
         <p>{articleContent}</p>
         <footer>
           <div>
-            <span className="favoriteBtn">
-              {!props.isFavoriteView && (
+            {/* <span className="favoriteBtn"> */}
+            {!props.isFavoriteView && (
+              <span className="favoriteBtn">
+                {" "}
                 <ColorButton
                   variant="contained"
                   startIcon={<FavoriteIcon />}
+                  disabled={favorited}
                   onClick={(e) => {
                     props.addFavorite(props.id);
                     confettiClick(e);
@@ -114,9 +120,12 @@ const NewsCard = (props) => {
                 >
                   Favorite
                 </ColorButton>
-              )}
+              </span>
+            )}
 
-              {props.isFavoriteView && (
+            {props.isFavoriteView && (
+              <span className="deleteBtn">
+                {" "}
                 <ColorButton
                   variant="contained"
                   startIcon={<FavoriteIcon />}
@@ -127,8 +136,9 @@ const NewsCard = (props) => {
                 >
                   Delete
                 </ColorButton>
-              )}
-            </span>
+              </span>
+            )}
+            {/* </span> */}
             <span>
               <ShareOnFacebook url={props.url} title={articleTitle} />
               <ShareOnLinkedIn url={props.url} title={articleTitle} />
