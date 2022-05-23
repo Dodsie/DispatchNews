@@ -100,9 +100,9 @@ function App() {
   React.useEffect(() => {
     const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_KEY}`;
     let didCancel = false;
-
+    const exclude = `&excludeDomains=youtube.com`;
     async function fetchNews() {
-      let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=ca${apiKey}`;
+      let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=ca${apiKey}${exclude}`;
       if (!didCancel) {
         let response = await axios.get(NEWS_API_URL);
         let data = await Object.values(
@@ -117,10 +117,11 @@ function App() {
       const language = "&language=en";
       let searchQuery = `q=${x}`;
       const today = new Date();
+      const exclude = `&excludeDomains=youtube.com`;
       const relevancy = `&sortBy=relevancy`;
       const fromDate = `&from=${today}`;
 
-      let NEWS_API_URL = `https://newsapi.org/v2/everything?${searchQuery}${language}${apiKey}${relevancy}${fromDate}`;
+      let NEWS_API_URL = `https://newsapi.org/v2/everything?${searchQuery}${language}${apiKey}${relevancy}${fromDate}${exclude}`;
       if (!didCancel) {
         let response = await axios.get(NEWS_API_URL);
         let data = await Object.values(

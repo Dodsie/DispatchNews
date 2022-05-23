@@ -44,13 +44,11 @@ const NewsCard = (props) => {
       scrollToRef(elRefs[props.activeArticle]);
     }
   }, [props.i, props.activeArticle, elRefs]);
+  const isImage = /(jpe?g|png|gif|bmp|webp)/g;
 
-  const imageURL =
-    props.urltoimage === undefined ||
-    props.urltoimage === null ||
-    props.urltoimage.length === 4
-      ? `https://dummyimage.com/650x280/000/fff`
-      : `${props.urltoimage}`;
+  const imageURL = isImage.test(props.urltoimage)
+    ? `${props.urltoimage}`
+    : `/images/noImage.jpg`;
 
   console.log("image", imageURL);
   /* Example Source: [+1063 chars], this regex selects everything between '[' and ']'*/
