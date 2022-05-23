@@ -41,6 +41,7 @@ function App() {
               break;
 
             case "newHeadlines":
+              console.log("Does this show anything", articles);
               setNews(articles);
               setActiveArticle(-1);
               break;
@@ -121,7 +122,7 @@ function App() {
       const relevancy = `&sortBy=relevancy`;
       const fromDate = `&from=${today}`;
 
-      let NEWS_API_URL = `https://newsapi.org/v2/everything?${searchQuery}${language}${apiKey}${relevancy}${fromDate}${exclude}`;
+      let NEWS_API_URL = `https://newsapi.org/v2/everything?${searchQuery}${language}${apiKey}${relevancy}${fromDate}`;
       if (!didCancel) {
         let response = await axios.get(NEWS_API_URL);
         let data = await Object.values(
