@@ -156,7 +156,7 @@ function Header(props) {
               <BottomNavigationAction
                 label="Weather"
                 icon={<WeatherIcon />}
-                onClick={props.onToggle}
+                onClick={props.isWeather}
               />
             </BottomNavigation>
           </div>

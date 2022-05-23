@@ -25,7 +25,7 @@ const confettiClick = (e) => {
 };
 
 const NewsCard = (props) => {
-  console.log("returned,props", props);
+  // console.log("returned,props", props);
   const [elRefs, setElRefs] = useState([]);
   const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 150);
 
@@ -103,16 +103,31 @@ const NewsCard = (props) => {
         <footer>
           <div>
             <span className="favoriteBtn">
-              <ColorButton
-                variant="contained"
-                startIcon={<FavoriteIcon />}
-                onClick={(e) => {
-                  props.addFavorite(props.id);
-                  confettiClick(e);
-                }}
-              >
-                Favorite
-              </ColorButton>
+              {!props.isFavoriteView && (
+                <ColorButton
+                  variant="contained"
+                  startIcon={<FavoriteIcon />}
+                  onClick={(e) => {
+                    props.addFavorite(props.id);
+                    confettiClick(e);
+                  }}
+                >
+                  Favorite
+                </ColorButton>
+              )}
+
+              {props.isFavoriteView && (
+                <ColorButton
+                  variant="contained"
+                  startIcon={<FavoriteIcon />}
+                  onClick={(e) => {
+                    props.deleteFavorite(props.publishedat, props.id);
+                    confettiClick(e);
+                  }}
+                >
+                  Delete
+                </ColorButton>
+              )}
             </span>
             <span>
               <ShareOnFacebook url={props.url} title={articleTitle} />
@@ -126,7 +141,7 @@ const NewsCard = (props) => {
               <span>
                 <time className="publishedAt" dateTime={props.publishedat}>
                   {"Date Posted: " +
-                    props.values.publishedAt.replace(/([T].*?[Z])/g, "")}
+                    props.publishedat.replace(/([T].*?[Z])/g, "")}
                 </time>
               </span>
             ) : (

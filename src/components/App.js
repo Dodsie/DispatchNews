@@ -25,10 +25,25 @@ function App() {
   const [publishDate, setPublishDate] = React.useState("");
   const [articleOpen, setArticleOpen] = React.useState(false);
   const [weather, setWeather] = React.useState(false);
-  const [removedState, setRemovedState] = React.useState([]);
   const [activeArticle, setActiveArticle] = React.useState(-1);
+  const [favoriteView, setFavoriteView] = React.useState(false)
 
   const alanBtnInstance = React.useRef(null);
+
+  function ConvertKeysToLowerCase(obj) {
+    var output = {};
+    for (let i in obj) {
+      if (Object.prototype.toString.apply(obj[i]) === "[object Object]") {
+        output[i.toLowerCase()] = ConvertKeysToLowerCase(obj[i]);
+      } else if (Object.prototype.toString.apply(obj[i]) === "[object Array]") {
+        output[i.toLowerCase()] = [];
+        output[i.toLowerCase()].push(ConvertKeysToLowerCase(obj[i][0]));
+      } else {
+        output[i.toLowerCase()] = obj[i];
+      }
+    }
+    return output;
+  }
 
   React.useEffect(() => {
     if (!alanBtnInstance.current) {
@@ -79,20 +94,7 @@ function App() {
     }
   }, []);
 
-  function ConvertKeysToLowerCase(obj) {
-    var output = {};
-    for (let i in obj) {
-      if (Object.prototype.toString.apply(obj[i]) === "[object Object]") {
-        output[i.toLowerCase()] = ConvertKeysToLowerCase(obj[i]);
-      } else if (Object.prototype.toString.apply(obj[i]) === "[object Array]") {
-        output[i.toLowerCase()] = [];
-        output[i.toLowerCase()].push(ConvertKeysToLowerCase(obj[i][0]));
-      } else {
-        output[i.toLowerCase()] = obj[i];
-      }
-    }
-    return output;
-  }
+
 
   React.useEffect(() => {
     console.log("I re-rendered!");
@@ -174,12 +176,15 @@ function App() {
 
     if (mode === INITIAL) {
       fetchNews();
+      setFavoriteView(false)
     }
     if (mode === SEARCH) {
       fetchSearch(search);
+      setFavoriteView(false)
     }
     if (mode === FAV) {
       favSearch();
+      setFavoriteView(true)
     }
     if (mode === ONDELETE) {
       deleteFav(user, publishDate);
@@ -227,6 +232,10 @@ function App() {
     setUpdate((prevState) => !prevState);
   };
 
+  const weatherToggle = () => {
+    setWeather(prev => !prev)
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -241,6 +250,9 @@ function App() {
               addFav={addFav}
               fav={favoriteToggle}
               activeArticle={activeArticle}
+              isFavoriteView={favoriteView}
+              isWeather={weather}
+              setWeather={weatherToggle}
             />
           }
         />
