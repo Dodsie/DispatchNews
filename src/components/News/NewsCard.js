@@ -125,7 +125,6 @@ const NewsCard = (props) => {
                 startIcon={<FavoriteIcon />}
                 onClick={(e) => {
                   props.deleteFavorite(props.publishedat, props.id);
-                  confettiClick(e);
                 }}
               >
                 Delete
