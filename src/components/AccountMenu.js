@@ -14,12 +14,14 @@ import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
 
 const AccountMenu = (props) => {
-  const { setloggedIn } = props;
+  const { setloggedIn, getEmail } = props;
+  console.log({ props });
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -103,7 +105,7 @@ const AccountMenu = (props) => {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem>
-          <Avatar /> My account
+          <Avatar /> {getEmail}
         </MenuItem>
         <Divider />
 
@@ -111,7 +113,7 @@ const AccountMenu = (props) => {
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
-          Switch to Dark Mode
+          Edit Profile
         </MenuItem>
         <MenuItem onClick={signOut}>
           <ListItemIcon>
