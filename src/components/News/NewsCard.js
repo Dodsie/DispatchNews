@@ -25,7 +25,7 @@ const confettiClick = (e) => {
 };
 
 const NewsCard = (props) => {
-  console.log("returned,props", props);
+  // console.log("returned,props", props);
   const [elRefs, setElRefs] = useState([]);
   const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 150);
 
@@ -125,13 +125,13 @@ const NewsCard = (props) => {
             {props.publishedat === undefined ? (
               <span>
                 <time className="publishedAt" dateTime={props.publishedat}>
-                  {"Date Posted: " + props.values.publishedAt.slice(0, -10)}
+                  {"Date Posted: " + props.publishedat.replace(/([T].*?[Z])/g, "")}
                 </time>
               </span>
             ) : (
               <span>
                 <time className="publishedAt" dateTime={props.publishedat}>
-                  {"Date Posted: " + props.publishedat.slice(0, -10)}
+                  {"Date Posted: " + props.publishedat.replace(/([T].*?[Z])/g, "")}
                 </time>
               </span>
             )}

@@ -8,7 +8,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 
 const NewsCards = (props) => {
-  console.log("props", props);
+  // console.log("props", props);
   const NewsCardsMap = props.news.map((article, i) => {
     let identifier = props.news.indexOf(article);
     return (
@@ -19,11 +19,11 @@ const NewsCards = (props) => {
         author={article.author}
         content={article.content}
         description={article.description}
-        publishedat={article.publishedat}
+        publishedat={article.publishedat || article.publishedAt}
         source={article.source.name}
         title={article.title}
         url={article.url}
-        urltoimage={article.urltoimage}
+        urltoimage={article.urltoimage || article.urlToImage}
         className="flex-container-row"
         addFavorite={props.addFav}
         deleteFavorite={props.deleteFav}
