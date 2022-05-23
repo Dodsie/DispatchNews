@@ -23,7 +23,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+  const { setloggedIn, setEmail } = props;
+
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("1"); // Tabs
 
@@ -33,6 +35,11 @@ const LoginForm = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const login = () => {
+    setloggedIn(true);
+    setEmail(document.querySelector("input#userEmail").value);
   };
 
   // Tabs
@@ -48,11 +55,7 @@ const LoginForm = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Avatar
-            onClick={handleClickOpen}
-            alt="Username"
-            src="/static/images/avatar/1.jpg"
-          />
+          <Avatar onClick={handleClickOpen} alt="Username" />
 
           <Dialog
             open={open}
@@ -97,6 +100,9 @@ const LoginForm = () => {
                     id="userPassword"
                     label="Password"
                     type="password"
+                    onKeyPress={(event) => {
+                      event.key === "Enter" && login();
+                    }}
                     fullWidth
                     InputProps={{
                       startAdornment: (
@@ -142,7 +148,7 @@ const LoginForm = () => {
                       <Button
                         color="success"
                         variant="contained"
-                        onClick={handleClose}
+                        onClick={login}
                         style={{ width: "88px", margin: "0 0 0 0.5em" }}
                       >
                         Login
@@ -178,6 +184,9 @@ const LoginForm = () => {
                     label="Password"
                     type="password"
                     fullWidth
+                    onKeyPress={(event) => {
+                      event.key === "Enter" && login();
+                    }}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
@@ -223,7 +232,7 @@ const LoginForm = () => {
                       <Button
                         color="success"
                         variant="contained"
-                        onClick={handleClose}
+                        onClick={login}
                         style={{ width: "88px", margin: "0 0 0 0.5em" }}
                       >
                         Register

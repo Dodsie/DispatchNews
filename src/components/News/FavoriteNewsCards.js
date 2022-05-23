@@ -9,12 +9,21 @@ import { ThemeProvider } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 
 const FavoriteNewsCards = () => {
-  const {favArticles, mode, user_id, toggleWeather, searchQuery, getFavorite, getPopular, addFavorite, deleteFavorite} = useApplicationData()
-  
+  const {
+    favArticles,
+    mode,
+    user_id,
+    toggleWeather,
+    searchQuery,
+    getFavorite,
+    getPopular,
+    addFavorite,
+    deleteFavorite,
+  } = useApplicationData();
+
   const FavoriteNewsCardsMap = favArticles.map((article) => {
     let identifier = favArticles.indexOf(article);
     return (
-
       <FavoriteNewsCard
         values={article}
         key={identifier}
@@ -33,37 +42,41 @@ const FavoriteNewsCards = () => {
     );
   });
 
-  return ( 
+  return (
     <ThemeProvider theme={theme}>
-    <Header search={searchQuery} onToggle={toggleWeather} getFavorite={getFavorite} getPopular={getPopular} />
-    
-    {mode && <Weather />}
+      <Header
+        search={searchQuery}
+        onToggle={toggleWeather}
+        getFavorite={getFavorite}
+        getPopular={getPopular}
+      />
 
-    <Grid container>
-      <Grid
-        item
-        id="latestNews"
-        xs={12}
-        sm={12}
-        md={10}
-        lg={10}
-        xl={10}
-        display={{ xs: "block", md: { display: "flex" } }}
-      >
-  <>{FavoriteNewsCardsMap}</> 
-    
-  </Grid>
-          <Grid
-            item
-            md={2}
-            className="sidebar"
-            display={{ xs: "none", md: "flex" }}
-          >
-            <Sidebar />
-          </Grid>
+      {mode && <Weather />}
+
+      <Grid container>
+        <Grid
+          item
+          id="latestNews"
+          xs={12}
+          sm={12}
+          md={10}
+          lg={10}
+          xl={10}
+          display={{ xs: "block", md: { display: "flex" } }}
+        >
+          <>{FavoriteNewsCardsMap}</>
         </Grid>
-      </ThemeProvider>
-  )
+        <Grid
+          item
+          md={2}
+          className="sidebar"
+          display={{ xs: "none", md: "flex" }}
+        >
+          <Sidebar />
+        </Grid>
+      </Grid>
+    </ThemeProvider>
+  );
 };
 
 export default FavoriteNewsCards;

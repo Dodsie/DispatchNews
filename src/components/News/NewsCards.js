@@ -8,13 +8,10 @@ import { ThemeProvider } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 
 const NewsCards = (props) => {
-
-
-
-  const NewsCardsMap = props.news.map((article) => {
+  // console.log("props", props);
+  const NewsCardsMap = props.news.map((article, i) => {
     let identifier = props.news.indexOf(article);
     return (
-      
       <NewsCard
         values={article}
         key={identifier}
@@ -22,42 +19,53 @@ const NewsCards = (props) => {
         author={article.author}
         content={article.content}
         description={article.description}
-        publishedat={article.publishedat}
+        publishedat={article.publishedat || article.publishedAt}
         source={article.source.name}
         title={article.title}
         url={article.url}
-        urltoimage={article.urltoimage}
+        urltoimage={article.urltoimage || article.urlToImage}
         className="flex-container-row"
         addFavorite={props.addFav}
         deleteFavorite={props.deleteFav}
+        activeArticle={props.activeArticle}
+        i={i}
+        isFavoriteView={props.isFavoriteView}
       />
-  )});
+    );
+  });
 
   return (
-  <main>
-    <ThemeProvider theme={theme}>
-    <Header search={props.query} onToggle={props.toggleUpdate} getFavorite={props.fav} />
-    
-    {/* {mode && <Weather />} */}
+    <main>
+      <ThemeProvider theme={theme}>
+        <Header
+          search={props.query}
+          onToggle={props.toggleUpdate}
+          getFavorite={props.fav}
+          isWeather={props.setWeather}
+        />
 
-    <Grid container>
-      <Grid
-        item
-        id="latestNews"
-        xs={12}
-        sm={12}
-        md={10}
-        lg={10}
-        xl={10}
-        display={{ xs: "block", md: { display: "flex" } }}
-      >
+        {props.isWeather && <Weather />}
 
-        <>{NewsCardsMap}</>
-
-        </Grid>
+        <Grid container>
           <Grid
             item
-            md={2}
+            id="latestNews"
+            xs={12}
+            sm={12}
+            md={9}
+            lg={9.5}
+            xl={10}
+            display={{ xs: "block", md: { display: "flex" } }}
+          >
+            <>{NewsCardsMap}</>
+          </Grid>
+          <Grid
+            item
+            xs={0}
+            sm={0}
+            md={3}
+            lg={2.5}
+            xl={2}
             className="sidebar"
             display={{ xs: "none", md: "flex" }}
           >
@@ -65,8 +73,8 @@ const NewsCards = (props) => {
           </Grid>
         </Grid>
       </ThemeProvider>
-      </main>
-  )
+    </main>
+  );
 };
 
 export default NewsCards;
