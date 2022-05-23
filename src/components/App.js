@@ -147,7 +147,7 @@ function App() {
     }
 
     async function deleteFav(userId, publishDate) {
-      console.log("before", news);
+      // console.log("before", news);
       let NEWS_API_URL = `http://localhost:3001/delete/${userId}/${publishDate}/`;
 
       let res = await axios.delete(NEWS_API_URL);
