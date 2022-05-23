@@ -125,13 +125,15 @@ const NewsCard = (props) => {
             {props.publishedat === undefined ? (
               <span>
                 <time className="publishedAt" dateTime={props.publishedat}>
-                  {"Date Posted: " + props.values.publishedAt.slice(0, -10)}
+                  {"Date Posted: " +
+                    props.values.publishedAt.replace(/([T].*?[Z])/g, "")}
                 </time>
               </span>
             ) : (
               <span>
                 <time className="publishedAt" dateTime={props.publishedat}>
-                  {"Date Posted: " + props.publishedat.slice(0, -10)}
+                  {"Date Posted: " +
+                    props.publishedat.replace(/([T].*?[Z])/g, "")}
                 </time>
               </span>
             )}
