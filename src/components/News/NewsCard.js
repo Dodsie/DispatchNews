@@ -144,7 +144,7 @@ const NewsCard = (props) => {
                 : "articleValue not-active"
             }
           >
-            Article: {props.id}
+            Article: {props.id + 1}
           </div>
         </footer>
       </Grid>

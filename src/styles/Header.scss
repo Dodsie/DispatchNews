@@ -35,12 +35,8 @@ header {
 
   & .desktopAvatar {
     display: flex;
-<<<<<<< HEAD
-    width: fit-content;
-=======
     height: 40px;
     width: 40px;
->>>>>>> 962988180dca8f0209e521145dfe00bcbb54fc33
 
     @media only screen and (max-width: 899px) {
       display: none;
@@ -55,11 +51,7 @@ header {
   @media only screen and (max-width: 900px) {
     height: 76px;
     position: absolute;
-<<<<<<< HEAD
-    top: 91vh;
-=======
     top: calc(100vh - 76px);
->>>>>>> 962988180dca8f0209e521145dfe00bcbb54fc33
     z-index: 9999;
     left: 0px;
     width: 100%;
@@ -87,15 +79,12 @@ header {
 .css-12tvmfl-MuiGrid-root > div > div > div {
   margin-left: 20px;
 }
-<<<<<<< HEAD
-=======
 // MuiAvatar-root
 .MuiAvatar-root {
   cursor: pointer;
   width: 40px !important;
   height: 40px !important;
 }
->>>>>>> 962988180dca8f0209e521145dfe00bcbb54fc33
 
 .css-1gewtc2-MuiPaper-root-MuiAppBar-root {
   background: rgba(238, 238, 238, 0.95) !important;
