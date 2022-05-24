@@ -200,20 +200,11 @@ html {
         height: auto;
         border-radius: $border-radius;
         box-shadow: 1px 1px 5px 0 black;
-        object-fit: fill;
-        object-position: top;
+        object-fit: cover;
+        object-position: center;
         aspect-ratio: 2 / 1;
 
         height: auto;
-      }
-
-      .article > .articleImageContainer > a > .articleImage {
-        width: inherit;
-        height: 25vh;
-        border-radius: 2em;
-        box-shadow: 1px 1px 5px 0 black;
-        object-fit: cover;
-        object-position: center;
       }
     }
   }
