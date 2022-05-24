@@ -102,34 +102,41 @@ const NewsCard = (props) => {
         </a>
       </Grid>
       <Grid item xs={12} md={12} className="articleDetails">
-        <h2>{articleTitle}</h2>
-        <p>{articleContent}</p>
+        <h2 className="limit-three-lines">{articleTitle}</h2>
+        <p className="limit-six-lines">{articleContent}</p>
         <footer>
           <div>
             {/* <span className="favoriteBtn"> */}
-              {!props.isFavoriteView && <span className="favoriteBtn"> <ColorButton
-                variant="contained"
-                startIcon={<FavoriteIcon />}
-                disabled={favorited}
-                onClick={(e) => {
-                  props.addFavorite(props.id);
-                  confettiClick(e);
-                }}
-              >
-                Favorite
-              </ColorButton>
+            {!props.isFavoriteView && (
+              <span className="favoriteBtn">
+                {" "}
+                <ColorButton
+                  variant="contained"
+                  startIcon={<FavoriteIcon />}
+                  disabled={favorited}
+                  onClick={(e) => {
+                    props.addFavorite(props.id);
+                    confettiClick(e);
+                  }}
+                >
+                  Favorite
+                </ColorButton>
               </span>
-              }
+            )}
 
-              {props.isFavoriteView && <span className="deleteBtn"> <ColorButton
-                variant="contained"
-                onClick={(e) => {
-                  props.deleteFavorite(props.publishedat, props.id);
-                }}
-              >
-                Delete
-              </ColorButton>
-              </span>}
+            {props.isFavoriteView && (
+              <span className="deleteBtn">
+                {" "}
+                <ColorButton
+                  variant="contained"
+                  onClick={(e) => {
+                    props.deleteFavorite(props.publishedat, props.id);
+                  }}
+                >
+                  Delete
+                </ColorButton>
+              </span>
+            )}
             {/* </span> */}
             <span>
               <ShareOnFacebook url={props.url} title={articleTitle} />
@@ -142,13 +149,15 @@ const NewsCard = (props) => {
             {props.publishedat === undefined ? (
               <span>
                 <time className="publishedAt" dateTime={props.publishedat}>
-                  {"Date Posted: " + props.publishedat.replace(/([T].*?[Z])/g, "")}
+                  {"Date Posted: " +
+                    props.publishedat.replace(/([T].*?[Z])/g, "")}
                 </time>
               </span>
             ) : (
               <span>
                 <time className="publishedAt" dateTime={props.publishedat}>
-                  {"Date Posted: " + props.publishedat.replace(/([T].*?[Z])/g, "")}
+                  {"Date Posted: " +
+                    props.publishedat.replace(/([T].*?[Z])/g, "")}
                 </time>
               </span>
             )}

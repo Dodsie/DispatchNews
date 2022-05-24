@@ -38,20 +38,23 @@ html {
 
 .weather-widget {
   animation: weatherSlideDown 1s forwards ease-out;
-  width: 79vw;
+
+  overflow-x: hidden;
 
   & > .weatherwidget-io {
-    width: 96.5vw;
+    width: 98vw;
 
-    @media only screen and (min-width: 500px) {
-      width: 98vw;
-    }
     @media only screen and (min-width: 900px) {
-      width: 70vw;
+      width: 75vw;
     }
-
+    @media only screen and (min-width: 933px) {
+      width: 74vw;
+    }
     @media only screen and (min-width: 1200px) {
-      width: 78.5vw;
+      width: 79vw;
+    }
+    @media only screen and (min-width: 1535px) {
+      width: 83vw;
     }
   }
 }
@@ -73,12 +76,6 @@ html {
   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>💖</text></svg>")
       16 0,
     auto;
-
-  // &:active {
-  //   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>😁</text></svg>")
-  //       16 0,
-  //     auto;
-  // }
 }
 
 .deleteBtn > button {
@@ -99,6 +96,10 @@ html {
   flex-wrap: wrap;
   justify-content: space-evenly;
 
+  @media only screen and (min-width: 900px) {
+    padding: 2em 1em;
+  }
+
   & > div {
     border: 1px solid lightgray;
     align-items: center;
@@ -109,15 +110,15 @@ html {
     }
 
     @media only screen and (min-width: 600px) {
-      width: 40%;
+      width: 45%;
     }
 
     @media only screen and (min-width: 900px) {
       width: 30%;
     }
 
-    @media only screen and (min-width: 900px) and (max-width: 1096px) {
-      width: 40%;
+    @media only screen and (min-width: 900px) and (max-width: 1300px) {
+      width: 45%;
     }
   }
 }
@@ -136,11 +137,38 @@ html {
 }
 
 .article {
+  min-height: 530px;
+}
+
+.limit-three-lines {
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  overflow: hidden;
+}
+
+.limit-six-lines {
+  -webkit-line-clamp: 6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  overflow: hidden;
+}
+
+.limit-three-lines {
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  overflow: hidden;
+}
+
+.article {
   justify-content: left;
   border-radius: $border-radius;
 
   overflow-wrap: break-word;
-  height: max-content;
 
   @media only screen and (min-width: 600px) {
     margin: 0.5em;
@@ -168,12 +196,15 @@ html {
       width: inherit;
 
       & > .articleImage {
-        width: inherit;
-        max-height: 250px;
+        width: calc(100%);
+        height: auto;
         border-radius: $border-radius;
         box-shadow: 1px 1px 5px 0 black;
         object-fit: cover;
-        object-position: top;
+        object-position: center;
+        aspect-ratio: 2 / 1;
+
+        height: auto;
       }
     }
   }
@@ -184,19 +215,34 @@ html {
     justify-content: space-between;
     align-items: stretch;
 
+    @media only screen and (min-width: 600px) {
+      & footer > div:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        width: inherit;
+      }
+    }
+    @media only screen and (min-width: 1500px) {
+      & footer > div:nth-child(2) {
+        display: flex;
+        flex-direction: row;
+        width: inherit;
+      }
+    }
+
     & > span {
       margin: 0 1em;
     }
 
     & > p {
       margin: 0 1em;
-      min-height: 5em;
+      min-height: 7em;
     }
 
     & > h2 {
       font-size: 1.3em;
-      margin: 0 0.7em;
-      min-height: 4em;
+      height: 3.5em;
+      margin: 0.5em 0.8em;
     }
   }
 

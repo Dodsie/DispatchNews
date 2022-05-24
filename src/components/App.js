@@ -26,7 +26,7 @@ function App() {
   const [articleOpen, setArticleOpen] = React.useState(false);
   const [weather, setWeather] = React.useState(false);
   const [activeArticle, setActiveArticle] = React.useState(-1);
-  const [favoriteView, setFavoriteView] = React.useState(false)
+  const [favoriteView, setFavoriteView] = React.useState(false);
 
   const alanBtnInstance = React.useRef(null);
 
@@ -94,7 +94,6 @@ function App() {
     }
   }, []);
 
-
   React.useEffect(() => {
     console.log("I re-rendered!");
   }, [update]);
@@ -146,7 +145,7 @@ function App() {
     }
 
     async function deleteFav(userId, publishDate) {
-      // console.log("before", news);
+      console.log("before", news);
       let NEWS_API_URL = `http://localhost:3001/delete/${userId}/${publishDate}/`;
 
       let res = await axios.delete(NEWS_API_URL);
@@ -175,15 +174,15 @@ function App() {
 
     if (mode === INITIAL) {
       fetchNews();
-      setFavoriteView(false)
+      setFavoriteView(false);
     }
     if (mode === SEARCH) {
       fetchSearch(search);
-      setFavoriteView(false)
+      setFavoriteView(false);
     }
     if (mode === FAV) {
       favSearch();
-      setFavoriteView(true)
+      setFavoriteView(true);
     }
     if (mode === ONDELETE) {
       deleteFav(user, publishDate);
@@ -232,8 +231,8 @@ function App() {
   };
 
   const weatherToggle = () => {
-    setWeather(prev => !prev)
-  }
+    setWeather((prev) => !prev);
+  };
 
   return (
     <BrowserRouter>

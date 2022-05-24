@@ -39,6 +39,7 @@ const Sidebar = () => {
 
   // Chat function end
 
+  // Chat function
   return (
     <div className="whosOnline">
       <div className="Chat">
@@ -52,42 +53,27 @@ const Sidebar = () => {
                 setUsername(event.target.value);
               }}
             />
+            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+              <InputLabel id="demo-select-small">Room</InputLabel>
+              <Select
+                labelId="demo-select-small"
+                id="demo-select-small"
+                value={room}
+                onChange={(event) => {
+                  setRoom(event.target.value);
+                }}
+              >
+                <MenuItem value=""></MenuItem>
+                <MenuItem value={10}>Popular</MenuItem>
+                <MenuItem value={20}>Tech</MenuItem>
+                <MenuItem value={30}>Health</MenuItem>
+                <MenuItem value={40}>Science</MenuItem>
+                <MenuItem value={50}>Buisness</MenuItem>
+                <MenuItem value={60}>Entertainment</MenuItem>
+                <MenuItem value={70}>Just Chatting</MenuItem>
+              </Select>
+            </FormControl>
 
-
-
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small">Room</InputLabel>
-      <Select
-        labelId="demo-select-small"
-        id="demo-select-small"
-        value={room}
-        onChange={(event) => {
-          setRoom(event.target.value)
-        }}
-        >
-        <MenuItem value="">
-        </MenuItem>
-        <MenuItem value={10}>Popular</MenuItem>
-        <MenuItem value={20}>Tech</MenuItem>
-        <MenuItem value={30}>Health</MenuItem>
-        <MenuItem value={40}>Science</MenuItem>
-        <MenuItem value={50}>Buisness</MenuItem>
-        <MenuItem value={60}>Entertainment</MenuItem>
-        <MenuItem value={70}>Just Chatting</MenuItem>
-      </Select>
-    </FormControl>
-
-
-
-
-
-            {/* <input
-              type="text"
-              placeholder="Room ID"
-              onChange={(event) => {
-                setRoom(event.target.value);
-              }}
-            /> */}
             <button onClick={joinRoom}>Join A Room</button>
           </div>
         ) : (
