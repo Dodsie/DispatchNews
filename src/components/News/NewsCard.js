@@ -101,8 +101,8 @@ const NewsCard = (props) => {
         </a>
       </Grid>
       <Grid item xs={12} md={12} className="articleDetails">
-        <h2>{articleTitle}</h2>
-        <p>{articleContent}</p>
+        <h2 className="limit-three-lines">{articleTitle}</h2>
+        <p className="limit-six-lines">{articleContent}</p>
         <footer>
           <div>
             {/* <span className="favoriteBtn"> */}

@@ -3,13 +3,18 @@ header {
     height: fit-content;
   }
 
+  #desktopAvatarContainer {
+    @media only screen and (max-width: 900px) {
+      display: none;
+    }
+  }
   #mobileAvatarContainer {
     & > .mobileAvatar {
       margin: 0.5em 2em 0 0;
       display: flex;
     }
 
-    @media only screen and (min-width: 899px) {
+    @media only screen and (min-width: 900px) {
       display: none;
     }
   }
@@ -106,6 +111,7 @@ header {
     border: 1px solid #b7b7b7;
     color: black;
     height: 56px;
+    padding: 25px;
   }
 }
 
