@@ -9,7 +9,10 @@ import Chat from "../../Chat";
 //Chat end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> d0f9135a8389109cef43e276b48608683f3771b7
 
 
 // Drop down rooms
@@ -24,6 +27,10 @@ const socket = io.connect("http://localhost:3002");
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d0f9135a8389109cef43e276b48608683f3771b7
 
 
 >>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
@@ -41,7 +48,10 @@ const Sidebar = () => {
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> d0f9135a8389109cef43e276b48608683f3771b7
   // Chat function end
 
 >>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
@@ -59,8 +69,11 @@ const Sidebar = () => {
               }}
             />
 <<<<<<< HEAD
+<<<<<<< HEAD
             <input
 =======
+=======
+>>>>>>> d0f9135a8389109cef43e276b48608683f3771b7
 
 
 
@@ -91,17 +104,24 @@ const Sidebar = () => {
 
 
             {/* <input
+<<<<<<< HEAD
 >>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
+=======
+>>>>>>> d0f9135a8389109cef43e276b48608683f3771b7
               type="text"
               placeholder="Room ID"
               onChange={(event) => {
                 setRoom(event.target.value);
               }}
 <<<<<<< HEAD
+<<<<<<< HEAD
             />
 =======
             /> */}
 >>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
+=======
+            /> */}
+>>>>>>> d0f9135a8389109cef43e276b48608683f3771b7
             <button onClick={joinRoom}>Join A Room</button>
           </div>
         ) : (

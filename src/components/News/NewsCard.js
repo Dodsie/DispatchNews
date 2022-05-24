@@ -25,14 +25,9 @@ const confettiClick = (e) => {
 };
 
 const NewsCard = (props) => {
-<<<<<<< HEAD
   // console.log("returned,props", props);
   const [elRefs, setElRefs] = useState([]);
   const [favorited, setFavorited] = useState(false);
-=======
-  console.log("returned,props", props);
-  const [elRefs, setElRefs] = useState([]);
->>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
   const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 150);
 
   useEffect(() => {
@@ -51,7 +46,6 @@ const NewsCard = (props) => {
     }
   }, [props.i, props.activeArticle, elRefs]);
   const isImage = /(jpe?g|png|gif|bmp|webp)/g;
-<<<<<<< HEAD
 
   const imageURL = isImage.test(props.urltoimage)
     ? `${props.urltoimage}`
@@ -86,41 +80,7 @@ const NewsCard = (props) => {
   // );
 
   const articleTitle = props.title.substring(0, 89);
-=======
->>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
 
-  const imageURL = isImage.test(props.urltoimage)
-    ? `${props.urltoimage}`
-    : `/images/noImage.jpg`;
-
-  console.log("image", imageURL);
-  /* Example Source: [+1063 chars], this regex selects everything between '[' and ']'*/
-  const removeTurncatedText = /[[][^[]*[\]$]/g;
-  const removeUnwantedHTML = /(<([^>]+)>)/gi;
-
-  let articleContent = props.content
-    ? props.content
-        .replace(removeTurncatedText, "") // remove [ ] truncation text
-        .replace(removeUnwantedHTML, "") // remove <> tags
-        .replace(/\u00a0/g, " ") // remove nbsp
-    : "";
-
-  const articleSource = props.source ? (
-    <span>
-      Source: <span className="author">{props.source}</span>
-    </span>
-  ) : (
-    ""
-  );
-
-  // const articleAuthor = props.author ? (
-  //   <span>
-  //     Author: <span className="author">{props.author}</span>
-  //   </span>
-  // ) : (
-  //   ""
-  // );
-  const articleTitle = props.title.substring(0, 89);
   return (
     <Grid
       id={props.id}
@@ -145,7 +105,6 @@ const NewsCard = (props) => {
         <p>{articleContent}</p>
         <footer>
           <div>
-<<<<<<< HEAD
             {/* <span className="favoriteBtn"> */}
             {!props.isFavoriteView && (
               <span className="favoriteBtn">
@@ -169,10 +128,8 @@ const NewsCard = (props) => {
                 {" "}
                 <ColorButton
                   variant="contained"
-                  startIcon={<FavoriteIcon />}
                   onClick={(e) => {
                     props.deleteFavorite(props.publishedat, props.id);
-                    confettiClick(e);
                   }}
                 >
                   Delete
@@ -180,20 +137,6 @@ const NewsCard = (props) => {
               </span>
             )}
             {/* </span> */}
-=======
-            <span className="favoriteBtn">
-              <ColorButton
-                variant="contained"
-                startIcon={<FavoriteIcon />}
-                onClick={(e) => {
-                  props.addFavorite(props.id);
-                  confettiClick(e);
-                }}
-              >
-                Favorite
-              </ColorButton>
-            </span>
->>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
             <span>
               <ShareOnFacebook url={props.url} title={articleTitle} />
               <ShareOnLinkedIn url={props.url} title={articleTitle} />
@@ -205,23 +148,15 @@ const NewsCard = (props) => {
             {props.publishedat === undefined ? (
               <span>
                 <time className="publishedAt" dateTime={props.publishedat}>
-<<<<<<< HEAD
                   {"Date Posted: " +
                     props.publishedat.replace(/([T].*?[Z])/g, "")}
-=======
-                  {"Date Posted: " + props.values.publishedAt.slice(0, -10)}
->>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
                 </time>
               </span>
             ) : (
               <span>
                 <time className="publishedAt" dateTime={props.publishedat}>
-<<<<<<< HEAD
                   {"Date Posted: " +
                     props.publishedat.replace(/([T].*?[Z])/g, "")}
-=======
-                  {"Date Posted: " + props.publishedat.slice(0, -10)}
->>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
                 </time>
               </span>
             )}

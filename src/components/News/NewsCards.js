@@ -8,11 +8,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 
 const NewsCards = (props) => {
-<<<<<<< HEAD
   // console.log("props", props);
-=======
-  console.log("props", props);
->>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
   const NewsCardsMap = props.news.map((article, i) => {
     let identifier = props.news.indexOf(article);
     return (
@@ -23,28 +19,17 @@ const NewsCards = (props) => {
         author={article.author}
         content={article.content}
         description={article.description}
-<<<<<<< HEAD
         publishedat={article.publishedat || article.publishedAt}
         source={article.source.name}
         title={article.title}
         url={article.url}
         urltoimage={article.urltoimage || article.urlToImage}
-=======
-        publishedat={article.publishedat}
-        source={article.source.name}
-        title={article.title}
-        url={article.url}
-        urltoimage={article.urltoimage}
->>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
         className="flex-container-row"
         addFavorite={props.addFav}
         deleteFavorite={props.deleteFav}
         activeArticle={props.activeArticle}
         i={i}
-<<<<<<< HEAD
         isFavoriteView={props.isFavoriteView}
-=======
->>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
       />
     );
   });
@@ -56,16 +41,10 @@ const NewsCards = (props) => {
           search={props.query}
           onToggle={props.toggleUpdate}
           getFavorite={props.fav}
-<<<<<<< HEAD
           isWeather={props.setWeather}
         />
 
         {props.isWeather && <Weather />}
-=======
-        />
-
-        {/* {mode && <Weather />} */}
->>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
 
         <Grid container>
           <Grid
