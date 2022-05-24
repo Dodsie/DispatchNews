@@ -81,6 +81,7 @@ const NewsCard = (props) => {
 
   const articleTitle = props.title.substring(0, 89);
 
+
   return (
     <Grid
       id={props.id}

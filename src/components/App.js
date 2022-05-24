@@ -95,7 +95,6 @@ function App() {
   }, []);
 
 
-
   React.useEffect(() => {
     console.log("I re-rendered!");
   }, [update]);
@@ -176,11 +175,11 @@ function App() {
 
     if (mode === INITIAL) {
       fetchNews();
-      setFavoriteView(false)
+      
     }
     if (mode === SEARCH) {
       fetchSearch(search);
-      setFavoriteView(false)
+      
     }
     if (mode === FAV) {
       favSearch();
