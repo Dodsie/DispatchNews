@@ -95,7 +95,6 @@ function App() {
   }, []);
 
 
-
   React.useEffect(() => {
     console.log("I re-rendered!");
   }, [update]);

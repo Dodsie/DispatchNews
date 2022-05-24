@@ -81,6 +81,7 @@ const NewsCard = (props) => {
 
   const articleTitle = props.title.substring(0, 89);
 
+
   return (
     <Grid
       id={props.id}
@@ -122,10 +123,8 @@ const NewsCard = (props) => {
 
               {props.isFavoriteView && <span className="deleteBtn"> <ColorButton
                 variant="contained"
-                startIcon={<FavoriteIcon />}
                 onClick={(e) => {
                   props.deleteFavorite(props.publishedat, props.id);
-                  confettiClick(e);
                 }}
               >
                 Delete
