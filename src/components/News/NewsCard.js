@@ -122,7 +122,6 @@ const NewsCard = (props) => {
 
               {props.isFavoriteView && <span className="deleteBtn"> <ColorButton
                 variant="contained"
-                startIcon={<FavoriteIcon />}
                 onClick={(e) => {
                   props.deleteFavorite(props.publishedat, props.id);
                 }}
