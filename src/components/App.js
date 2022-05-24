@@ -25,6 +25,7 @@ function App() {
   const [publishDate, setPublishDate] = React.useState("");
   const [articleOpen, setArticleOpen] = React.useState(false);
   const [weather, setWeather] = React.useState(false);
+<<<<<<< HEAD
   const [activeArticle, setActiveArticle] = React.useState(-1);
   const [favoriteView, setFavoriteView] = React.useState(false)
 
@@ -45,6 +46,13 @@ function App() {
     return output;
   }
 
+=======
+  const [removedState, setRemovedState] = React.useState([]);
+  const [activeArticle, setActiveArticle] = React.useState(-1);
+
+  const alanBtnInstance = React.useRef(null);
+
+>>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
   React.useEffect(() => {
     if (!alanBtnInstance.current) {
       alanBtnInstance.current = alanBtn({
@@ -94,7 +102,24 @@ function App() {
     }
   }, []);
 
+<<<<<<< HEAD
 
+=======
+  function ConvertKeysToLowerCase(obj) {
+    var output = {};
+    for (let i in obj) {
+      if (Object.prototype.toString.apply(obj[i]) === "[object Object]") {
+        output[i.toLowerCase()] = ConvertKeysToLowerCase(obj[i]);
+      } else if (Object.prototype.toString.apply(obj[i]) === "[object Array]") {
+        output[i.toLowerCase()] = [];
+        output[i.toLowerCase()].push(ConvertKeysToLowerCase(obj[i][0]));
+      } else {
+        output[i.toLowerCase()] = obj[i];
+      }
+    }
+    return output;
+  }
+>>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
 
   React.useEffect(() => {
     console.log("I re-rendered!");
@@ -176,6 +201,7 @@ function App() {
 
     if (mode === INITIAL) {
       fetchNews();
+<<<<<<< HEAD
       setFavoriteView(false)
     }
     if (mode === SEARCH) {
@@ -185,6 +211,14 @@ function App() {
     if (mode === FAV) {
       favSearch();
       setFavoriteView(true)
+=======
+    }
+    if (mode === SEARCH) {
+      fetchSearch(search);
+    }
+    if (mode === FAV) {
+      favSearch();
+>>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
     }
     if (mode === ONDELETE) {
       deleteFav(user, publishDate);
@@ -231,10 +265,13 @@ function App() {
     setMode(ADDFAV);
     setUpdate((prevState) => !prevState);
   };
+<<<<<<< HEAD
 
   const weatherToggle = () => {
     setWeather(prev => !prev)
   }
+=======
+>>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
 
   return (
     <BrowserRouter>
@@ -250,9 +287,12 @@ function App() {
               addFav={addFav}
               fav={favoriteToggle}
               activeArticle={activeArticle}
+<<<<<<< HEAD
               isFavoriteView={favoriteView}
               isWeather={weather}
               setWeather={weatherToggle}
+=======
+>>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
             />
           }
         />

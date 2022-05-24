@@ -1,6 +1,10 @@
 .Chat {
   width: 100%;
+<<<<<<< HEAD
   height: 95%;
+=======
+  height: 60%;
+>>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
   background: inherit;
   color: #212121;
   font-family: "Open Sans", sans-serif;
@@ -48,6 +52,10 @@
 .chat-window {
   width: 100%;
   height: auto;
+<<<<<<< HEAD
+=======
+  margin-top: 1em;
+>>>>>>> 35896cd74b94e25a5084d92fa5ee9f9e6ed3c725
 
   & p {
     margin: 0.5em 0.5em;
@@ -70,7 +78,7 @@
 }
 
 .chat-window .chat-body {
-  height: 16em;
+  height: 21em;
   border: 1px solid #263238;
   background: #fff;
   border-radius: 3px;
@@ -186,4 +194,12 @@
 
 .hide {
   opacity: 0 !important;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
 }
