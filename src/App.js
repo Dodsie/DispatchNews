@@ -103,7 +103,7 @@ function App() {
       },
     });
     // Search first Query
-    searchQuery("fortnite");
+
     console.log("newsArticles in UE", newsArticles);
   }, []);
 

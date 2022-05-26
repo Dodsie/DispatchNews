@@ -61,6 +61,11 @@ const NewsCard = (props) => {
         .replace(removeTurncatedText, "") // remove [ ] truncation text
         .replace(removeUnwantedHTML, "") // remove <> tags
         .replace(/\u00a0/g, " ") // remove nbsp
+        .replace(
+          `Your browser isnt supported anymore. Update it to get the best YouTube experience and our latest features. Learn more`,
+          ""
+        )
+        .replace(`Remind me later`, "")
     : "";
 
   const articleSource = props.source ? (

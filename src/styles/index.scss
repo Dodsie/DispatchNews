@@ -89,6 +89,16 @@ html {
   }
 }
 
+// social icons show mouse as pointer
+footer > div:nth-child(1) > span:nth-child(2) {
+  cursor: pointer;
+}
+
+// smaller news source to avoid clashing lengths
+footer > div:nth-child(2) > span {
+  font-size: small;
+}
+
 #latestNews {
   padding: 2em 1.5em;
   display: flex;
