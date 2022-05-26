@@ -51,12 +51,11 @@ function App() {
         key: process.env.REACT_APP_ALAN_KEY,
         onCommand: ({ command, articles, number }) => {
           switch (command) {
-            case "newsFromSource":
+            case "getNews":
               setNews(articles);
               break;
 
             case "newHeadlines":
-              console.log("Does this show anything", articles);
               setNews(articles);
               setActiveArticle(-1);
               break;
