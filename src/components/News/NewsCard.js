@@ -25,7 +25,6 @@ const confettiClick = (e) => {
 };
 
 const NewsCard = (props) => {
-  // console.log("returned,props", props);
   const [elRefs, setElRefs] = useState([]);
   const [favorited, setFavorited] = useState(false);
   const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 150);
@@ -110,7 +109,6 @@ const NewsCard = (props) => {
         <p className="limit-six-lines">{articleContent}</p>
         <footer>
           <div>
-            {/* <span className="favoriteBtn"> */}
             {!props.isFavoriteView && (
               <span className="favoriteBtn">
                 {" "}
@@ -141,7 +139,7 @@ const NewsCard = (props) => {
                 </ColorButton>
               </span>
             )}
-            {/* </span> */}
+
             <span>
               <ShareOnFacebook url={props.url} title={articleTitle} />
               <ShareOnLinkedIn url={props.url} title={articleTitle} />
