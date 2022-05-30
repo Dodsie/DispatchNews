@@ -6,6 +6,7 @@ import io from "socket.io-client";
 import Chat from "../../Chat";
 //Chat end
 
+
 // Drop down rooms
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -14,6 +15,7 @@ import Select from "@mui/material/Select";
 
 const socket = io.connect("http://localhost:3002");
 // end
+
 
 const Sidebar = () => {
   // Chat function
@@ -42,6 +44,7 @@ const Sidebar = () => {
                 setUsername(event.target.value);
               }}
             />
+
             <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
               <InputLabel id="demo-select-small">Room</InputLabel>
               <Select
@@ -62,6 +65,7 @@ const Sidebar = () => {
                 <MenuItem value={70}>Just Chatting</MenuItem>
               </Select>
             </FormControl>
+
 
             <button onClick={joinRoom}>Join A Room</button>
           </div>

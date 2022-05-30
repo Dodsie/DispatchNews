@@ -85,6 +85,7 @@ const NewsCard = (props) => {
 
   const articleTitle = props.title.substring(0, 89);
 
+
   return (
     <Grid
       id={props.id}
@@ -124,6 +125,7 @@ const NewsCard = (props) => {
                   Favorite
                 </ColorButton>
               </span>
+
             )}
 
             {props.isFavoriteView && (
@@ -139,6 +141,7 @@ const NewsCard = (props) => {
                 </ColorButton>
               </span>
             )}
+
 
             <span>
               <ShareOnFacebook url={props.url} title={articleTitle} />
