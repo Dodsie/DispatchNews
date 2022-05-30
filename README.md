@@ -1,70 +1,143 @@
-# Getting Started with Create React App
+# Dispatch News 📰
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DispatchNews is a news aggregator that can grab news across the entire world, with AI assistance to read titles, open articles, and traverse the site.
 
-## Available Scripts
+## Features 🤳
 
-In the project directory, you can run:
+- users can search news across the entire world
+- users can add & remove favorite articles
+- users can use Voice AI to search articles
+- users can use Voice AI to read articles
+- users can use Voice AI to open articles
+- users can chat live
+- users can search local weather
+- users can use on Mobile, Tablet or Desktop Devices
 
-### `npm start`
+## This was published for collaborative learning purposes. 🚧
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project was created and published by [Bailey Dods](https://github.com/Dodsie), [Alastair Gardiner](https://github.com/Alastair5), and [Matt Seligman](https://github.com/MattSeligman) as part of our final project at Lighthouse Labs. We welcome any feedback!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Begin Setup 🤓
 
-### `npm test`
+Start in the `db` directory by typing:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `cd DispatchNews/db/`
 
-### `npm run build`
+<br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## PostGres PSQL Database Setup 🖥️
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- ![insert data](https://github.com/Dodsie/docs/psql-db.gif?raw=true)
 
-### `npm run eject`
+1. Connect to PSQL with the following command:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   - `PSQL`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Alter 'yourdbname' then Create your Database with the altered command:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   - `CREATE DATABASE yourdbname;`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Alter 'youruser' and 'yourpass' then Create your User/Role with the altered command:
 
-## Learn More
+   - `CREATE USER youruser WITH PASSWORD 'yourpass';`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Revise this command with your 'yourdbname' and 'youruser' to grant your user/role permission over the database.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   - `GRANT ALL PRIVILEGES ON DATABASE yourdbname TO youruser;`
 
-### Code Splitting
+5. Close the PSQL connection with the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   - `\q`
 
-### Analyzing the Bundle Size
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Insert Scheme & Seed Data 🌱
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- ![insert data](https://github.com/Dodsie/docs/psql-data.gif?raw=true)
 
-### Advanced Configuration
+1. Connect to your Database using your user role the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   - `psql -d yourdbname -U youruser`;
 
-### Deployment
+2. Type in your Altered password upon request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   - `yourpass`
 
-### `npm run build` fails to minify
+3. Insert your Table Schema with the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   - `\i schema/01_tables.sql`
+
+4. Insert your Seed Data with the following command:
+
+   - `\i seeds/01_seeds.sql`
+
+<br/>
+
+## API & Socket.io Setup 🛣️
+
+---
+
+1.  Download or Clone:
+
+    - https://github.com/Dodsie/DispatchNewsApi
+      <br><br>
+
+2.  Open the file `queries.js` and update your PSQL `user`, `password`, and `database`:
+
+        user: 'youruser'
+        password: 'yourpass'
+        database: 'yourdbname'
+
+- Proceed to save this file.
+
+  - ![start api & chat](https://github.com/Dodsie/docs/start-api-and-chat.gif?raw=true)
+
+2. Open Two Terminals and within both access the DispatchNewsAPI directory
+
+   - `cd DispatchNewsAPI`
+
+3. Within one terminal type:
+
+   - `node index.js`
+
+4. Within the other terminal type:
+
+   - `node chat-index.js`
+
+**Note:** _Leave these terminals running._
+
+<br/>
+
+## Configuration 📝
+
+---
+
+1. Rename `.env.example` to `.env`
+
+2. Sign-up for API Key's at [Alan.app](https://alan.app/) & [NewsAPI.org](https://newsapi.org/).
+
+3. Replacement `API_HERE` with your API Key's within the `.env` file:
+
+   - `REACT_APP_ALAN_KEY=API_HERE`
+   - `REACT_APP_NEWS_KEY=API_HERE`
+     <br/>
+
+## Starting Dispatch News 🥳
+
+1. Return to the "DispatchNews" application and start in the DispatchNews directory.
+
+- `cd /DispatchNews/`
+
+2. Start the dispatch news by running the following command:
+
+- `npm start`
+
+  - ![npm start](https://github.com/Dodsie/docs/start-app.gif?raw=true)
+
+3. Enjoy trying our DispatchNews!
+
+   - ![Review App](https://github.com/Dodsie/docs/app-review.gif?raw=true)

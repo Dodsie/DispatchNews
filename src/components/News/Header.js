@@ -62,12 +62,7 @@ function Header(props) {
         </Grid>
         <Grid item md={0.5} id="mobileAvatarContainer">
           {loggedIn && (
-            <Badge
-              color="error"
-              badgeContent={5}
-              showZero
-              className="mobileAvatar"
-            >
+            <Badge color="error" badgeContent={0} className="mobileAvatar">
               <AccountMenu getEmail={getEmail} setloggedIn={setloggedIn} />
             </Badge>
           )}
@@ -165,15 +160,26 @@ function Header(props) {
         <Divider orientation="vertical" flexItem className="divider" />
 
         {/* User */}
-        <Grid item xs={4} sm={1} md={1} lg={0.7} xl={0.7}>
+        <Grid
+          item
+          xs={4}
+          sm={1}
+          md={1}
+          lg={0.7}
+          xl={0.7}
+          id="desktopAvatarContainer"
+        >
           {loggedIn && (
             <Badge
               color="error"
               badgeContent={badgeValue}
               display={{ xs: "none", md: "none", lg: "block" }}
-              className="desktopAvatar"
             >
-              <AccountMenu getEmail={getEmail} setloggedIn={setloggedIn} />
+              <AccountMenu
+                getEmail={getEmail}
+                className="desktopAvatar"
+                setloggedIn={setloggedIn}
+              />
             </Badge>
           )}
           {!loggedIn && <Login setEmail={setEmail} setloggedIn={setloggedIn} />}
