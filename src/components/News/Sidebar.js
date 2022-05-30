@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
-
 // Chat
 import "../../styles/Chat.scss";
 import io from "socket.io-client";
@@ -9,19 +7,14 @@ import Chat from "../../Chat";
 //Chat end
 
 
-
 // Drop down rooms
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 const socket = io.connect("http://localhost:3002");
 // end
-
-
-
-
 
 
 const Sidebar = () => {
@@ -36,8 +29,6 @@ const Sidebar = () => {
       setShowChat(true);
     }
   };
-
-  // Chat function end
 
   // Chat function
   return (
@@ -73,6 +64,7 @@ const Sidebar = () => {
                 <MenuItem value={70}>Just Chatting</MenuItem>
               </Select>
             </FormControl>
+
 
             <button onClick={joinRoom}>Join A Room</button>
           </div>

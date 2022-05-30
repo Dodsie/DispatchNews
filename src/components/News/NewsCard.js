@@ -25,7 +25,6 @@ const confettiClick = (e) => {
 };
 
 const NewsCard = (props) => {
-  // console.log("returned,props", props);
   const [elRefs, setElRefs] = useState([]);
   const [favorited, setFavorited] = useState(false);
   const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 150);
@@ -61,6 +60,11 @@ const NewsCard = (props) => {
         .replace(removeTurncatedText, "") // remove [ ] truncation text
         .replace(removeUnwantedHTML, "") // remove <> tags
         .replace(/\u00a0/g, " ") // remove nbsp
+        .replace(
+          `Your browser isnt supported anymore. Update it to get the best YouTube experience and our latest features. Learn more`,
+          ""
+        )
+        .replace(`Remind me later`, "")
     : "";
 
   const articleSource = props.source ? (
@@ -106,7 +110,9 @@ const NewsCard = (props) => {
         <p className="limit-six-lines">{articleContent}</p>
         <footer>
           <div>
+
             {/* <span className="favoriteBtn"> */}
+
             {!props.isFavoriteView && (
               <span className="favoriteBtn">
                 {" "}
@@ -122,6 +128,7 @@ const NewsCard = (props) => {
                   Favorite
                 </ColorButton>
               </span>
+
             )}
 
             {props.isFavoriteView && (
@@ -137,7 +144,7 @@ const NewsCard = (props) => {
                 </ColorButton>
               </span>
             )}
-            {/* </span> */}
+
             <span>
               <ShareOnFacebook url={props.url} title={articleTitle} />
               <ShareOnLinkedIn url={props.url} title={articleTitle} />
