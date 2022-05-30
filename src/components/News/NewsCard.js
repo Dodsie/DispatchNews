@@ -110,6 +110,9 @@ const NewsCard = (props) => {
         <p className="limit-six-lines">{articleContent}</p>
         <footer>
           <div>
+
+            {/* <span className="favoriteBtn"> */}
+
             {!props.isFavoriteView && (
               <span className="favoriteBtn">
                 {" "}
@@ -141,7 +144,6 @@ const NewsCard = (props) => {
                 </ColorButton>
               </span>
             )}
-
 
             <span>
               <ShareOnFacebook url={props.url} title={articleTitle} />

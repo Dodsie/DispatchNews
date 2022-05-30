@@ -255,7 +255,7 @@ const newsSources = [
   { label: "Mens Rights" },
   { label: "Calgary Flames" },
   { label: "Dallas Stars" },
-  { label: "Edmontom" },
-  { label: "Edmontom Oilers" },
+  { label: "Edmonton" },
+  { label: "Edmonton Oilers" },
   { label: "Battle of Alberta" },
 ];

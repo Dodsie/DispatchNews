@@ -44,7 +44,6 @@ const Sidebar = () => {
                 setUsername(event.target.value);
               }}
             />
-
             <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
               <InputLabel id="demo-select-small">Room</InputLabel>
               <Select
@@ -60,7 +59,7 @@ const Sidebar = () => {
                 <MenuItem value={20}>Tech</MenuItem>
                 <MenuItem value={30}>Health</MenuItem>
                 <MenuItem value={40}>Science</MenuItem>
-                <MenuItem value={50}>Business</MenuItem>
+                <MenuItem value={50}>Buisness</MenuItem>
                 <MenuItem value={60}>Entertainment</MenuItem>
                 <MenuItem value={70}>Just Chatting</MenuItem>
               </Select>
