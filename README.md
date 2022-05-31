@@ -6,6 +6,7 @@ DispatchNews is a news aggregator that can grab news across the entire world, wi
 
 - users can search news across the entire world
 - users can add & remove favorite articles
+- users can share articles on social media
 - users can use Voice AI to search articles
 - users can use Voice AI to read articles
 - users can use Voice AI to open articles
@@ -29,7 +30,7 @@ Start in the `db` directory by typing:
 
 ---
 
-- ![insert data](https://github.com/Dodsie/docs/psql-db.gif?raw=true)
+- ![insert data](https://github.com/Dodsie/DispatchNews/blob/master/docs/psql-db.gif?raw=true)
 
 1. Connect to PSQL with the following command:
 
@@ -57,7 +58,7 @@ Start in the `db` directory by typing:
 
 ---
 
-- ![insert data](https://github.com/Dodsie/docs/psql-data.gif?raw=true)
+- ![insert data](https://github.com/Dodsie/DispatchNews/blob/master/docs/psql-data.gif?raw=true)
 
 1. Connect to your Database using your user role the following command:
 
@@ -94,7 +95,7 @@ Start in the `db` directory by typing:
 
 - Proceed to save this file.
 
-  - ![start api & chat](https://github.com/Dodsie/docs/start-api-and-chat.gif?raw=true)
+  - ![start api & chat](https://github.com/Dodsie/DispatchNews/blob/master/docs/start-api-and-chat.gif?raw=true)
 
 2. Open Two Terminals and within both access the DispatchNewsAPI directory
 
@@ -136,8 +137,8 @@ Start in the `db` directory by typing:
 
 - `npm start`
 
-  - ![npm start](https://github.com/Dodsie/docs/start-app.gif?raw=true)
+  - ![npm start](https://github.com/Dodsie/DispatchNews/blob/master/docs/start-app.gif?raw=true)
 
 3. Enjoy trying our DispatchNews!
 
-   - ![Review App](https://github.com/Dodsie/docs/app-review.gif?raw=true)
+   - ![Review App](https://github.com/Dodsie/DispatchNews/blob/master/docs/app-review.gif?raw=true)
